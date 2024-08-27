@@ -1,9 +1,41 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+    const links = (
+        <>
+            <li>
+                <NavLink
+                    className={({ isActive }) => {
+                        console.log('Is Active:', isActive);
+                        return isActive
+                            ? 'font-bold text-yellow-600 hover:text-yellow-700'
+                            : 'font-bold text-white hover:text-yellow-600';
+                    }}
+                    to='/'
+                >
+                    Home
+                </NavLink>
+            </li>
+
+            <li>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive
+                            ? 'font-bold text-yellow-600 hover:text-yellow-700'
+                            : 'font-bold text-white hover:text-yellow-600'
+                    }
+                    to='/allCollections'
+                >
+                    All Collections
+                </NavLink>
+            </li>
+        </>
+    );
+
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-transparent ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,34 +54,21 @@ const NavBar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow nav-link">
+                            {links}
                         </ul>
                     </div>
-                    <a className="text-xl px-10">Dazzling</a>
+                    <a className="text-xl text-white px-10 text-lighting">Dazzling</a>
                 </div>
                 <div className="navbar-end hidden lg:flex">
-                    <ul className="menu menu-horizontal ">
-                        <li><a>Item 1</a></li>
-                        <li>
-                           
-                        </li>
-                        <li><a>Item 3</a></li>
+                    <ul className=' menu-horizontal gap-5 px-1 text-yellow'>
+                      {links}
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <a className="btn">Button</a>
                 </div>
             </div>
-
         </div>
     );
 };
