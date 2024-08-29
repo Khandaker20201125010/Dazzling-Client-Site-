@@ -281,10 +281,10 @@ const Banner = () => {
             </svg>
           </button>
 
-          <div className="slides__wrapper z-[-1]">
+          <div className="slides__wrapper">
             <div className="slides">
               <div className="slide" data-current>
-                <div className="slide__inner">
+                <div className="slide__inner ">
                   <div className="slide--image__wrapper">
                     <img className="slide--image" src="https://i.ibb.co/dQzChy8/eb0ed7037fbca6158b3e8818d69e2198.jpg" alt="Image 1" />
                   </div>
@@ -293,7 +293,7 @@ const Banner = () => {
               <div className="slide__bg" style={{ "--bg": "url(https://i.ibb.co/dQzChy8/eb0ed7037fbca6158b3e8818d69e2198.jpg)", "--dir": 0 }} data-current></div>
 
               <div className="slide" data-next>
-                <div className="slide__inner">
+                <div className="slide__inner ">
                   <div className="slide--image__wrapper">
                     <img className="slide--image" src="https://i.ibb.co/cCq3XL0/cf2a7bddd0e3-mens-watches-t.jpg" alt="Image 2" />
                   </div>

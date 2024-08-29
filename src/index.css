@@ -173,49 +173,37 @@
 	top: 50%;
 	left: 50%;
 	object-fit: cover;
-	transform: translate(-50%, -50%) scale(1.25)
-		translate3d(var(--bgPosX), var(--bgPosY), 0);
+	transform: translate(-50%, -50%) scale(1.25) translate3d(var(--bgPosX), var(--bgPosY), 0);
 	transition: filter var(--slide-transition-duration)
 		var(--slide-transition-easing);
 }
 
 .slide__bg {
-	position: absolute;
-	inset: -20%;
-	background-image: var(--bg);
-	background-size: cover;
-	background-position: center center;
+    position: absolute;
+    inset: 0; /* Changed from -20% to 0 to keep it within the container */
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center center;
    
-	z-index: -1;
-	pointer-events: none;
+    z-index: -1;
+    pointer-events: none;
 
-	transition: opacity var(--slide-transition-duration) ease,
-		transform var(--slide-transition-duration) ease;
-
-	&::before {
-		content: "";
-		position: absolute;
-        inset: 0;
-		
-	}
-
-	&::before {
-		background: rgba(0, 0, 0, 0.8);
-		
-	}
-
-	&:not([data-current]) {
-		opacity: 0;
-	}
-
-	&[data-previous] {
-		transform: translateX(-10%);
-	}
-
-	&[data-next] {
-		transform: translateX(10%);
-	}
+    transition: opacity var(--slide-transition-duration) ease,
+        transform var(--slide-transition-duration) ease;
 }
+
+.slide__bg::before {
+    content: "";
+    position: absolute; /* Changed from relative to absolute to ensure it covers the full element */
+    inset: 0; /* or inset: 1%; for slight padding */
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slide__bg:not([data-current]) {
+    opacity: 0;
+}
+
+
 
 /* ------------ SLIDE INFO ---------------- */
 
@@ -336,6 +324,9 @@
 	0 0 20px yellow, 
 	0 0 25px yellow;
 }
+.slide:hover .slide__inner {
+	transform: rotateX(10deg) rotateY(10deg);
+  }
+  
 /* ------------------------------------------- */
-
 
