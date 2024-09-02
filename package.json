@@ -12,17 +12,21 @@
   "dependencies": {
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/react-flicking": "^4.11.4",
+    "framer-motion": "^11.3.31",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-fast-marquee": "^1.6.5",
     "react-router-dom": "^6.26.1",
     "sort-by": "^1.2.0",
-    "swiper": "^11.1.10"
+    "swiper": "^11.1.12",
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.24.7",
     "@eslint/js": "^9.9.0",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",

@@ -7,11 +7,20 @@ const Banner = () => {
       const { default: imagesLoaded } = await import('https://esm.sh/imagesloaded');
       setup(imagesLoaded);
     };
-
+  
     loadImagesLoaded();
+  
+    // Set up automatic slide change
+    const intervalId = setInterval(() => {
+      change(1)(); // Automatically move to the next slide
+    }, 5000); // Change slide every 3 seconds
+  
+    return () => {
+      clearInterval(intervalId); // Clear interval on component unmount
+    };
   }, []);
-
-  console.clear();
+  
+  
 
   // Utilities...
 

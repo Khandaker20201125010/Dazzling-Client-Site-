@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import SparklesText from '../../../Componenets/Sparkle/Sparkle';
 
 const NavBar = () => {
     const links = (
@@ -9,7 +10,7 @@ const NavBar = () => {
                     className={({ isActive }) => {
                         console.log('Is Active:', isActive);
                         return isActive
-                            ? 'font-bold text-yellow-600 hover:text-yellow-700'
+                            ? 'font-bold text-yellow-500 hover:text-yellow-700'
                             : 'font-bold text-white hover:text-yellow-600';
                     }}
                     to='/'
@@ -58,11 +59,17 @@ const NavBar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="text-xl text-white px-10 text-lighting">Dazzling</a>
+                    <div className="">
+                        <SparklesText>
+                        <a className="text-xl text-white px-10 text-lighting">Dazzling</a>
+                        </SparklesText>
+                    </div>
+                   
+                   
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className=' menu-horizontal gap-5 px-1 text-yellow'>
-                      {links}
+                        {links}
                     </ul>
                 </div>
                 <div className="navbar-end">
