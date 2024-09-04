@@ -18,7 +18,7 @@ const PopularProduct = () => {
                 subHeading={"Popular Product"}
                 heading={"From Our Product"}></SectionTitle>
             </div>
-            <div className='container grid md:grid-cols-2 gap-10 m-auto mt-10'>
+            <div className='container grid md:grid-cols-2 gap-8 m-auto mt-10'>
                 {
                     product .map(product => <ProductItem key={product._id} product={product}></ProductItem>)
                 }

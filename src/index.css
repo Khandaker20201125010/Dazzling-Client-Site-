@@ -697,6 +697,40 @@
     padding: 0 10px; /* Add padding for better spacing */
 }
 
-  
+
+.ing:hover {
+    transform: scale(1.2); /* Zoom in the image */
+    z-index: 10; /* Ensure the image stays on top */
+    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+ /* Add this CSS file for custom styling */
+.image-container {
+    width: 80px; /* Initial width of the container */
+    height: 80px; /* Initial height of the container (making it a square) */
+    overflow: hidden; /* Hide the overflow to keep the image within bounds */
+    position: relative; /* Required for absolute positioning of the img */
+    transition: all 0.3s ease; /* Smooth transition for size changes */
+}
+
+.product-image {
+    width: 100%; /* Ensure the image takes up the container's width */
+    height: 100%; /* Ensure the image takes up the container's height */
+    object-fit: cover; /* Cover the container with the image */
+    transition: all 0.3s ease; /* Smooth transition for size changes */
+    border-radius: 0px 200px 0px 200px; /* Apply your border-radius */
+}
+
+.image-container:hover {
+    width: 200px; /* Increase width on hover */
+    height: 200px; /* Increase height on hover to maintain the square shape */
+}
+
+.image-container:hover .product-image {
+    width: 100%; /* Ensure the image still covers the new container size */
+    height: 100%; /* Ensure the image still covers the new container size */
+    border-radius: 0; /* Remove border-radius on hover to make the image a square */
+}
+ 
   
   
