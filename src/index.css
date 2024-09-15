@@ -750,6 +750,7 @@
     background-size: cover;
     filter: blur(8px); /* Apply blur effect */
     z-index: 1;
+	
 }
 
 .featured-Item-content {

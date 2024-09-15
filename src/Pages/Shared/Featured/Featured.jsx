@@ -9,8 +9,8 @@ const Featured = () => {
                 subHeading='Check It Out'
                 heading='Featured Item'>
             </SectionTitle>
-            <div className='md:flex justify-center items-center py-20 px-36 featured-Item'>
-                <div className='featured-Item-content w-full md:flex md:justify-center md:items-center'>
+            <div className='md:flex justify-center items-center py-20 px-36 featured-Item '>
+                <div className='featured-Item-content w-full md:flex md:justify-center md:items-center '>
                     <div className='w-[1000px] h-full'>
                         <img className='w-full' src={featuredImage} alt="" />
                     </div>
@@ -20,7 +20,7 @@ const Featured = () => {
                         <p className='text-white'>
                             Welcome to our Website! Discover a wide range of stylish dresses, exquisite jewelry, premium watches, and trendy sunglasses all in one place...
                         </p>
-                        <button className='btn btn-outline mt-5 font-bold border-black hover:bg-red-900'>Order Now</button>
+                        <button className='btn btn-outline mt-5  border-0 border-b-4  font-bold border-black hover:bg-red-900'>Check Out</button>
                     </div>
                 </div>
             </div>
