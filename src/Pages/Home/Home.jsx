@@ -4,6 +4,7 @@ import Types from '../Shared/Types/Types';
 import PopularProduct from '../Shared/PopularItem/PopularProduct';
 import Featured from '../Shared/Featured/Featured';
 import { Helmet } from 'react-helmet';
+import TopProduct from '../Shared/TopProduct/TopProduct';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <Types></Types>
             <PopularProduct></PopularProduct>
+            <TopProduct></TopProduct>
             <Featured></Featured>
            
             
