@@ -12,6 +12,7 @@
   "dependencies": {
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/react-flicking": "^4.11.4",
+    "@smastrom/react-rating": "^1.5.0",
     "framer-motion": "^11.3.31",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
@@ -22,6 +23,7 @@
     "react-helmet": "^6.1.0",
     "react-parallax": "^3.5.1",
     "react-router-dom": "^6.26.1",
+    "react-star-ratings": "^2.3.0",
     "sort-by": "^1.2.0",
     "swiper": "^11.1.12",
     "typescript": "^5.5.4"

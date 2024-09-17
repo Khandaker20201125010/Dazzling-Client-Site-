@@ -5,6 +5,7 @@ import PopularProduct from '../Shared/PopularItem/PopularProduct';
 import Featured from '../Shared/Featured/Featured';
 import { Helmet } from 'react-helmet';
 import TopProduct from '../Shared/TopProduct/TopProduct';
+import Testimonials from '../Shared/Testimonials/Testimonials';
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
             <PopularProduct></PopularProduct>
             <TopProduct></TopProduct>
             <Featured></Featured>
+            <Testimonials></Testimonials>
            
             
         </div>
