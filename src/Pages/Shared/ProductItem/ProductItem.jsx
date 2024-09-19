@@ -6,7 +6,7 @@ const ProductItem = ({ product }) => {
     return (
         <div className='flex items-center justify-between p-2'>
             <div className='flex gap-5'>
-            <div className='image-container'>
+                <div className='image-container'>
                     <img className='product-image' src={image} alt={name} />
                 </div>
                 <div>
@@ -15,11 +15,18 @@ const ProductItem = ({ product }) => {
                 </div>
             </div>
             <div className='flex flex-col gap-5'>
-            <p className='text-lg text-lighting  text-white'>{price}$</p>
-            <button className='text-lg text-lighting text-white rounded-full  bg-black w-20 h-8'>Get</button>
+                <p className='text-lg text-lighting  text-white'>{price}$</p>
+               
+                <button className='buton'>
+                    <span className='text-white font-bold'>Get </span>
+                    <div class="top"></div>
+                    <div class="left"></div>
+                    <div class="bottom"></div>
+                    <div class="right"></div>
+                </button>   
 
             </div>
-          
+
         </div>
     );
 };

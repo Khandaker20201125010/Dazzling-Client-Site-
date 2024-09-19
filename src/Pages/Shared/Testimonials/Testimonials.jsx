@@ -39,7 +39,7 @@ const Testimonials = () => {
                                     value={reviews.rating}
                                     readOnly
                                 />
-                                 <span class="loader mt-5"></span>
+                                 <span class="loadero mt-5"></span>
                                 <p className='py-8'>{reviews.details}</p>
                                 <h3 className='text-2xl text-orange-400'>{reviews.name}</h3>
                             </div>

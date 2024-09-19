@@ -980,15 +980,15 @@
 	object-fit: cover;
   }
   /* From Uiverse.io by mobinkakei */ 
-.loader {
+.loadero {
 	position: relative;
 	width: 108px;
 	display: flex;
 	justify-content: space-between;
 	background-color: transparent;
   }
-  .loader::after,
-  .loader::before {
+  .loadero::after,
+  .loadero::before {
 	content: "";
 	display: inline-block;
 	width: 48px;
@@ -1022,7 +1022,153 @@
 	}
   }
  
+.buton {
+	padding: 5px 30px;
+	background-color: #000;
+	border: none;
+	font-size: 18px;
+	position: relative;
+	/* overflow: hidden; */
+	transition: 500ms;
+  }
   
- 
+  .buton span {
+
+	position: relative;
+	transition: 500ms;
+	transition-delay: 500ms;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 600;
+  }
   
+  .buton:before {
+	content: '';
+	position: absolute;
+	width: 0%;
+	height: 0%;
+	left: 50%;
+	right: 50%;
+	top: 50%;
+	bottom: 50%;
+	transition: 500ms;
+	transition-delay: 500ms;
+	background-color: rgb(238, 255, 0);
+	box-shadow: 0 0 10px rgb(253, 249, 2), 0 0 30px rgb(251, 255, 0), 0 0 50px rgb(238, 255, 0);
+  }
+  
+  .buton div {
+	transition: 500ms;
+	position: absolute;
+	background-color: rgb(255, 251, 0);
+	box-shadow: 0 0 15px rgb(255, 251, 0), 0 0 30px rgb(255, 251, 0), 0 0 50px rgb(255, 251, 0);
+  }
+  
+  .buton .top {
+	width: 15px;
+	height: 2px;
+	top: 0;
+	left: 0;
+  }
+  
+  .buton .bottom {
+	width: 15px;
+	height: 2px;
+	bottom: 0;
+	right: 0;
+  }
+  
+  .buton .left {
+	width: 2px;
+	height: 15px;
+	top: 0;
+	left: 0;
+  }
+  
+  .buton .right {
+	width: 2px;
+	height: 15px;
+	bottom: 0;
+	right: 0;
+  }
+  
+  .buton:hover {
+	color: #000;
+  }
+  
+  .buton:hover span {
+	color: #000;
+  }
+  
+  .buton:hover:before {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  }
+  
+  .buton:hover .top, 
+  .buton:hover .bottom {
+	width: 100%;
+  }
+  
+  .buton:hover .left,
+  .buton:hover .right {
+	height: 100%;
+  }
+ /* From Uiverse.io by zanina-yassine */ 
+.lButton {
+	min-width: 120px;
+  
+	position: relative;
+	cursor: pointer;
+  
+	padding: 7px 10px;
+	border: 0px;
+	border-radius: 2rem .10rem;
+  
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	background: radial-gradient(
+	  ellipse at bottom,
+	  rgb(231, 178, 4) 0%,
+	  rgba(11, 21, 30, 1) 45%
+	);
+  
+	color: rgba(255, 255, 255, 0.66);
+  
+	transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .lButton::before {
+	content: "";
+	width: 70%;
+	height: 1px;
+  
+	position: absolute;
+	bottom: 0;
+	left: 15%;
+  
+	background: rgb(252, 152, 3);
+	background: linear-gradient(
+	  90deg,
+	  rgba(255, 255, 255, 0) 0%,
+	  rgb(236, 201, 2) 50%,
+	  rgba(255, 255, 255, 0) 100%
+	);
+	opacity: 0.2;
+  
+	transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .lButton:hover {
+	color: rgb(235, 200, 5);
+	transform: scale(1.1) translateY(-3px);
+  }
+  
+  .lButton:hover::before {
+	opacity: 1;
+  }
   

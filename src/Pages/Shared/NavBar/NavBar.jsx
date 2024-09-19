@@ -28,7 +28,7 @@ const NavBar = () => {
                     }
                     to='/allCollections'
                 >
-                    All Collections
+                    Our Collections
                 </NavLink>
             </li>
         </>
@@ -61,19 +61,22 @@ const NavBar = () => {
                     </div>
                     <div className="">
                         <SparklesText>
-                        <a className="text-xl text-white px-10 text-lighting">Dazzling</a>
+                            <a className="text-2xl text-white px-10 text-lighting "><i>Dazzling</i></a>
                         </SparklesText>
                     </div>
-                   
-                   
+
+
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className=' menu-horizontal gap-5 px-1 text-yellow'>
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end mr-10 ">
+               
+                    <button class="lButton text-xl ">
+                     Join us
+                    </button>
                 </div>
             </div>
         </div>
