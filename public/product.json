@@ -1,6 +1,6 @@
 [
   {
-    "_id": 1,
+  
     "name": "Luxury Men's Watch",
     "brand": "Omega",
     "price": 499.99,
@@ -12,7 +12,7 @@
     "review": "Excellent quality and style."
   },
   {
-    "_id": 2,
+   
     "name": "Classic Women's Watch",
     "brand": "Rolex",
     "price": 799.99,
@@ -24,7 +24,7 @@
     "review": "Absolutely stunning and worth every penny."
   },
   {
-    "_id": 3,
+   
     "name": "Men's Casual Shirt",
     "brand": "H&M",
     "price": 29.99,
@@ -36,7 +36,7 @@
     "review": "Great fit and very comfortable."
   },
   {
-    "_id": 4,
+    
     "name": "Women's Summer Dress",
     "brand": "Zara",
     "price": 49.99,
@@ -48,7 +48,7 @@
     "review": "Beautiful dress, perfect for summer."
   },
   {
-    "_id": 5,
+   
     "name": "Aviator Sunglasses",
     "brand": "Ray-Ban",
     "price": 149.99,
@@ -60,7 +60,7 @@
     "review": "High-quality sunglasses with a classic look."
   },
   {
-    "_id": 6,
+    
     "name": "Men's Running Shoes",
     "brand": "Nike",
     "price": 99.99,
@@ -72,7 +72,7 @@
     "review": "Very comfortable and lightweight."
   },
   {
-    "_id": 7,
+    
     "name": "Women's High Heels",
     "brand": "Jimmy Choo",
     "price": 299.99,
@@ -84,7 +84,7 @@
     "review": "Stylish and surprisingly comfortable."
   },
   {
-    "_id": 8,
+    
     "name": "Men's Leather Belt",
     "brand": "Gucci",
     "price": 199.99,
@@ -96,7 +96,7 @@
     "review": "Excellent craftsmanship and quality."
   },
   {
-    "_id": 9,
+    
     "name": "Women's Silk Scarf",
     "brand": "Hermès",
     "price": 399.99,
@@ -108,7 +108,7 @@
     "review": "Beautiful scarf with vibrant colors."
   },
   {
-    "_id": 10,
+    
     "name": "Men's Leather Jacket",
     "brand": "AllSaints",
     "price": 499.99,
@@ -120,7 +120,7 @@
     "review": "Great jacket with a perfect fit."
   },
   {
-    "_id": 11,
+    
     "name": "Women's Trench Coat",
     "brand": "Burberry",
     "price": 1999.99,
@@ -132,7 +132,7 @@
     "review": "The perfect trench coat, worth the investment."
   },
   {
-    "_id": 12,
+    
     "name": "Men's Messenger Bag",
     "brand": "Tumi",
     "price": 249.99,
@@ -144,7 +144,7 @@
     "review": "Very functional and well-made."
   },
   {
-    "_id": 13,
+    
     "name": "Women's Tote Bag",
     "brand": "Michael Kors",
     "price": 299.99,
@@ -156,7 +156,7 @@
     "review": "Stylish and spacious, perfect for daily use."
   },
   {
-    "_id": 14,
+    
     "name": "Men's Fedora Hat",
     "brand": "Stetson",
     "price": 79.99,
@@ -168,7 +168,7 @@
     "review": "Good quality hat, stylish and comfortable."
   },
   {
-    "_id": 15,
+    
     "name": "Women's Wide Brim Hat",
     "brand": "Lack of Color",
     "price": 99.99,

@@ -7,7 +7,7 @@ const Allitem = ({ product }) => {
     return (
         <div className=''> 
             <div
-                className="relative w-[20rem] rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
+                className="relative w-[18rem] rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
                 style={{ backgroundImage: backgroundImage }} // Apply dynamic background
             >
                 {/* Image Container */}
@@ -26,7 +26,7 @@ const Allitem = ({ product }) => {
 
                 {/* Buttons */}
                 <div className="flex gap-2">
-                    <button className="w-44 bg-yellow-500 text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
+                    <button className="border-0 border-b-4 border-s-2 border-yellow-300 w-44 bg-black text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
                         Check Out
                     </button>
                 </div>

@@ -9,9 +9,9 @@ const Featured = () => {
                 subHeading='Check It Out'
                 heading='Featured Item'>
             </SectionTitle>
-            <div className='md:flex justify-center items-center py-20 px-36 featured-Item '>
+            <div className='md:flex md:justify-center md:items-center md:py-20 md:px-36 featured-Item'>
                 <div className='featured-Item-content w-full md:flex md:justify-center md:items-center '>
-                    <div className='w-[1000px] h-full'>
+                    <div className='md:w-[1000px] h-full '>
                         <img className='w-full' src={featuredImage} alt="" />
                     </div>
                     <div className='md:ml-10 w-full'>

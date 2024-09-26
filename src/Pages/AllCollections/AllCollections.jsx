@@ -1,22 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from 'react-helmet';
 import useProduct from "../../Hooks/useProduct";
-import ProductItem from "../Shared/ProductItem/ProductItem";
 import Allitem from "./AllItem/Allitem";
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
+
 
 const AllCollections = () => {
     const [product] = useProduct();
-    const men = product.filter(product => product.gender === 'Men' )
-    const Women = product.filter(product => product.gender === 'Women' )
-    
+    const men = product.filter(product => product.gender === 'Men')
+    const Women = product.filter(product => product.gender === 'Women')
+
     const [activeTab, setActiveTab] = useState(0);
     const [indicatorStyle, setIndicatorStyle] = useState({});
     const tabsRef = useRef([]);
+    const [itemPerPages, setItemPerPages] = useState(2);
+    const dataLength = product?.length
+    //pagination
+    const numberOfPages = Math.ceil(dataLength / itemPerPages)
+    const [currentPages,setCurrentPages] =useState(1);
+    const pages = [...Array(numberOfPages).keys()];
 
     // Define the tab content separately for clarity
     const allProductsContent = (
         <>
-            <div className="grid md:grid-cols-4 gap-8 ">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                 {product.map((productItem) => (
                     <Allitem key={productItem.id} product={productItem} />
                 ))}
@@ -25,18 +33,18 @@ const AllCollections = () => {
     );
     const mensCollections = (
         <>
-            <div className="grid md:grid-cols-4 gap-8 ">
-            {
-                    men.map(product => <Allitem  key={product._id} product={product}></Allitem >)
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                {
+                    men.map(product => <Allitem key={product._id} product={product}></Allitem >)
                 }
             </div>
         </>
     );
     const woMensCollections = (
         <>
-            <div className="grid md:grid-cols-4 gap-8 ">
-            {
-                   Women.map(product => <Allitem key={product._id} product={product}></Allitem >)
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                {
+                    Women.map(product => <Allitem key={product._id} product={product}></Allitem >)
                 }
             </div>
         </>
@@ -72,25 +80,41 @@ const AllCollections = () => {
             </div>
         );
     };
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+    };
+    const handelPreviewPage = () =>{
+        if(currentPages > 0) {
+            setCurrentPages(currentPages - 1);
+        }
+    }
+    const handelNextPage = () =>{
+        if(currentPages <pages?.length -1 ) {
+            setCurrentPages(currentPages + 1);
+        }
+    }
 
     return (
-        <div>
+        <div className="bg-black">
             <Helmet>
                 <title>All Collections</title>
             </Helmet>
-            <div>
-                <div className="w-full mx-auto m-auto p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl">
+            <div className="bg-black">
+                <div className="w-full mx-auto m-auto  bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl p-10">
                     <div className="relative mb-8 ">
-                        <div className="flex space-x-1 justify-center ">
+                        <div className="flex space-x-1 justify-center  ">
                             {tabs.map((tab, index) => (
                                 <button
                                     key={index}
                                     ref={(el) => (tabsRef.current[index] = el)}
                                     className={`px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out ${tab.label === "luxurious Product"
-                                            ? "text-yellow-400" // Always make "luxurious Product" yellow
-                                            : activeTab === index
-                                                ? "text-white"      // Active tab color for others
-                                                : "text-gray-400 hover:text-gray-200" // Inactive tab color
+                                        ? "text-yellow-400" // Always make "luxurious Product" yellow
+                                        : activeTab === index
+                                            ? "text-white"      // Active tab color for others
+                                            : "text-gray-400 hover:text-gray-200" // Inactive tab color
                                         }`}
                                     onClick={() => setActiveTab(index)}
                                 >
@@ -105,14 +129,28 @@ const AllCollections = () => {
                     </div>
 
                     {/* Tab Panels */}
-                    <div className="bg-gray-800 p-6 rounded-lg shadow-inner">
+                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner">
                         {tabs.map((tab, index) => (
                             <TabPanel key={index} index={index}>
                                 {tab.content}
                             </TabPanel>
                         ))}
+                        <div className="m-auto items-center text-center mt-10 mb-5">
+                            <h3 className="text-2xl font-bold text-lightning text-yellow-600">Dazzling</h3>
+                            <p className="p-2 text-white">Current Page : {currentPages+1}</p>
+                        </div>
+                        <div className="flex justify-center  gap-2">
+                           <button onClick={handelPreviewPage} className="p-2"><GrPrevious size={25} color="orange"/></button>
+                           {
+                            pages.map(page => <button onClick={() => setCurrentPages(page)} className="bg-black w-10 rounded-xl p-2 border-s-2 border-b-2 border-yellow-600" key={pages}>{page+1}</button>)
+                           }
+                           <button onClick={handelNextPage} className=" p-2">
+                           <GrNext size={25} color="orange" /></button>
+                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     );
