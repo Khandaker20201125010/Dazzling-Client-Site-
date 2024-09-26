@@ -5,7 +5,7 @@ const useProduct = () => {
     const [product,setProduct] = useState([])
     const [loading,setLoading] = useState(true)
     useEffect(() =>{
-        fetch('product.json')
+        fetch('http://localhost:5500/product')
         .then(res => res.json())
         .then(data => {setProduct(data);
             setLoading(false);

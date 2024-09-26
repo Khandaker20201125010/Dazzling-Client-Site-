@@ -14,22 +14,57 @@ const AllCollections = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [indicatorStyle, setIndicatorStyle] = useState({});
     const tabsRef = useRef([]);
-    const [itemPerPages, setItemPerPages] = useState(2);
+    const [itemPerPages, setItemPerPages] = useState(10);
     const dataLength = product?.length
     //pagination
     const numberOfPages = Math.ceil(dataLength / itemPerPages)
-    const [currentPages,setCurrentPages] =useState(1);
+    const [currentPages, setCurrentPages] = useState(0);
     const pages = [...Array(numberOfPages).keys()];
+    const [paginatedProduct, setPaginatedProduct] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [currentPageMen, setCurrentPageMen] = useState(1);
+    const [currentPageWomen, setCurrentPageWomen] = useState(1);
+    const [paginatedMen, setPaginatedMen] = useState([]);
+    const [paginatedWomen, setPaginatedWomen] = useState([]);
+
+    useEffect(() => {
+        setLoading(true);
+
+        if (activeTab === 0) {
+            fetch(`http://localhost:5500/product?page=${currentPages}&size=${itemPerPages}`)
+                .then(res => res.json())
+                .then(data => {
+                    setPaginatedProduct(data);  // For "All Products" tab
+                    setLoading(false);
+                });
+        } else if (activeTab === 1) {
+            fetch(`http://localhost:5500/product?page=${currentPageMen}&size=${itemPerPages}&gender=Men`)
+                .then(res => res.json())
+                .then(data => {
+                    setPaginatedMen(data);  // For "Mens Collections"
+                    setLoading(false);
+                });
+        } else if (activeTab === 2) {
+            fetch(`http://localhost:5500/product?page=${currentPageWomen}&size=${itemPerPages}&gender=Women`)
+                .then(res => res.json())
+                .then(data => {
+                    setPaginatedWomen(data);  // For "Women Collections"
+                    setLoading(false);
+                });
+        }
+
+    }, [currentPages, currentPageMen, currentPageWomen, activeTab, itemPerPages]);
+
+
+
 
     // Define the tab content separately for clarity
     const allProductsContent = (
-        <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
-                {product.map((productItem) => (
-                    <Allitem key={productItem.id} product={productItem} />
-                ))}
-            </div>
-        </>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+            {paginatedProduct.map((productItem) => (
+                <Allitem key={productItem.id} product={productItem} />
+            ))}
+        </div>
     );
     const mensCollections = (
         <>
@@ -86,16 +121,18 @@ const AllCollections = () => {
             return '<span class="' + className + '">' + (index + 1) + '</span>';
         },
     };
-    const handelPreviewPage = () =>{
-        if(currentPages > 0) {
+    const handelPreviewPage = () => {
+        if (currentPages > 0) {
             setCurrentPages(currentPages - 1);
         }
     }
-    const handelNextPage = () =>{
-        if(currentPages <pages?.length -1 ) {
+
+    const handelNextPage = () => {
+        if (currentPages < pages?.length - 1) {
             setCurrentPages(currentPages + 1);
         }
     }
+
 
     return (
         <div className="bg-black">
@@ -137,15 +174,15 @@ const AllCollections = () => {
                         ))}
                         <div className="m-auto items-center text-center mt-10 mb-5">
                             <h3 className="text-2xl font-bold text-lightning text-yellow-600">Dazzling</h3>
-                            <p className="p-2 text-white">Current Page : {currentPages+1}</p>
+                            <p className="p-2 text-white">Current Page : {currentPages + 1}</p>
                         </div>
                         <div className="flex justify-center  gap-2">
-                           <button onClick={handelPreviewPage} className="p-2"><GrPrevious size={25} color="orange"/></button>
-                           {
-                            pages.map(page => <button onClick={() => setCurrentPages(page)} className="bg-black w-10 rounded-xl p-2 border-s-2 border-b-2 border-yellow-600" key={pages}>{page+1}</button>)
-                           }
-                           <button onClick={handelNextPage} className=" p-2">
-                           <GrNext size={25} color="orange" /></button>
+                            <button onClick={handelPreviewPage} className="p-2"><GrPrevious size={25} color="orange" /></button>
+                            {
+                                pages.map(page => <button onClick={() => setCurrentPages(page)} className="hover:bg-yellow-500 font-bold bg-black w-10 rounded-xl p-2 border-s-2 border-b-2 border-yellow-600" key={pages}>{page + 1}</button>)
+                            }
+                            <button onClick={handelNextPage} className=" p-2">
+                                <GrNext size={25} color="orange" /></button>
                         </div>
                     </div>
 
