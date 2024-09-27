@@ -5,6 +5,7 @@ import {
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import AllCollections from "../Pages/AllCollections/AllCollections";
+import Login from "../Pages/Login/Login";
 
   export const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ import AllCollections from "../Pages/AllCollections/AllCollections";
         {
             path:'/allCollections',
             element:<AllCollections></AllCollections>
+        },
+        {
+            path:'/login',
+            element:<Login></Login>
         },
       ]
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import SparklesText from '../../../Componenets/Sparkle/Sparkle';
 
 const NavBar = () => {
@@ -73,10 +73,12 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end mr-10 ">
-               
-                    <button class="lButton text-xl ">
+                     <Link to='login'>
+                     <button class="lButton text-xl ">
                      Join us
                     </button>
+                     </Link>
+                 
                 </div>
             </div>
         </div>

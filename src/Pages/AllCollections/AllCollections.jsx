@@ -14,7 +14,7 @@ const AllCollections = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [indicatorStyle, setIndicatorStyle] = useState({});
     const tabsRef = useRef([]);
-    const [itemPerPages, setItemPerPages] = useState(10);
+    const [itemPerPages, setItemPerPages] = useState(12);
     const dataLength = product?.length
     //pagination
     const numberOfPages = Math.ceil(dataLength / itemPerPages)
@@ -22,11 +22,6 @@ const AllCollections = () => {
     const pages = [...Array(numberOfPages).keys()];
     const [paginatedProduct, setPaginatedProduct] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentPageMen, setCurrentPageMen] = useState(1);
-    const [currentPageWomen, setCurrentPageWomen] = useState(1);
-    const [paginatedMen, setPaginatedMen] = useState([]);
-    const [paginatedWomen, setPaginatedWomen] = useState([]);
-
     useEffect(() => {
         setLoading(true);
 
@@ -34,26 +29,12 @@ const AllCollections = () => {
             fetch(`http://localhost:5500/product?page=${currentPages}&size=${itemPerPages}`)
                 .then(res => res.json())
                 .then(data => {
-                    setPaginatedProduct(data);  // For "All Products" tab
+                    setPaginatedProduct(data);  
                     setLoading(false);
                 });
-        } else if (activeTab === 1) {
-            fetch(`http://localhost:5500/product?page=${currentPageMen}&size=${itemPerPages}&gender=Men`)
-                .then(res => res.json())
-                .then(data => {
-                    setPaginatedMen(data);  // For "Mens Collections"
-                    setLoading(false);
-                });
-        } else if (activeTab === 2) {
-            fetch(`http://localhost:5500/product?page=${currentPageWomen}&size=${itemPerPages}&gender=Women`)
-                .then(res => res.json())
-                .then(data => {
-                    setPaginatedWomen(data);  // For "Women Collections"
-                    setLoading(false);
-                });
-        }
+        } 
 
-    }, [currentPages, currentPageMen, currentPageWomen, activeTab, itemPerPages]);
+    }, [currentPages, activeTab, itemPerPages]);
 
 
 
@@ -179,7 +160,7 @@ const AllCollections = () => {
                         <div className="flex justify-center  gap-2">
                             <button onClick={handelPreviewPage} className="p-2"><GrPrevious size={25} color="orange" /></button>
                             {
-                                pages.map(page => <button onClick={() => setCurrentPages(page)} className="hover:bg-yellow-500 font-bold bg-black w-10 rounded-xl p-2 border-s-2 border-b-2 border-yellow-600" key={pages}>{page + 1}</button>)
+                                pages.map(page => <button onClick={() => setCurrentPages(page)} className="hover:bg-yellow-500 font-bold bg-black  rounded-md py-1 px-3 border-s-2 border-b-2 border-yellow-600" key={pages}>{page + 1}</button>)
                             }
                             <button onClick={handelNextPage} className=" p-2">
                                 <GrNext size={25} color="orange" /></button>
