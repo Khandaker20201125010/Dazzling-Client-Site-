@@ -1171,7 +1171,16 @@
   .lButton:hover::before {
 	opacity: 1;
   }
-  
+  .tilt-card {
+	--rotX: 0deg;
+	--rotY: 0deg;
+	--bgPosX: 50%;
+	--bgPosY: 50%;
+	
+	transition: transform 0.1s ease-out;
+	transform: rotateX(var(--rotX)) rotateY(var(--rotY));
+	background-position: var(--bgPosX) var(--bgPosY);
+  }
 
 
   
