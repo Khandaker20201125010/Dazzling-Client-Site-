@@ -1,17 +1,30 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import sb from '../../assets/images/starry.svg';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { AuthContext } from '../../Providers/AuthProviders';
+
 import { Link } from 'react-router-dom';
 import gif from '../../assets/images/ezgif-7-6b93fbef20-unscreen.gif'
-// Vector utility for smooth animation
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../Providers/AuthProviders';
 function vec2(x = 0, y = 0) {
     return { x, y, set(nx, ny) { this.x = nx; this.y = ny; }, lerp(target, amount) { this.x += (target.x - this.x) * amount; this.y += (target.y - this.y) * amount; } };
 }
 
-const Login = () => {
+const SignUp = () => {
     const cardRef = useRef(null);
-    const { signIn } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = data => {
+        createUser(data.email,data.password)
+         .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+         })
+    }
 
     useEffect(() => {
         const card = cardRef.current;
@@ -23,7 +36,7 @@ const Login = () => {
 
             const onMouseMove = ({ offsetX, offsetY }) => {
                 lerpAmount = 0.1;
-                const ox = (offsetX + card.clientWidth * 0.5) / (Math.PI * 8);
+                const ox = -(offsetX + card.clientWidth * 0.5) / (Math.PI * 8);
                 const oy = (offsetY - card.clientHeight * 0.5) / (Math.PI * 8);
 
                 rotDeg.target.set(ox, oy);
@@ -59,19 +72,7 @@ const Login = () => {
         }
     }, []);
 
-    const handleLogin = event => {
-        event.preventDefault();
-        console.log("Form submitted!"); // Check if the function is called
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-            .then(result => {
-                const user = result.user;
 
-            })
-        console.log(email, password);
-    };
     useEffect(() => {
         loadCaptchaEnginge(6)
     }, [])
@@ -88,14 +89,13 @@ const Login = () => {
         }
 
     }
-
     return (
         <div className="bg-no-repeat bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${sb})` }}>
-            <div className='md:p-28 py-24 md:flex flex-1 md:flex-row-reverse'>
-            <div className='m-auto'>
-                        <img className='gifo' src={gif} alt="" />
+            <div className='md:p-28 py-24 md:flex flex-1 '>
+                <div className='m-auto'>
+                    <img className='gifo' src={gif} alt="" />
 
-                    </div>
+                </div>
                 <div ref={cardRef} className="m-auto w-[22.5rem] shrink-0 shadow-2xl relative rounded-lg"
                     style={{
                         transform: "rotateX(var(--rotX)) rotateY(var(--rotY))",
@@ -103,19 +103,36 @@ const Login = () => {
                         transition: 'transform 0.1s ease'
                     }}>
                     <div className="">
-                        <form onSubmit={handleLogin} className="card-body bg-transparent relative z-10">
-                            <h3 className='text-3xl font-bold'>Login</h3>
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body bg-transparent relative z-10">
+                            <h3 className='text-3xl font-bold'>Sign Up</h3>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" {...register("name", { required: true })} name='name' placeholder="Name" className="input input-bordered" required />
+                                {errors.exampleRequired && <span className='text-red-700 font-bold'>This Name is required</span>}
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                                <input type="email" {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered" required />
+                                {errors.exampleRequired && <span className='text-red-700 font-bold'>This Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                                <input type="password" {...register("password", { required: true, maxLength: 20, minLength: 6 ,pattern:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})} name='password' placeholder="password" className="input input-bordered" required />
+                                {errors.password?.type === "minLength" && (
+                                    <p className='text-red-700'>Password must need minimum 6 character</p>
+                                )}
+                                {errors.password?.type === "maxLength" && (
+                                    <p className='text-red-700'>Password can't have more than 20 character</p>
+                                )}
+                                {errors.password?.type === "pattern" && (
+                                    <p className='text-red-700'>Password must have one Capital latter, one small latter and one special character</p>
+                                )}
 
                             </div>
                             <div className="form-control ">
@@ -130,12 +147,12 @@ const Login = () => {
                                     disabled={disabled}
                                     type="submit"
                                     className='btn bg-sky-900 rounded-md w-40 btn-primary text-white text-xl font-bold'
-                                    value='Login'
+                                    value='Sign In'
                                 />
                             </div>
                         </form>
                         <p className="text-center mt-0 text-gray-500 py-5 font-bold">
-                            <small> Don't have an account?</small> <Link to='/signUp'><span className='text-blue-600  font-bold'>Sign Up</span></Link>
+                            <small> Already have an account?</small> <Link to='/login'><span className='text-blue-600  font-bold'>Login</span></Link>
                         </p>
 
 
@@ -150,14 +167,14 @@ const Login = () => {
                         <span className="absolute bottom-0 left-0 w-[2px] h-[15px] bg-blue-600"></span>
 
                     </div>
-                  
+
 
                 </div>
-              
+
             </div>
-              
+
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
