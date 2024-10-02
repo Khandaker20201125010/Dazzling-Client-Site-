@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import AllCollections from "../Pages/AllCollections/AllCollections";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/signUp/SignUp";
+import PriveteRoutes from "./PriveteRoutes";
 
   export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ import SignUp from "../Pages/signUp/SignUp";
         },
         {
             path:'/allCollections',
-            element:<AllCollections></AllCollections>
+            element:<PriveteRoutes><AllCollections></AllCollections></PriveteRoutes>
         },
         {
             path:'/login',

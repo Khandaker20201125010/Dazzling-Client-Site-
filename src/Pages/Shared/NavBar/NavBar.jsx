@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SparklesText from '../../../Componenets/Sparkle/Sparkle';
+import { AuthContext } from '../../../Providers/AuthProviders';
 
 const NavBar = () => {
+    const { user ,logOut} = useContext(AuthContext)
+    const handelLogOut = () => {
+        logOut()
+          .then(() => {
+            console.log("Logged out successfully");
+          })
+          
+      };
     const links = (
         <>
             <li>
@@ -72,14 +81,26 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end mr-10 ">
-                     <Link to='login'>
-                     <button class="lButton text-xl ">
-                     Join us
-                    </button>
-                     </Link>
-                 
+                <div className="navbar-end mr-10">
+                    {
+                        user ? (
+                            <>
+                                <button className="lButton text-xl" onClick={handelLogOut} >
+                                    Leave
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login">
+                                    <button className="lButton text-xl">
+                                        Join us
+                                    </button>
+                                </Link>
+                            </>
+                        )
+                    }
                 </div>
+
             </div>
         </div>
     );
