@@ -20,11 +20,12 @@
 /* ------------------------------------------------ */
 
 .slider {
-    width: calc(3 * var(--slide-width));
-    height: auto; /* Change from fixed height to auto or another value */
-    display: flex;
-    align-items: center;
-  }
+	width: calc(3 * var(--slide-width));
+	height: auto;
+	/* Change from fixed height to auto or another value */
+	display: flex;
+	align-items: center;
+}
 
 .slider--btn {
 	--size: 40px;
@@ -54,7 +55,7 @@
 	display: grid;
 	place-items: center;
 
-	& > * {
+	&>* {
 		grid-area: 1 /-2;
 	}
 }
@@ -69,7 +70,8 @@
 
 	display: grid;
 	place-items: center;
-	& > * {
+
+	&>* {
 		grid-area: 1 / -1;
 	}
 }
@@ -90,11 +92,8 @@
 	user-select: none;
 	perspective: 800px;
 
-	transform: perspective(1000px)
-		translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0))
-		rotateY(var(--slide-rotY)) scale(var(--slide-scale));
-	transition: transform var(--slide-transition-duration)
-		var(--slide-transition-easing);
+	transform: perspective(1000px) translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0)) rotateY(var(--slide-rotY)) scale(var(--slide-scale));
+	transition: transform var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide[data-current] {
@@ -167,33 +166,35 @@
 	left: 50%;
 	object-fit: cover;
 	transform: translate(-50%, -50%) scale(1.25) translate3d(var(--bgPosX), var(--bgPosY), 0);
-	transition: filter var(--slide-transition-duration)
-		var(--slide-transition-easing);
+	transition: filter var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide__bg {
-    position: absolute;
-    inset: 0; /* Changed from -20% to 0 to keep it within the container */
-    background-image: var(--bg);
-    background-size: cover;
-    background-position: center center;
-   
-    z-index: -1;
-    pointer-events: none;
+	position: absolute;
+	inset: 0;
+	/* Changed from -20% to 0 to keep it within the container */
+	background-image: var(--bg);
+	background-size: cover;
+	background-position: center center;
 
-    transition: opacity var(--slide-transition-duration) ease,
-        transform var(--slide-transition-duration) ease;
+	z-index: -1;
+	pointer-events: none;
+
+	transition: opacity var(--slide-transition-duration) ease,
+		transform var(--slide-transition-duration) ease;
 }
 
 .slide__bg::before {
-    content: "";
-    position: absolute; /* Changed from relative to absolute to ensure it covers the full element */
-    inset: 0; /* or inset: 1%; for slight padding */
-    background: rgba(0, 0, 0, 0.8);
+	content: "";
+	position: absolute;
+	/* Changed from relative to absolute to ensure it covers the full element */
+	inset: 0;
+	/* or inset: 1%; for slight padding */
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .slide__bg:not([data-current]) {
-    opacity: 0;
+	opacity: 0;
 }
 
 
@@ -309,23 +310,27 @@
 		color: #fff;
 	}
 }
+
 .text-lighting {
-	text-shadow: 
-	0 0 5px yellow, 
-	0 0 10px yellow, 
-	0 0 15px yellow, 
-	0 0 20px yellow, 
-	0 0 25px yellow;
+	text-shadow:
+		0 0 5px yellow,
+		0 0 10px yellow,
+		0 0 15px yellow,
+		0 0 20px yellow,
+		0 0 25px yellow;
 }
+
 .slide:hover .slide__inner {
 	transform: rotateX(10deg) rotateY(10deg);
-  }
-  
+}
+
 /* ------------------------------------------- */
 
 .mySwiper .swiper-slide {
-    width:20% !important; /* Ensure the slides don't have extra width */
-    margin-right: 0px !important; /* Remove any right margin between slides */
+	width: 20% !important;
+	/* Ensure the slides don't have extra width */
+	margin-right: 0px !important;
+	/* Remove any right margin between slides */
 }
 
 @tailwind base;
@@ -357,11 +362,12 @@
 /* ------------------------------------------------ */
 
 .slider {
-    width: calc(3 * var(--slide-width));
-    height: auto; /* Change from fixed height to auto or another value */
-    display: flex;
-    align-items: center;
-  }
+	width: calc(3 * var(--slide-width));
+	height: auto;
+	/* Change from fixed height to auto or another value */
+	display: flex;
+	align-items: center;
+}
 
 .slider--btn {
 	--size: 40px;
@@ -391,7 +397,7 @@
 	display: grid;
 	place-items: center;
 
-	& > * {
+	&>* {
 		grid-area: 1 /-2;
 	}
 }
@@ -406,7 +412,8 @@
 
 	display: grid;
 	place-items: center;
-	& > * {
+
+	&>* {
 		grid-area: 1 / -1;
 	}
 }
@@ -427,11 +434,8 @@
 	user-select: none;
 	perspective: 800px;
 
-	transform: perspective(1000px)
-		translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0))
-		rotateY(var(--slide-rotY)) scale(var(--slide-scale));
-	transition: transform var(--slide-transition-duration)
-		var(--slide-transition-easing);
+	transform: perspective(1000px) translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0)) rotateY(var(--slide-rotY)) scale(var(--slide-scale));
+	transition: transform var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide[data-current] {
@@ -504,33 +508,35 @@
 	left: 50%;
 	object-fit: cover;
 	transform: translate(-50%, -50%) scale(1.25) translate3d(var(--bgPosX), var(--bgPosY), 0);
-	transition: filter var(--slide-transition-duration)
-		var(--slide-transition-easing);
+	transition: filter var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide__bg {
-    position: absolute;
-    inset: 0; /* Changed from -20% to 0 to keep it within the container */
-    background-image: var(--bg);
-    background-size: cover;
-    background-position: center center;
-   
-    z-index: -1;
-    pointer-events: none;
+	position: absolute;
+	inset: 0;
+	/* Changed from -20% to 0 to keep it within the container */
+	background-image: var(--bg);
+	background-size: cover;
+	background-position: center center;
 
-    transition: opacity var(--slide-transition-duration) ease,
-        transform var(--slide-transition-duration) ease;
+	z-index: -1;
+	pointer-events: none;
+
+	transition: opacity var(--slide-transition-duration) ease,
+		transform var(--slide-transition-duration) ease;
 }
 
 .slide__bg::before {
-    content: "";
-    position: absolute; /* Changed from relative to absolute to ensure it covers the full element */
-    inset: 0; /* or inset: 1%; for slight padding */
-    background: rgba(0, 0, 0, 0.8);
+	content: "";
+	position: absolute;
+	/* Changed from relative to absolute to ensure it covers the full element */
+	inset: 0;
+	/* or inset: 1%; for slight padding */
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .slide__bg:not([data-current]) {
-    opacity: 0;
+	opacity: 0;
 }
 
 
@@ -646,301 +652,332 @@
 		color: #fff;
 	}
 }
+
 .text-lighting {
-	text-shadow: 
-	0 0 5px yellow, 
-	0 0 10px yellow, 
-	0 0 15px yellow, 
-	0 0 20px yellow, 
-	0 0 25px yellow;
+	text-shadow:
+		0 0 5px yellow,
+		0 0 10px yellow,
+		0 0 15px yellow,
+		0 0 20px yellow,
+		0 0 25px yellow;
 }
+
 .slide:hover .slide__inner {
 	transform: rotateX(10deg) rotateY(10deg);
-  }
-  
+}
+
 /* ------------------------------------------- */
 
 .mySwiper .swiper-slide {
-   
-    width: 20% !important;
-    margin-right: 30px !important;
-   
+
+	width: 20% !important;
+	margin-right: 30px !important;
+
 }
 
 .mySwiper .swiper-slide img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease-in-out;
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	transition: transform 0.5s ease-in-out;
 }
 
 .mySwiper .swiper-slide .overlay-text {
-    position: absolute;
-    bottom: 10px; /* Position the text at the bottom of the image */
-    left: 50%;
-    transform: translateX(-50%);
-    color: white; /* Text color */
-    font-size: 18px; /* Adjust text size */
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
-    text-align: center; /* Center the text */
-    width: 100%;
-    padding: 0 10px; /* Add padding for better spacing */
+	position: absolute;
+	bottom: 10px;
+	/* Position the text at the bottom of the image */
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	/* Text color */
+	font-size: 18px;
+	/* Adjust text size */
+	font-weight: bold;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+	/* Add shadow for better readability */
+	text-align: center;
+	/* Center the text */
+	width: 100%;
+	padding: 0 10px;
+	/* Add padding for better spacing */
 }
 
 
 .ing:hover {
-    transform: scale(1.2); /* Zoom in the image */
-    z-index: 10; /* Ensure the image stays on top */
-    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+	transform: scale(1.2);
+	/* Zoom in the image */
+	z-index: 10;
+	/* Ensure the image stays on top */
+	transition: transform 0.3s ease;
+	/* Smooth transition for zoom effect */
 }
 
- /* Add this CSS file for custom styling */
+/* Add this CSS file for custom styling */
 .image-container {
-    width: 80px; /* Initial width of the container */
-    height: 80px; /* Initial height of the container (making it a square) */
-    overflow: hidden; /* Hide the overflow to keep the image within bounds */
-    position: relative; /* Required for absolute positioning of the img */
-    transition: all 0.3s ease; /* Smooth transition for size changes */
+	width: 80px;
+	/* Initial width of the container */
+	height: 80px;
+	/* Initial height of the container (making it a square) */
+	overflow: hidden;
+	/* Hide the overflow to keep the image within bounds */
+	position: relative;
+	/* Required for absolute positioning of the img */
+	transition: all 0.3s ease;
+	/* Smooth transition for size changes */
 }
 
 .product-image {
-    width: 100%; /* Ensure the image takes up the container's width */
-    height: 100%; /* Ensure the image takes up the container's height */
-    object-fit: cover; /* Cover the container with the image */
-    transition: all 0.3s ease; /* Smooth transition for size changes */
-    border-radius: 0px 200px 0px 200px; /* Apply your border-radius */
+	width: 100%;
+	/* Ensure the image takes up the container's width */
+	height: 100%;
+	/* Ensure the image takes up the container's height */
+	object-fit: cover;
+	/* Cover the container with the image */
+	transition: all 0.3s ease;
+	/* Smooth transition for size changes */
+	border-radius: 0px 200px 0px 200px;
+	/* Apply your border-radius */
 }
 
 .image-container:hover {
-    width: 200px; /* Increase width on hover */
-    height: 200px; /* Increase height on hover to maintain the square shape */
+	width: 200px;
+	/* Increase width on hover */
+	height: 200px;
+	/* Increase height on hover to maintain the square shape */
 }
 
 .image-container:hover .product-image {
-    width: 100%; /* Ensure the image still covers the new container size */
-    height: 100%; /* Ensure the image still covers the new container size */
-    border-radius: 0; /* Remove border-radius on hover to make the image a square */
+	width: 100%;
+	/* Ensure the image still covers the new container size */
+	height: 100%;
+	/* Ensure the image still covers the new container size */
+	border-radius: 0;
+	/* Remove border-radius on hover to make the image a square */
 }
+
 .featured-Item {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
 .featured-Item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../src/assets/images/240_F_670733669_FRqw6ovSSwUWwgLbq93E1NTPjGCCdx02.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(8px); /* Apply blur effect */
-    z-index: 1;
-	
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../src/assets/images/240_F_670733669_FRqw6ovSSwUWwgLbq93E1NTPjGCCdx02.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: blur(8px);
+	/* Apply blur effect */
+	z-index: 1;
+
 }
 
 .featured-Item-content {
-    position: relative;
-    z-index: 2; 
-    padding: 20px; 
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 10px; 
+	position: relative;
+	z-index: 2;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
 }
-/* From Uiverse.io by ElSombrero2 */ 
-.card {
-  overflow: visible;
-  width: 300px;
-  height: 404px;
-  border-radius: .5rem 2rem;
-  
+
+/* From Uiverse.io by ElSombrero2 */
+.cardo {
+	overflow: visible;
+	width: 300px;
+	height: 404px;
+	border-radius: .5rem 2rem;
+
 }
 
 .content {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 300ms;
-  box-shadow: 0px 0px 10px 1px #000000ee;
-  border-radius: .5rem 2rem;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 300ms;
+	box-shadow: 0px 0px 10px 1px #000000ee;
+	border-radius: .5rem 2rem;
 }
 
-.front, .back {
-  background-color: #151515;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: .5rem 2rem;
-  overflow: hidden;
-  
+.front,
+.back {
+	background-color: #151515;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	border-radius: .5rem 2rem;
+	overflow: hidden;
+
 }
 
 .back {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
 }
 
 .back::before {
-  position: absolute;
-  content: ' ';
-  display: block;
-  width: 160px;
-  
-  height: 160%;
-  background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
-  animation: rotation_481 5000ms infinite linear;
+	position: absolute;
+	content: ' ';
+	display: block;
+	width: 160px;
+
+	height: 160%;
+	background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
+	animation: rotation_481 5000ms infinite linear;
 }
 
 .back-content {
-  position: absolute;
-  width: 99%;
-  height: 99%;
-  background-color: #151515;
- 
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  
-  
+	position: absolute;
+	width: 99%;
+	height: 99%;
+	background-color: #151515;
+
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+
+
 }
 
-.card:hover .content {
-  transform: rotateY(180deg);
-  border-radius: 2rem 1rem 2rem 1rem;
-  
+.cardo:hover .content {
+	transform: rotateY(180deg);
+	border-radius: 2rem 1rem 2rem 1rem;
+
 }
 
 @keyframes rotation_481 {
-  0% {
-    transform: rotateZ(0deg);
-  }
+	0% {
+		transform: rotateZ(0deg);
+	}
 
-  0% {
-    transform: rotateZ(360deg);
-  }
+	0% {
+		transform: rotateZ(360deg);
+	}
 }
 
 .front {
-  transform: rotateY(180deg);
-  color: white;
-  
-  
+	transform: rotateY(180deg);
+	color: white;
+
+
 }
 
 .front .front-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  
-  
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+
 }
 
 .front-content .badge {
-  background-color: #00000055;
-  padding: 2px 10px;
-  border-radius: .5rem 2rem;
-  backdrop-filter: blur(2px);
-  width: fit-content;
-  
+	background-color: #00000055;
+	padding: 2px 10px;
+	border-radius: .5rem 2rem;
+	backdrop-filter: blur(2px);
+	width: fit-content;
+
 }
 
 .description {
-  box-shadow: 0px 0px 10px 5px #00000088;
-  width: 100%;
-  padding: 10px;
-  background-color: #00000099;
-  backdrop-filter: blur(5px);
-  border-radius: .1rem 2rem;
+	box-shadow: 0px 0px 10px 5px #00000088;
+	width: 100%;
+	padding: 10px;
+	background-color: #00000099;
+	backdrop-filter: blur(5px);
+	border-radius: .1rem 2rem;
 }
 
 .title {
-  font-size: 11px;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
+	font-size: 11px;
+	max-width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .title p {
-  width: 50%;
+	width: 50%;
 }
 
-.card-footer {
-  color: #ffffff88;
-  margin-top: 5px;
-  font-size: 8px;
+.cardo-footer {
+	color: #ffffff88;
+	margin-top: 5px;
+	font-size: 8px;
 }
 
 .front .img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+
 }
 
 .circle {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background-color: #ffbb66;
-  position: relative;
-  filter: blur(15px);
-  animation: floating 2600ms infinite linear;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	background-color: #ffbb66;
+	position: relative;
+	filter: blur(15px);
+	animation: floating 2600ms infinite linear;
 }
 
 #bottom {
-  background-color: #ff8866;
-  left: 50px;
-  top: 0px;
-  width: 100px;
-  height: 100px;
-  animation-delay: -800ms;
+	background-color: #ff8866;
+	left: 50px;
+	top: 0px;
+	width: 100px;
+	height: 100px;
+	animation-delay: -800ms;
 }
 
 #right {
-  background-color: #ff2233;
-  left: 160px;
-  top: -80px;
-  width: 30px;
-  height: 30px;
-  animation-delay: -1800ms;
+	background-color: #ff2233;
+	left: 160px;
+	top: -80px;
+	width: 30px;
+	height: 30px;
+	animation-delay: -1800ms;
 }
 
 @keyframes floating {
-  0% {
-    transform: translateY(0px);
-  }
+	0% {
+		transform: translateY(0px);
+	}
 
-  50% {
-    transform: translateY(10px);
-  }
+	50% {
+		transform: translateY(10px);
+	}
 
-  100% {
-    transform: translateY(0px);
-  }
+	100% {
+		transform: translateY(0px);
+	}
 }
+
 .description {
-	
+
 	bottom: .5rem;
 	left: .5rem;
 	text-align: start;
@@ -952,43 +989,47 @@
 	backdrop-filter: blur(.1rem);
 	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: .5rem 2rem;
-	
-  }
+
+}
+
 .description:hover {
 	transform: perspective(100px) translateX(7px) rotateX(3deg) rotateY(3deg) scale(1);
 	box-shadow: none;
-	
-  }
-  .rswiper {
+
+}
+
+.rswiper {
 	width: 100%;
 	height: 100%;
-  }
+}
 
-  .rswiper-slide {
+.rswiper-slide {
 	text-align: center;
 	font-size: 18px;
 	background: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
+}
 
-  .rswiper-slide img {
+.rswiper-slide img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-  }
-  /* From Uiverse.io by mobinkakei */ 
+}
+
+/* From Uiverse.io by mobinkakei */
 .loadero {
 	position: relative;
 	width: 108px;
 	display: flex;
 	justify-content: space-between;
 	background-color: transparent;
-  }
-  .loadero::after,
-  .loadero::before {
+}
+
+.loadero::after,
+.loadero::before {
 	content: "";
 	display: inline-block;
 	width: 48px;
@@ -998,30 +1039,36 @@
 	background-repeat: no-repeat;
 	border-radius: 50%;
 	animation: eyeMove 10s infinite, blink 10s infinite;
-  }
-  @keyframes eyeMove {
+}
+
+@keyframes eyeMove {
+
 	0%,
 	10% {
-	  background-position: 0px 0px;
+		background-position: 0px 0px;
 	}
+
 	13%,
 	40% {
-	  background-position: -15px 0px;
+		background-position: -15px 0px;
 	}
+
 	43%,
 	70% {
-	  background-position: 15px 0px;
+		background-position: 15px 0px;
 	}
+
 	73%,
 	90% {
-	  background-position: 0px 15px;
+		background-position: 0px 15px;
 	}
+
 	93%,
 	100% {
-	  background-position: 0px 0px;
+		background-position: 0px 0px;
 	}
-  }
- 
+}
+
 .buton {
 	padding: 5px 30px;
 	background-color: #000;
@@ -1030,9 +1077,9 @@
 	position: relative;
 	/* overflow: hidden; */
 	transition: 500ms;
-  }
-  
-  .buton span {
+}
+
+.buton span {
 
 	position: relative;
 	transition: 500ms;
@@ -1041,9 +1088,9 @@
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-weight: 600;
-  }
-  
-  .buton:before {
+}
+
+.buton:before {
 	content: '';
 	position: absolute;
 	width: 0%;
@@ -1056,133 +1103,132 @@
 	transition-delay: 500ms;
 	background-color: rgb(238, 255, 0);
 	box-shadow: 0 0 10px rgb(253, 249, 2), 0 0 30px rgb(251, 255, 0), 0 0 50px rgb(238, 255, 0);
-  }
-  
-  .buton div {
+}
+
+.buton div {
 	transition: 500ms;
 	position: absolute;
 	background-color: rgb(255, 251, 0);
 	box-shadow: 0 0 15px rgb(255, 251, 0), 0 0 30px rgb(255, 251, 0), 0 0 50px rgb(255, 251, 0);
-  }
-  
-  .buton .top {
+}
+
+.buton .top {
 	width: 15px;
 	height: 2px;
 	top: 0;
 	left: 0;
-  }
-  
-  .buton .bottom {
+}
+
+.buton .bottom {
 	width: 15px;
 	height: 2px;
 	bottom: 0;
 	right: 0;
-  }
-  
-  .buton .left {
+}
+
+.buton .left {
 	width: 2px;
 	height: 15px;
 	top: 0;
 	left: 0;
-  }
-  
-  .buton .right {
+}
+
+.buton .right {
 	width: 2px;
 	height: 15px;
 	bottom: 0;
 	right: 0;
-  }
-  
-  .buton:hover {
+}
+
+.buton:hover {
 	color: #000;
-  }
-  
-  .buton:hover span {
+}
+
+.buton:hover span {
 	color: #000;
-  }
-  
-  .buton:hover:before {
+}
+
+.buton:hover:before {
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-  }
-  
-  .buton:hover .top, 
-  .buton:hover .bottom {
+}
+
+.buton:hover .top,
+.buton:hover .bottom {
 	width: 100%;
-  }
-  
-  .buton:hover .left,
-  .buton:hover .right {
+}
+
+.buton:hover .left,
+.buton:hover .right {
 	height: 100%;
-  }
- /* From Uiverse.io by zanina-yassine */ 
+}
+
+/* From Uiverse.io by zanina-yassine */
 .lButton {
 	min-width: 120px;
-  
+
 	position: relative;
 	cursor: pointer;
-  
+
 	padding: 7px 10px;
 	border: 0px;
 	border-radius: 2rem .10rem;
-  
+
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	background: radial-gradient(
-	  ellipse at bottom,
-	  rgb(231, 178, 4) 0%,
-	  rgba(11, 21, 30, 1) 45%
-	);
-  
+	background: radial-gradient(ellipse at bottom,
+			rgb(231, 178, 4) 0%,
+			rgba(11, 21, 30, 1) 45%);
+
 	color: rgba(255, 255, 255, 0.66);
-  
+
 	transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
-  }
-  
-  .lButton::before {
+}
+
+.lButton::before {
 	content: "";
 	width: 70%;
 	height: 1px;
-  
+
 	position: absolute;
 	bottom: 0;
 	left: 15%;
-  
+
 	background: rgb(252, 152, 3);
-	background: linear-gradient(
-	  90deg,
-	  rgba(255, 255, 255, 0) 0%,
-	  rgb(236, 201, 2) 50%,
-	  rgba(255, 255, 255, 0) 100%
-	);
+	background: linear-gradient(90deg,
+			rgba(255, 255, 255, 0) 0%,
+			rgb(236, 201, 2) 50%,
+			rgba(255, 255, 255, 0) 100%);
 	opacity: 0.2;
-  
+
 	transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
-  }
-  
-  .lButton:hover {
+}
+
+.lButton:hover {
 	color: rgb(235, 200, 5);
 	transform: scale(1.1) translateY(-3px);
-  }
-  
-  .lButton:hover::before {
+}
+
+.lButton:hover::before {
 	opacity: 1;
-  }
-  .tilt-card {
+}
+
+.tilt-cardo {
 	--rotX: 0deg;
 	--rotY: 0deg;
 	--bgPosX: 50%;
 	--bgPosY: 50%;
-	
+
 	transition: transform 0.1s ease-out;
 	transform: rotateX(var(--rotX)) rotateY(var(--rotY));
 	background-position: var(--bgPosX) var(--bgPosY);
-  }
-  /*logbutton */
-  .logbutton {
+}
+
+/*logbutton */
+.logbutton {
 	padding: 5px 30px;
 	background-color: transparent;
 	border: none;
@@ -1190,9 +1236,9 @@
 	position: relative;
 	/* overflow: hidden; */
 	transition: 500ms;
-  }
-  
-  .logbutton span {
+}
+
+.logbutton span {
 
 	position: relative;
 	transition: 500ms;
@@ -1201,9 +1247,9 @@
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-weight: 600;
-  }
-  
-  .logbutton:before {
+}
+
+.logbutton:before {
 	content: '';
 	position: absolute;
 	width: 0%;
@@ -1216,82 +1262,83 @@
 	transition-delay: 500ms;
 	background-color: rgb(3, 92, 209);
 	box-shadow: 0 0 10px rgb(9, 62, 131), 0 0 30px rgb(9, 62, 131), 0 0 50px rgb(9, 62, 131);
-  }
-  
-  .logbutton div {
+}
+
+.logbutton div {
 	transition: 500ms;
 	position: absolute;
 	background-color: rgb(9, 62, 131);
 	box-shadow: 0 0 15px rgb(9, 62, 131), 0 0 30px rgb(9, 62, 131), 0 0 50px rgb(9, 62, 131);
-  }
-  
-  .logbutton .top {
+}
+
+.logbutton .top {
 	width: 15px;
 	height: 2px;
 	top: 0;
 	left: 0;
-  }
-  
-  .logbutton .bottom {
+}
+
+.logbutton .bottom {
 	width: 15px;
 	height: 2px;
 	bottom: 0;
 	right: 0;
-  }
-  
-  .logbutton .left {
+}
+
+.logbutton .left {
 	width: 2px;
 	height: 15px;
 	top: 0;
 	left: 0;
-  }
-  
-  .logbutton .right {
+}
+
+.logbutton .right {
 	width: 2px;
 	height: 15px;
 	bottom: 0;
 	right: 0;
-  }
-  
-  .logbutton:hover {
+}
+
+.logbutton:hover {
 	color: #000;
-  }
-  
-  .logbutton:hover span {
+}
+
+.logbutton:hover span {
 	color: #fdfdfd;
-  }
-  
-  .logbutton:hover:before {
+}
+
+.logbutton:hover:before {
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-  }
-  
-  .logbutton:hover .top, 
-  .logbutton:hover .bottom {
+}
+
+.logbutton:hover .top,
+.logbutton:hover .bottom {
 	width: 100%;
-  }
-  
-  .logbutton:hover .left,
-  .logbutton:hover .right {
+}
+
+.logbutton:hover .left,
+.logbutton:hover .right {
 	height: 100%;
-  }
-  /* From Uiverse.io by Pradeepsaranbishnoi */ 
+}
+
+/* From Uiverse.io by Pradeepsaranbishnoi */
 .eye {
 	width: 20px;
 	height: 8px;
-	background-color: rgba(240,220,220,1);
+	background-color: rgba(240, 220, 220, 1);
 	border-radius: 0px 0px 20px 20px;
 	position: relative;
 	left: 10px;
 	top: 40px;
-	box-shadow: 40px 0px 0px 0px rgba(240,220,220,1);
-  }
-  
-  .head {
+	box-shadow: 40px 0px 0px 0px rgba(240, 220, 220, 1);
+}
+
+.head {
 	backface-visibility: hidden;
 	position: relative;
 	margin: -250px auto;
@@ -1299,52 +1346,52 @@
 	height: 80px;
 	background-color: #111;
 	border-radius: 50px;
-	box-shadow: inset -4px 2px 0px 0px rgba(240,220,220,1);
+	box-shadow: inset -4px 2px 0px 0px rgba(240, 220, 220, 1);
 	animation: headAnim 1.5s infinite alternate;
 	animation-timing-function: ease-out;
-  }
-  
-  .body {
+}
+
+.body {
 	position: relative;
 	margin: 90px auto;
 	width: 140px;
 	height: 120px;
 	background-color: #111;
 	border-radius: 50px/25px;
-	box-shadow: inset -5px 2px 0px 0px rgba(240,220,220,1);
+	box-shadow: inset -5px 2px 0px 0px rgba(240, 220, 220, 1);
 	animation: bodyAnim 1.5s infinite alternate;
 	animation-timing-function: ease-out;
-  }
-  
-  @keyframes headAnim {
+}
+
+@keyframes headAnim {
 	0% {
-	  top: 0px;
+		top: 0px;
 	}
-  
+
 	50% {
-	  top: 10px;
+		top: 10px;
 	}
-  
+
 	100% {
-	  top: 0px;
+		top: 0px;
 	}
-  }
-  
-  @keyframes bodyAnim {
+}
+
+@keyframes bodyAnim {
 	0% {
-	  top: -5px;
+		top: -5px;
 	}
-  
+
 	50% {
-	  top: 10px;
+		top: 10px;
 	}
-  
+
 	100% {
-	  top: -5px;
+		top: -5px;
 	}
-  }
-  
-  .circ {
+}
+
+.circ {
 	backface-visibility: hidden;
 	margin: 60px auto;
 	width: 180px;
@@ -1355,25 +1402,25 @@
 	left: 0%;
 	top: 20%;
 	overflow: hidden;
-  }
-  
-  .hands {
+}
+
+.hands {
 	margin-top: 140px;
 	width: 120px;
 	height: 120px;
 	position: absolute;
 	background-color: #111;
 	border-radius: 20px;
-	box-shadow: -1px -4px 0px 0px rgba(240,220,220,1);
+	box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1);
 	transform: rotate(45deg);
 	top: 75%;
 	left: 16%;
 	z-index: 1;
 	animation: bodyAnim 1.5s infinite alternate;
 	animation-timing-function: ease-out;
-  }
-  
-  .load {
+}
+
+.load {
 	position: absolute;
 	width: 7ch;
 	height: 32px;
@@ -1391,39 +1438,52 @@
 	word-wrap: break-word;
 	display: block;
 	overflow: hidden;
-  }
-  
-  @keyframes fontAnim {
+}
+
+@keyframes fontAnim {
 	0% {
-	  width: 7ch;
+		width: 7ch;
 	}
-  
+
 	16% {
-	  width: 8ch;
+		width: 8ch;
 	}
-  
+
 	32% {
-	  width: 9ch;
+		width: 9ch;
 	}
-  
+
 	48% {
-	  width: 10ch;
+		width: 10ch;
 	}
-  
+
 	64% {
-	  width: 11ch;
+		width: 11ch;
 	}
-  
+
 	80% {
-	  width: 12ch;
+		width: 12ch;
 	}
-  
+
 	100% {
-	  width: 13ch;
+		width: 13ch;
 	}
-  }
+}
+.imagezoom {
+    width: 550px; /* Or your desired width */
+    height: 550px; /* Or your desired height */
+    position: relative;
+}
 
+.zoom-overlay {
+    display: var(--display);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-size: 200%; /* Adjust for your zoom needs */
+    pointer-events: none;
+}
 
-
-  
-  

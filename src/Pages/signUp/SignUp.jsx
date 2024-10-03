@@ -112,7 +112,7 @@ const SignUp = () => {
         <div className="bg-no-repeat bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${sb})` }}>
             <div className=' md:flex flex-1 flex-row-reverse '>
 
-                <div className='md:px-44 md:py-10 '>
+                <div className='md:px-44 md:py-5 '>
                     <div data-aos='fade-left'>
                         <div ref={cardRef} className="m-auto  w-[22.5rem] shrink-0 shadow-2xl relative rounded-lg cursor-auto"
                             style={{

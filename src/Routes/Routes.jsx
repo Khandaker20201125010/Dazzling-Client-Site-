@@ -8,6 +8,7 @@ import AllCollections from "../Pages/AllCollections/AllCollections";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/signUp/SignUp";
 import PriveteRoutes from "./PriveteRoutes";
+import Details from "../Pages/Details/Details";
 
   export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ import PriveteRoutes from "./PriveteRoutes";
         {
             path:'/signUp',
             element:<SignUp></SignUp>
+        },
+        {
+            path:'/details',
+            element:<PriveteRoutes><Details></Details></PriveteRoutes>
         },
       ]
     },

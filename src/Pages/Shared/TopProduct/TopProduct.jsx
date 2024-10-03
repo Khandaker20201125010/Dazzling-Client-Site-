@@ -6,7 +6,7 @@ import TopProductItem from '../TopProductItem/TopProductItem';
 const TopProduct = () => {
     const [product,setProduct] = useState([])
     useEffect(() =>{
-        fetch('product.json')
+        fetch('http://localhost:5500/product')
         .then(res => res.json())
         .then(data =>          
             {const popularProduct = data.filter(product => product.category === 'famous' );

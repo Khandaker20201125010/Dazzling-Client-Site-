@@ -5,12 +5,12 @@ const TopProductItem = ({ product }) => {
     return (
         <div>
 
-            <div className="card m-auto ">
+            <div className="cardo m-auto ">
                 <div className="content ">
                     <div className="back">
                         <div className="back-content">
 
-                            <strong><img classNameName='w-[282px] h-[385px] rounded-[.1rem_2rem] ' src={image} alt="" /></strong>
+                            <strong><img className='w-[282px] h-[385px] rounded-[.1rem_2rem]' src={image} alt="" /></strong>
                         </div>
                     </div>
                     <div className="front">
