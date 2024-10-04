@@ -1471,8 +1471,9 @@
 }
 .imagezoom {
     width: 550px; /* Or your desired width */
-    height: 550px; /* Or your desired height */
+    height: 450px; /* Or your desired height */
     position: relative;
+	
 }
 
 .zoom-overlay {
@@ -1486,4 +1487,179 @@
     background-size: 200%; /* Adjust for your zoom needs */
     pointer-events: none;
 }
-
+.dbutton {
+	background: linear-gradient(30deg, #000 35%, #ea8b19 73%);
+	position: relative;
+	padding: 5px 45px;
+	font-size: 20px;
+	font-weight: 500;
+	color: white;
+	border: 3px solid #ea8b19;
+	border-radius: 8px;
+	transition: all .3s ease-in-out;
+  }
+  
+  .star-1 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 20%;
+	left: 20%;
+	width: 25px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+  }
+  
+  .star-2 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 45%;
+	left: 45%;
+	width: 15px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-3 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 40%;
+	left: 40%;
+	width: 5px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  .star-45 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 20%;
+	left: 10%;
+	width: 25px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-4 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 20%;
+	left: 40%;
+	width: 8px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all .8s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-5 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 25%;
+	left: 45%;
+	width: 15px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all .6s cubic-bezier(0, 0.4, 0, 1.01);
+  }
+  
+  .star-6 {
+	position: absolute;
+	fill: #ea8b19;
+	top: 5%;
+	left: 50%;
+	width: 5px;
+	height: auto;
+	filter: drop-shadow(0 0 0 #ea8b19);
+	z-index: -5;
+	transition: all .8s ease;
+  }
+  
+  .dbutton:hover {
+	background: #000;
+	color: #ea8b19;
+	box-shadow: 0 0 50px #ea8b19;
+  }
+  
+  .dbutton:hover .star-1 {
+	position: absolute;
+	top: -100%;
+	left: -20%;
+	width: 30px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .dbutton:hover .star-2 {
+	position: absolute;
+	top: -45%;
+	left: 0%;
+	width: 20px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .dbutton:hover .star-3 {
+	position: absolute;
+	top: 55%;
+	left: 15%;
+	width: 15px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  .dbutton:hover .star-45{
+	position: absolute;
+	top: 90%;
+	left: 2%;
+	width: 30px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .dbutton:hover .star-4 {
+	position: absolute;
+	top: 45%;
+	left: 85%;
+	width: 15px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .dbutton:hover .star-5 {
+	position: absolute;
+	top: 25%;
+	left: 140%;
+	width: 25px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .dbutton:hover .star-6 {
+	position: absolute;
+	top: -5%;
+	left: 60%;
+	width: 15px;
+	height: auto;
+	filter: drop-shadow(0 0 10px #ea8b19);
+	z-index: 2;
+  }
+  
+  .fil0 {
+	fill: #ea8b19;
+  }
+  
+ 
+  

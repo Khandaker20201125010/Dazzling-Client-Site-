@@ -32,7 +32,7 @@ import Details from "../Pages/Details/Details";
             element:<SignUp></SignUp>
         },
         {
-            path:'/details',
+            path:'/details/:id',
             element:<PriveteRoutes><Details></Details></PriveteRoutes>
         },
       ]

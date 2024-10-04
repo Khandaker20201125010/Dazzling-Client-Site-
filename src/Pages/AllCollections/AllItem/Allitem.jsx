@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Allitem = ({ product }) => {
     // Set different background images based on gender
     const backgroundImage = product.gender === "Men"
@@ -26,9 +28,9 @@ const Allitem = ({ product }) => {
 
                 {/* Buttons */}
                 <div className="flex gap-2">
-                    <button className="border-0 border-b-4 border-s-2 border-yellow-300 w-44 bg-black text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
+                   <Link to={`/details/${product?._id}`}> <button className="border-0 border-b-4 border-s-2 border-yellow-300 w-44 bg-black text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
                         Check Out
-                    </button>
+                    </button></Link>
                 </div>
             </div>
         </div>

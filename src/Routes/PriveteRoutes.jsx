@@ -6,7 +6,7 @@ const PriveteRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-        return <div className="circ">
+        return <div className="circ  h-screen">
             <div className="load">Loading . . . </div>
             <div className="hands"></div>
             <div className="body"></div>
