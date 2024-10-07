@@ -149,7 +149,6 @@ const SignUp = () => {
                                         <label className="label">
                                             <span className="label-text">Email</span>
                                         </label>
-                                        
                                         <input type="email" {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered bg-transparent" required />
                                         {errors.email && <span className='text-red-700 font-bold'>This Email is required</span>}
                                     </div>
