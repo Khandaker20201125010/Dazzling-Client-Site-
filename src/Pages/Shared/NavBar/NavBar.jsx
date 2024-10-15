@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SparklesText from '../../../Componenets/Sparkle/Sparkle';
 import { AuthContext } from '../../../Providers/AuthProviders';
-
+import { BsCart4 } from "react-icons/bs";
 const NavBar = () => {
-    const { user ,logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const handelLogOut = () => {
         logOut()
-          .then(() => {
-            console.log("Logged out successfully");
-          })
-          
-      };
+            .then(() => {
+                console.log("Logged out successfully");
+            })
+
+    };
     const links = (
         <>
             <li>
@@ -38,6 +38,11 @@ const NavBar = () => {
                     to='/allCollections'
                 >
                     Our Collections
+                </NavLink>
+            </li>
+            <li>
+                <NavLink>
+
                 </NavLink>
             </li>
         </>
@@ -81,7 +86,12 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
+
                 <div className="navbar-end mr-10">
+                    <div className="indicator p-1 mr-20">
+                        <BsCart4 size={25}/>
+                        <span className="badge badge-xs rounded-full bg-red-600 h-5 w-5 p-2 indicator-item">12</span>
+                    </div>
                     {
                         user ? (
                             <>
