@@ -24,7 +24,7 @@ const Login = () => {
             return;
         }
 
-        console.log("Card element:", card);
+      
 
         const rotDeg = { current: vec2(), target: vec2() };
         const bgPos = { current: vec2(), target: vec2() };
@@ -120,10 +120,10 @@ const Login = () => {
 
                                 <button type="submit" className='logbutton mt-5 '>
                                     <span className='text-black font-bold'>Login </span>
-                                    <div class="top"></div>
-                                    <div class="left"></div>
-                                    <div class="bottom"></div>
-                                    <div class="right"></div>
+                                    <div className="top"></div>
+                                    <div className="left"></div>
+                                    <div className="bottom"></div>
+                                    <div className="right"></div>
                                 </button>
                             </form>
                             <p className="text-center mt-0 text-black py-5 ">

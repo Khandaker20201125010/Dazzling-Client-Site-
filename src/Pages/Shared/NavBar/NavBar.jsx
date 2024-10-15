@@ -3,8 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 import SparklesText from '../../../Componenets/Sparkle/Sparkle';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { BsCart4 } from "react-icons/bs";
+import useCart from '../../../Hooks/useCart';
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [ cart ]= useCart();
     const handelLogOut = () => {
         logOut()
             .then(() => {
@@ -90,7 +92,7 @@ const NavBar = () => {
                 <div className="navbar-end mr-10">
                     <div className="indicator p-1 mr-20">
                         <BsCart4 size={25}/>
-                        <span className="badge badge-xs rounded-full bg-red-600 h-5 w-5 p-2 indicator-item">12</span>
+                        <span className="badge badge-xs rounded-full bg-red-600 h-5 w-5 p-2 indicator-item text-white">+{cart?.length}</span>
                     </div>
                     {
                         user ? (

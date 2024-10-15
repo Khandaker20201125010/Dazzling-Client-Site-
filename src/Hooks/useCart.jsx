@@ -5,7 +5,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useCart = () => {
     const axiosSecure = useAxiosSecure();
     const {data :cart = []} = useQuery ({
-        queryKey:['carts'],
+        queryKey:['cart'],
         queryFn: async () => {
             const res  = await axiosSecure.get('/carts');
             return res.data;
