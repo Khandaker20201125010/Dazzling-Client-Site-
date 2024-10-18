@@ -9,6 +9,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/signUp/SignUp";
 import PriveteRoutes from "./PriveteRoutes";
 import Details from "../Pages/Details/Details";
+import DashBoard from "../Layout/DashBoard/DashBoard";
 
   export const router = createBrowserRouter([
     {
@@ -37,4 +38,13 @@ import Details from "../Pages/Details/Details";
         },
       ]
     },
+    {
+      path: "dashboard",
+      element:<DashBoard></DashBoard>,
+      children:[
+        {
+          
+        }
+      ]
+    }
   ]);  

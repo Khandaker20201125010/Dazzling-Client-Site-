@@ -7,18 +7,20 @@ import { FaStar } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import ProductItem from '../Shared/ProductItem/ProductItem';
 import axios from 'axios';
+import useCart from '../../Hooks/useCart';
 const Details = () => {
     const { id } = useParams(); // Unconditional use of hooks
     const axiosSecure = useAxiosSecure(); // Make sure this is always called
     const { user, loading } = useAuth(); // Ensure no conditional usage of this hook
-
+    const [, refetch] = useCart();
     // Fetch product data
-    const { data: singleProductData = {}, isLoading, refetch } = useQuery({
+    const { data: singleProductData = {}, isLoading } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/product/${id}`);
             return res.data;
         }
+       
     });
 
     // Destructure product data
@@ -88,6 +90,7 @@ const Details = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        refetch();
                     }
                 })
                 .catch(error => {
