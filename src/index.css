@@ -1361,6 +1361,19 @@
   .fil0 {
 	fill: #ea8b19;
   }
+  ul::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+ul {
+  scrollbar-width: none;
+}
+
+/* For Internet Explorer & Edge */
+ul {
+  -ms-overflow-style: none;
+}
   
  
   

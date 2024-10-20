@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SparklesText from '../../../Componenets/Sparkle/Sparkle';
 import { AuthContext } from '../../../Providers/AuthProviders';
@@ -11,6 +11,8 @@ const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
     const [cart, refetch] = useCart();
     const [click, setClick] = useState(false);
+    const [visibleItems, setVisibleItems] = useState(9); // Initially show 9 items
+    const ulRef = useRef(null); // Ref to the ul element
 
     const handleClick = () => setClick(!click);
     const closeMenu = () => {
@@ -23,6 +25,28 @@ const NavBar = () => {
             })
 
     };
+    const loadMoreItems = () => {
+        setVisibleItems(prevItems => prevItems + 5); // Load 5 more items each time
+    };
+
+    const handleScroll = () => {
+        const ulElement = ulRef.current;
+        if (ulElement.scrollTop + ulElement.clientHeight >= ulElement.scrollHeight - 10) {
+            loadMoreItems(); // Trigger when the user scrolls near the bottom
+        }
+    };
+
+    useEffect(() => {
+        const ulElement = ulRef.current;
+        if (ulElement) {
+            ulElement.addEventListener('scroll', handleScroll);
+        }
+        return () => {
+            if (ulElement) {
+                ulElement.removeEventListener('scroll', handleScroll);
+            }
+        };
+    }, []);
     const totalPrice = cart?.reduce((total, item) => total + item.price, 0)
     const links = (
         <>
@@ -149,16 +173,19 @@ const NavBar = () => {
 
                             {/* Scrollable Content with Hidden Scrollbar */}
                             <ul
-                                className="overflow-y-scroll p-4 space-y-6 text-center  z-[1]"
+                                ref={ulRef}
+                                className="overflow-y-scroll p-4 space-y-6 text-center z-[1]"
                                 style={{
-                                    maxHeight: 'calc(100vh - 64px)',
+                                    maxHeight: '500px',
                                     scrollbarWidth: 'none', /* For Firefox */
                                     msOverflowStyle: 'none', /* For Internet Explorer and Edge */
                                 }}
                             >
                                 {/* Hide Scrollbar for WebKit Browsers */}
                                 <style jsx>{` ul::-webkit-scrollbar { display: none; } `}</style>
-                                {cart?.map(item => <MenuCarts key={item._id} cart={item} refetch={refetch} />)}
+                                {cart?.slice(0, visibleItems).map(item => (
+                                    <MenuCarts key={item._id} cart={item} refetch={refetch} />
+                                ))}
                             </ul>
                             <div className="sticky bottom-0 bg-base-200 px-4 py-3 md:py-4 border-t border-yellow-700  ">
                                 <h2 className="text-2xl font-bold  flex justify-evenly gap-20">Total Price: <span className='text-red-500'> {totalPrice}$</span> </h2>

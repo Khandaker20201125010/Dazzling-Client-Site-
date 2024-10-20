@@ -19,10 +19,10 @@ const ProductItem = ({ product }) => {
                
                 <button className='buton'>
                     <span className='text-white font-bold'>Get </span>
-                    <div class="top"></div>
-                    <div class="left"></div>
-                    <div class="bottom"></div>
-                    <div class="right"></div>
+                    <div className="top"></div>
+                    <div className="left"></div>
+                    <div className="bottom"></div>
+                    <div className="right"></div>
                 </button>   
 
             </div>

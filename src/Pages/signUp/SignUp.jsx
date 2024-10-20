@@ -7,11 +7,13 @@ import gif from '../../assets/images/ezgif-7-6b93fbef20-unscreen.gif'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 function vec2(x = 0, y = 0) {
     return { x, y, set(nx, ny) { this.x = nx; this.y = ny; }, lerp(target, amount) { this.x += (target.x - this.x) * amount; this.y += (target.y - this.y) * amount; } };
 }
 
 const SignUp = () => {
+    const axiosPublic =  useAxiosPublic();
     const cardRef = useRef(null);
     const { createUser ,updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,14 +25,17 @@ const SignUp = () => {
        
     } = useForm()
     const onSubmit = data => {
-        console.log(data);
+       
         createUser(data.email, data.password)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+                const loggedUser = result.user;              
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log('user profile info updated')
+                        axiosPublic.post('/users', { 
+                            name: data.name, 
+                            email: data.email, 
+                            photoURL: data.photoURL,
+                            role: 'user' })
                         reset();
                         Swal.fire({
                             position: 'top-end',
