@@ -237,48 +237,50 @@ const Banner = () => {
       let current = {
         slide: document.querySelector(".slide[data-current]"),
         slideInfo: document.querySelector(".slide-info[data-current]"),
-        slideBg: document.querySelector(".slide__bg[data-current]")
+        slideBg: document.querySelector(".slide__bg[data-current]"),
       };
       let previous = {
         slide: document.querySelector(".slide[data-previous]"),
         slideInfo: document.querySelector(".slide-info[data-previous]"),
-        slideBg: document.querySelector(".slide__bg[data-previous]")
+        slideBg: document.querySelector(".slide__bg[data-previous]"),
       };
       let next = {
         slide: document.querySelector(".slide[data-next]"),
         slideInfo: document.querySelector(".slide-info[data-next]"),
-        slideBg: document.querySelector(".slide__bg[data-next]")
+        slideBg: document.querySelector(".slide__bg[data-next]"),
       };
-
-      Object.values(current).map((el) => el.removeAttribute("data-current"));
-      Object.values(previous).map((el) => el.removeAttribute("data-previous"));
-      Object.values(next).map((el) => el.removeAttribute("data-next"));
-
+  
+      // Remove data attributes
+      Object.values(current).forEach((el) => el.removeAttribute("data-current"));
+      Object.values(previous).forEach((el) => el.removeAttribute("data-previous"));
+      Object.values(next).forEach((el) => el.removeAttribute("data-next"));
+  
       if (direction === 1) {
+        // Move slides forward
         let temp = current;
         current = next;
         next = previous;
         previous = temp;
-
-        current.slide.style.zIndex = "20";
-        previous.slide.style.zIndex = "30";
-        next.slide.style.zIndex = "10";
       } else if (direction === -1) {
+        // Move slides backward
         let temp = current;
         current = previous;
         previous = next;
         next = temp;
-
-        current.slide.style.zIndex = "20";
-        previous.slide.style.zIndex = "10";
-        next.slide.style.zIndex = "30";
       }
-
-      Object.values(current).map((el) => el.setAttribute("data-current", ""));
-      Object.values(previous).map((el) => el.setAttribute("data-previous", ""));
-      Object.values(next).map((el) => el.setAttribute("data-next", ""));
+  
+      // Update zIndex values
+      current.slide.style.zIndex = "20";
+      next.slide.style.zIndex = "10";
+      previous.slide.style.zIndex = "30";
+  
+      // Set new data attributes
+      Object.values(current).forEach((el) => el.setAttribute("data-current", ""));
+      Object.values(previous).forEach((el) => el.setAttribute("data-previous", ""));
+      Object.values(next).forEach((el) => el.setAttribute("data-next", ""));
     };
   }
+  
 
   return (
     <div className=''>
@@ -370,7 +372,7 @@ const Banner = () => {
             </div>
           </div>
 
-          <button className="slider--btn slider--btn__next">
+          <button className="slider--btn slider--btn__next ">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6" />
             </svg>

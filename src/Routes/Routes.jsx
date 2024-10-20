@@ -10,6 +10,7 @@ import SignUp from "../Pages/signUp/SignUp";
 import PriveteRoutes from "./PriveteRoutes";
 import Details from "../Pages/Details/Details";
 import DashBoard from "../Layout/DashBoard/DashBoard";
+import DashBoardCard from "../Componenets/Carts/DashBoardCard";
 
   export const router = createBrowserRouter([
     {
@@ -43,7 +44,8 @@ import DashBoard from "../Layout/DashBoard/DashBoard";
       element:<DashBoard></DashBoard>,
       children:[
         {
-          
+          path:'cart',
+          element:<PriveteRoutes><DashBoardCard></DashBoardCard></PriveteRoutes>
         }
       ]
     }

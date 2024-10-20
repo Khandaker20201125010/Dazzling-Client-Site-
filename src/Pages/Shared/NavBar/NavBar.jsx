@@ -27,12 +27,12 @@ const NavBar = () => {
     const links = (
         <>
             <li>
-                <NavLink
+                <NavLink  data-tip="Home"
                     className={({ isActive }) => {
-                        console.log('Is Active:', isActive);
+                        
                         return isActive
-                            ? 'font-bold text-yellow-500 hover:text-yellow-700'
-                            : 'font-bold text-white hover:text-yellow-600';
+                            ? 'font-bold text-yellow-500 hover:text-yellow-700 tooltip tooltip-warning   tooltip-bottom'
+                            : 'font-bold text-white hover:text-yellow-600 tooltip tooltip-warning tooltip-bottom';
                     }}
                     to='/'
                 >
@@ -41,11 +41,11 @@ const NavBar = () => {
             </li>
 
             <li>
-                <NavLink
+                <NavLink  data-tip="Our Collections"
                     className={({ isActive }) =>
                         isActive
-                            ? 'font-bold text-yellow-600 hover:text-yellow-700'
-                            : 'font-bold text-white hover:text-yellow-600'
+                            ? 'font-bold text-yellow-600 hover:text-yellow-700 tooltip tooltip-warning tooltip-bottom '
+                            : 'font-bold text-white hover:text-yellow-600 tooltip tooltip-warning tooltip-bottom '
                     }
                     to='/allCollections'
                 >
@@ -58,7 +58,7 @@ const NavBar = () => {
                     {
                         user ? (
                             <>
-                                <button className="text-xl" onClick={handelLogOut} >
+                                <button className="text-xl " onClick={handelLogOut} >
                                     Leave
                                 </button>
                             </>
@@ -121,11 +121,11 @@ const NavBar = () => {
                 </div>
 
                 <div className="navbar-end md:mr-10">
-                    <div className='z-30'>
+                    <div  className='z-[200] '>
                         <div className="flex  gap-5 lg:gap-10 justify-center ">
                             {/* Burger Icon */}
-                            <div onClick={handleClick}>
-                                <div className="indicator p-1 md:mr-20 max-sm:mr-5">
+                            <div   onClick={handleClick}>
+                                <div data-tip="Cart" className="indicator p-1 md:mr-20 max-sm:mr-5 tooltip tooltip-warning tooltip-bottom">
                                     <BsCart4 size={25} className='text-yellow-600' />
                                     <span className="badge badge-xs rounded-full bg-red-600 h-6 w-6 p-2 indicator-item text-white">+{cart?.length}</span>
                                 </div>
@@ -149,7 +149,7 @@ const NavBar = () => {
 
                             {/* Scrollable Content with Hidden Scrollbar */}
                             <ul
-                                className="overflow-y-scroll p-4 space-y-6 text-center text-3xl"
+                                className="overflow-y-scroll p-4 space-y-6 text-center  z-[1]"
                                 style={{
                                     maxHeight: 'calc(100vh - 64px)',
                                     scrollbarWidth: 'none', /* For Firefox */
@@ -158,12 +158,14 @@ const NavBar = () => {
                             >
                                 {/* Hide Scrollbar for WebKit Browsers */}
                                 <style jsx>{` ul::-webkit-scrollbar { display: none; } `}</style>
-                                {cart?.map(item => <MenuCarts key={item._id} cart={item} />)}
+                                {cart?.map(item => <MenuCarts key={item._id} cart={item} refetch={refetch} />)}
                             </ul>
                             <div className="sticky bottom-0 bg-base-200 px-4 py-3 md:py-4 border-t border-yellow-700  ">
                                 <h2 className="text-2xl font-bold  flex justify-evenly gap-20">Total Price: <span className='text-red-500'> {totalPrice}$</span> </h2>
-                                <div className="flex justify-end mt-2 "> {/* Add margin-top for spacing */}
-                                    <button className=" h-8 w-20 rounded-full mr-10 bg-orange-400 text-xl font-bold ">Pay</button> {/* You can customize button styling */}
+                                <div  data-tip="Pay?" className="flex tooltip  tooltip-warning justify-end mt-2 "> {/* Add margin-top for spacing */}
+                                    <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
+                                        Pay
+                                        </button> {/* You can customize button styling */}
                                 </div>
                             </div>
 

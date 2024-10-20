@@ -1,17 +1,49 @@
+import { TiDelete } from "react-icons/ti";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
-
-const MenuCarts = ({ cart }) => {
+const MenuCarts = ({ cart ,refetch}) => {
+    const axiosSecure = useAxiosSecure(); // Ensure you're using the right hook to get axiosSecure
     const { _id, brand, gender, description, rating, image, price, name } = cart;
-   
+
+    const handelDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/carts/${_id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch(); // Call refetch after deletion
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your item has been deleted.",
+                                icon: "success"
+                            });
+                          refetch();
+                        }
+                    });
+            }
+        });
+    }
+
     return (
         <div>
-            <div className=" w-96 bg-base-100 shadow-xl flex">
-                <figure><img className="w-20 h-20 rounded-full" src={image} /></figure>
-                <div className="flex justify-evenly gap-20">
-                    <h3 className="text-xl">{name}</h3>
+            <div className="items-center w-full bg-base-100 shadow-xl flex gap-5">
+                <figure><img className="w-16 h-16 rounded-full" src={image} alt={name} /></figure>
+                <h3 className="text-sm m-auto">{name}</h3>
+                <div className="flex gap-5">
                     <h2 className="text-xl text-red-500">{price}$</h2>
+                    <button onClick={() => handelDelete(_id)} className="text-2xl text-red-500 tooltip tooltip-warning" data-tip="Cancel">
+                        <TiDelete />
+                    </button>
                 </div>
-
             </div>
         </div>
     );
