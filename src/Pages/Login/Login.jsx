@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import sb from '../../assets/images/starry.svg';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import gif from '../../assets/images/ezgif-7-6b93fbef20-unscreen.gif'
 import Swal from 'sweetalert2';
+import { BsGoogle } from "react-icons/bs";
+import { FaFacebook } from "react-icons/fa6";
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 // Vector utility for smooth animation
 function vec2(x = 0, y = 0) {
     return { x, y, set(nx, ny) { this.x = nx; this.y = ny; }, lerp(target, amount) { this.x += (target.x - this.x) * amount; this.y += (target.y - this.y) * amount; } };
@@ -12,9 +14,11 @@ function vec2(x = 0, y = 0) {
 
 const Login = () => {
     const cardRef = useRef(null);
-    const { signIn } = useContext(AuthContext);
+    const { signIn , googleSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
+   
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
@@ -24,7 +28,7 @@ const Login = () => {
             return;
         }
 
-      
+
 
         const rotDeg = { current: vec2(), target: vec2() };
         const bgPos = { current: vec2(), target: vec2() };
@@ -89,6 +93,23 @@ const Login = () => {
             })
         console.log(email, password);
     };
+    const handeleGoogleSignIn = () => {
+        googleSignIn()  
+        .then(result => {
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName,
+                photo: result.user?.photoURL,
+                role: 'user'
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res =>{
+                navigate('/')
+
+            })
+            
+        })
+    }
     return (
         <div className="bg-no-repeat bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${sb})` }}>
             <div className='md:flex flex-1 '>
@@ -126,6 +147,15 @@ const Login = () => {
                                     <div className="right"></div>
                                 </button>
                             </form>
+                            <div className='flex animate-pulse m-auto gap-2 justify-center'>
+                            
+                             <button onClick={handeleGoogleSignIn} className='btn rounded-full btn-circle text-3xl bg-black text-blue-600 hover:bg-white hover:pl-4 flex p-2 hover:flex-1 items-center justify-center group transition-all duration-300'>
+                                    <BsGoogle />
+                                    <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-2xl '>Google</span>
+                                </button>  
+                                <button className='btn rounded-full btn-circle text-3xl bg-black text-blue-600 hover:bg-white hover:pl-4 flex p-2 hover:flex-1 items-center justify-center group transition-all duration-300'><FaFacebook />  <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>FaceBook</span></button>   
+                            </div>
+                         
                             <p className="text-center mt-0 text-black py-5 ">
                                 <small> Don't have an account?</small> <Link to='/signUp'><span className='text-blue-600  font-bold'>Sign Up</span></Link>
                             </p>
