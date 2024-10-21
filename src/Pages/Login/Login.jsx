@@ -14,7 +14,7 @@ function vec2(x = 0, y = 0) {
 
 const Login = () => {
     const cardRef = useRef(null);
-    const { signIn , googleSignIn} = useContext(AuthContext);
+    const { signIn , googleSignIn , facebookSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const axiosPublic = useAxiosPublic();
@@ -104,12 +104,44 @@ const Login = () => {
             }
             axiosPublic.post('/users',userInfo)
             .then(res =>{
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login successful',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
                 navigate('/')
 
             })
             
         })
     }
+    const handeleFacebookSignIn = () => {
+        facebookSignIn()
+        .then(result => {
+            const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName,
+                photo: result.user?.photoURL,
+                role: 'user'
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res =>{
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login successful',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                navigate('/')
+
+            })
+            
+        })
+    }
+    
     return (
         <div className="bg-no-repeat bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${sb})` }}>
             <div className='md:flex flex-1 '>
@@ -153,7 +185,7 @@ const Login = () => {
                                     <BsGoogle />
                                     <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-2xl '>Google</span>
                                 </button>  
-                                <button className='btn rounded-full btn-circle text-3xl bg-black text-blue-600 hover:bg-white hover:pl-4 flex p-2 hover:flex-1 items-center justify-center group transition-all duration-300'><FaFacebook />  <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>FaceBook</span></button>   
+                                <button onClick={handeleFacebookSignIn} className='btn rounded-full btn-circle text-3xl bg-black text-blue-600 hover:bg-white hover:pl-4 flex p-2 hover:flex-1 items-center justify-center group transition-all duration-300'><FaFacebook />  <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>FaceBook</span></button>   
                             </div>
                          
                             <p className="text-center mt-0 text-black py-5 ">
