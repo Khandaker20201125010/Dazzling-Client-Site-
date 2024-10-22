@@ -77,6 +77,18 @@ const NavBar = () => {
                 </NavLink>
             </li>
             <li>
+                <NavLink  data-tip="Our Collections"
+                    className={({ isActive }) =>
+                        isActive
+                            ? 'font-bold text-yellow-600 hover:text-yellow-700 tooltip tooltip-warning tooltip-bottom '
+                            : 'font-bold text-white hover:text-yellow-600 tooltip tooltip-warning tooltip-bottom '
+                    }
+                    to='/Contact'
+                >
+                    Contact
+                </NavLink>
+            </li>
+            <li>
 
                 <div className='hover:text-yellow-600 md:hidden lg:hidden'>
                     {

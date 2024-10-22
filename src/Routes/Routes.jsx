@@ -11,6 +11,7 @@ import PriveteRoutes from "./PriveteRoutes";
 import Details from "../Pages/Details/Details";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import DashBoardCard from "../Componenets/Carts/DashBoardCard";
+import AllUsers from "../Layout/DashBoard/AllUsers/AllUsers";
 
   export const router = createBrowserRouter([
     {
@@ -46,7 +47,33 @@ import DashBoardCard from "../Componenets/Carts/DashBoardCard";
         {
           path:'cart',
           element:<PriveteRoutes><DashBoardCard></DashBoardCard></PriveteRoutes>
-        }
+        },
+
+
+       //admin routes
+       {
+        path:'adminProfile',
+        element:<PriveteRoutes></PriveteRoutes>
+       },
+       {
+        path:'addItems',
+        element:<PriveteRoutes></PriveteRoutes>
+       },
+       {
+        path:'manageItems',
+        element:<PriveteRoutes></PriveteRoutes>
+       },
+      {
+        path:'manageBookings',
+        element:<PriveteRoutes></PriveteRoutes>
+      },
+      {
+        path:'allUsers',
+        element:<PriveteRoutes><AllUsers></AllUsers></PriveteRoutes>
+      }
+       
+
+
       ]
     }
   ]);  
