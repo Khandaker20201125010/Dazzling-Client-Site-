@@ -100,7 +100,7 @@ const Login = () => {
                 email: result.user?.email,
                 name: result.user?.displayName,
                 photo: result.user?.photoURL,
-                role: 'user'
+                role: 'Guest'
             }
             axiosPublic.post('/users',userInfo)
             .then(res =>{

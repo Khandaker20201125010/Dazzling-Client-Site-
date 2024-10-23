@@ -35,7 +35,7 @@ const SignUp = () => {
                             name: data.name, 
                             email: data.email, 
                             photoURL: data.photoURL,
-                            role: 'user' })
+                            role: 'Guest' })
                         reset();
                         Swal.fire({
                             position: 'top-end',
