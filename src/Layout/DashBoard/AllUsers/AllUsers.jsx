@@ -98,7 +98,7 @@ const AllUsers = () => {
                                                 {isAdmin ? 'Admin' : (
                                                     <details className="dropdown dropdown-bottom w-full">
                                                         <summary className="">{user.role} </summary>
-                                                        <ul className="menu menu-horizontal dropdown-content z-[1] bg-red-600 rounded-xl w-full text-center m-auto flex text-white">
+                                                        <ul className=" menu menu-vertical dropdown-content z-[1] bg-red-600 rounded-xl text-center m-auto  text-white min-w-max w-auto">
                                                             {user.role !== 'Admin' && (
                                                                 ['Admin', 'Co-Admin', 'Manager', 'Hiring Manager', 'Guest'].map(role => (
                                                                     <li className='text-center m-auto' key={role}>
