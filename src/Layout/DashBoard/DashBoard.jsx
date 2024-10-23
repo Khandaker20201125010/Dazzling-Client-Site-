@@ -179,7 +179,7 @@ const DashBoard = () => {
                 )}
             </div>
             {/* Lg dashBoard */}
-            <div className="w-72 min-h-screen bg-gradient-to-r from-gray-800 via-black to-gray-800 border-x-2 shadow-2xl shadow-white max-sm:hidden max-md:hidden">
+            <div className="w-72 min-h-screen bg-gradient-to-r from-gray-800 via-black to-gray-800 border-x-2 shadow-xl border-orange-500 shadow-orange-500 max-sm:hidden max-md:hidden">
                 {
                     isAdmin ? <>
                         <h3 className="text-center text-2xl p-4 text-white font-extrabold flex "><IoHome size={30} /><i>Admin Dashboard</i></h3>
@@ -202,7 +202,7 @@ const DashBoard = () => {
                         </>
                     }
                 </ul>
-                <div className=" border-t-2 border-slate-500 my-4 max-h-screen"></div>
+                <div className=" border-t-2 border-orange-500 my-4 max-h-screen"></div>
                 <ul className="menu p-4 text-lg text-white font-bold">
                     <li>
                         {Links}
@@ -210,7 +210,7 @@ const DashBoard = () => {
                 </ul>
 
             </div>
-            <div className="flex-1 p-8 min-h-screen mx-auto max-sm:px-4">
+            <div className="flex-1 p-6 min-h-screen mx-auto max-sm:px-4">
                 <Outlet></Outlet>
             </div>
 

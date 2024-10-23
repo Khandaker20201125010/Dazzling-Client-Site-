@@ -71,7 +71,7 @@ const AllUsers = () => {
                 <h2 className='text-3xl font-bold'>All Users</h2>
                 <h2 className='text-3xl'>Total Users: {users.length}</h2>
             </div>
-            <div className='mt-5 shadow-2xl shadow-orange-500'>
+            <div className='mt-5 shadow-xl shadow-orange-500'>
                 <div className="min-h-full ">
                     <table className="table table-zebra rounded-t-2xl">
                         <thead>
