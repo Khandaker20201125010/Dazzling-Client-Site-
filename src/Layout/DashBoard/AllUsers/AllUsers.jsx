@@ -71,11 +71,11 @@ const AllUsers = () => {
                 <h2 className='text-3xl font-bold'>All Users</h2>
                 <h2 className='text-3xl'>Total Users: {users.length}</h2>
             </div>
-            <div className='mt-5'>
-                <div className="min-h-full">
+            <div className='mt-5 shadow-2xl shadow-orange-500'>
+                <div className="min-h-full ">
                     <table className="table table-zebra rounded-t-2xl">
                         <thead>
-                            <tr className='bg-orange-400 text-white'>
+                            <tr className='bg-orange-400 text-white text-xl  '>
                                 <th className='rounded-tl-2xl'>No</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -97,7 +97,7 @@ const AllUsers = () => {
                                             <td className='text-red-600 font-bold '>
                                                 {isAdmin ? 'Admin' : (
                                                     <details className="dropdown dropdown-bottom w-full">
-                                                        <summary className="">{user.role} </summary>
+                                                        <summary className="text-green-500">{user.role} </summary>
                                                         <ul className=" menu menu-vertical dropdown-content z-[1] bg-red-600 rounded-xl text-center m-auto  text-white min-w-max w-auto">
                                                             {user.role !== 'Admin' && (
                                                                 ['Admin', 'Co-Admin', 'Manager', 'Hiring Manager', 'Guest'].map(role => (
