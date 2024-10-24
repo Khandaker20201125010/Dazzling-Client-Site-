@@ -101,7 +101,7 @@ const DashBoard = () => {
         </>
     )
     return (
-        <div className="flex ">
+        <div className="flex px-4 bg-gradient-to-r from-slate-800 via-gray-900 to-black">
             <div className="flex py-6 navbar-start fixed z-30 lg:hidden md:hidden">
                 <div className="flex mx-10 gap-5 lg:gap-10 justify-center items-center">
                     {/* Burger Icon */}

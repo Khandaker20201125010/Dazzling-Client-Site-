@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Firebase/firebase.config';
 import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 export const AuthContext = createContext(null);
@@ -10,6 +11,7 @@ const AuthProviders = ({children}) => {
     const [loading,setLoading] = useState(true);    
     const googleAuthProvider = new GoogleAuthProvider();
     const facebookAuthProvider = new FacebookAuthProvider();
+    const axiosPublic = useAxiosPublic();
     const createUser =(email,password) =>{
         setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password)
@@ -42,7 +44,21 @@ const AuthProviders = ({children}) => {
     useEffect(()=>{
       const unsubscribe =  onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
-            console.log('current User',currentUser)
+           if(currentUser){
+            //token and store client 
+            const userToken = {
+                email:currentUser.email}
+            axiosPublic.post('/users',userToken)
+            .then(res =>{
+                if(res.data.token){
+                    localStorage.setItem('access-token',res.data.token)
+                }
+            })
+
+           }else{
+            //Todo: remove token (if token stored in the client side: local storage ,catching ,in memmory)
+             localStorage.removeItem('access-token');
+           }
             setLoading(false);
         });
         return () =>{
