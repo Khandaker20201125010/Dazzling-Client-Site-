@@ -5,33 +5,33 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 export const AuthContext = createContext(null);
-const auth = getAuth (app);
-const AuthProviders = ({children}) => {
-    const [user,setUser] =useState(null);
-    const [loading,setLoading] = useState(true);    
+const auth = getAuth(app);
+const AuthProviders = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const googleAuthProvider = new GoogleAuthProvider();
     const facebookAuthProvider = new FacebookAuthProvider();
     const axiosPublic = useAxiosPublic();
-    const createUser =(email,password) =>{
+    const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
-    const signIn =(email,password) =>{
+    const signIn = (email, password) => {
         setLoading(true);
-       
-        return signInWithEmailAndPassword(auth,email,password);
+
+        return signInWithEmailAndPassword(auth, email, password);
     }
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth,googleAuthProvider);
+        return signInWithPopup(auth, googleAuthProvider);
     }
-    const facebookSignIn = () =>{
+    const facebookSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth,facebookAuthProvider);
+        return signInWithPopup(auth, facebookAuthProvider);
     }
 
 
-    const logOut =(email,password) =>{
+    const logOut = (email, password) => {
         setLoading(true);
         return signOut(auth);
     }
@@ -41,31 +41,31 @@ const AuthProviders = ({children}) => {
             displayName: name, photoURL: photo
         });
     }
-    useEffect(()=>{
-      const unsubscribe =  onAuthStateChanged(auth, currentUser =>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-           if(currentUser){
-            //token and store client 
-            const userToken = {
-                email:currentUser.email}
-            axiosPublic.post('/users',userToken)
-            .then(res =>{
-                if(res.data.token){
-                    localStorage.setItem('access-token',res.data.token)
-                }
-            })
-
-           }else{
-            //Todo: remove token (if token stored in the client side: local storage ,catching ,in memmory)
-             localStorage.removeItem('access-token');
-           }
+            if (currentUser) {
+                // get token and store client
+                const userInfo = { email: currentUser.email };
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                        }
+                    })
+            }
+            else {
+                // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+                localStorage.removeItem('access-token');
+            }
             setLoading(false);
         });
-        return () =>{
-            return unsubscribe ();
+        return () => {
+            return unsubscribe();
         }
-    },[axiosPublic])
-    const authInfo ={
+    }, [axiosPublic])
+    
+    const authInfo = {
         user,
         loading,
         createUser,

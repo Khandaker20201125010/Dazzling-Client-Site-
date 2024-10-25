@@ -1,9 +1,10 @@
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+
 
 const MenuCarts = ({ cart ,refetch}) => {
-    const axiosSecure = useAxiosSecure(); // Ensure you're using the right hook to get axiosSecure
+    const axiosPublic = useAxiosPublic(); // Ensure you're using the right hook to get axiosPublic
     const { _id, brand, gender, description, rating, image, price, name } = cart;
 
     const handelDelete = (_id) => {
@@ -17,7 +18,7 @@ const MenuCarts = ({ cart ,refetch}) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/carts/${_id}`)
+                axiosPublic.delete(`/carts/${_id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch(); // Call refetch after deletion

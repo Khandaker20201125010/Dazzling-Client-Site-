@@ -11,9 +11,10 @@ import { useState } from "react";
 import { SlMenu } from 'react-icons/sl';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { AiOutlineClose } from 'react-icons/ai';
+import useAdmin from "../../Hooks/useAdmin";
 const DashBoard = () => {
     const [cart] = useCart();
-    const isAdmin = true;
+    const isAdmin = useAdmin();
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);

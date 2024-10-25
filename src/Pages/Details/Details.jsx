@@ -1,23 +1,21 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { FaStar } from "react-icons/fa6";
 import Swal from 'sweetalert2';
-import ProductItem from '../Shared/ProductItem/ProductItem';
-import axios from 'axios';
 import useCart from '../../Hooks/useCart';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 const Details = () => {
     const { id } = useParams(); // Unconditional use of hooks
-    const axiosSecure = useAxiosSecure(); // Make sure this is always called
+    const axiosPublic = useAxiosPublic(); // Make sure this is always called
     const { user, loading } = useAuth(); // Ensure no conditional usage of this hook
     const [, refetch] = useCart();
     // Fetch product data
     const { data: singleProductData = {}, isLoading } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/product/${id}`);
+            const res = await axiosPublic.get(`/product/${id}`);
             return res.data;
         }
        
@@ -80,7 +78,7 @@ const Details = () => {
                 price
             };
 
-            axiosSecure.post('/carts', cartItems)
+            axiosPublic.post('/carts', cartItems)
                 .then(res => {
                     if (res.data.insertedId) {
                         Swal.fire({
