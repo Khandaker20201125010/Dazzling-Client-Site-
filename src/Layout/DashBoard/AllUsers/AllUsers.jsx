@@ -16,7 +16,7 @@ const AllUsers = () => {
     });
 
     const handleRoleChange = (user, newRole) => {
-        axiosSecure.patch(`/users/role/${user._id}`, { role: newRole })
+        axiosSecure.patch(`/users/admin/${user._id}`, { role: newRole })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({

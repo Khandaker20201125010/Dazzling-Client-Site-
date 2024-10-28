@@ -12,6 +12,7 @@ import Details from "../Pages/Details/Details";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import DashBoardCard from "../Componenets/Carts/DashBoardCard";
 import AllUsers from "../Layout/DashBoard/AllUsers/AllUsers";
+import AdminRoutes from "./AdminRoutes";
 
   export const router = createBrowserRouter([
     {
@@ -42,34 +43,35 @@ import AllUsers from "../Layout/DashBoard/AllUsers/AllUsers";
     },
     {
       path: "dashboard",
-      element:<DashBoard></DashBoard>,
+      element:<PriveteRoutes><DashBoard></DashBoard></PriveteRoutes>,
       children:[
+        //user routes 
         {
           path:'cart',
-          element:<PriveteRoutes><DashBoardCard></DashBoardCard></PriveteRoutes>
+          element:<DashBoardCard></DashBoardCard>
         },
 
 
        //admin routes
        {
         path:'adminProfile',
-        element:<PriveteRoutes></PriveteRoutes>
+        element:<AdminRoutes></AdminRoutes>
        },
        {
         path:'addItems',
-        element:<PriveteRoutes></PriveteRoutes>
+        element:<AdminRoutes></AdminRoutes>
        },
        {
         path:'manageItems',
-        element:<PriveteRoutes></PriveteRoutes>
+        element:<AdminRoutes></AdminRoutes>
        },
       {
         path:'manageBookings',
-        element:<PriveteRoutes></PriveteRoutes>
+        element:<AdminRoutes></AdminRoutes>
       },
       {
         path:'allUsers',
-        element:<PriveteRoutes><AllUsers></AllUsers></PriveteRoutes>
+        element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>
       }
        
 

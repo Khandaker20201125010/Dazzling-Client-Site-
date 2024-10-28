@@ -14,7 +14,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import useAdmin from "../../Hooks/useAdmin";
 const DashBoard = () => {
     const [cart] = useCart();
-    const isAdmin = useAdmin();
+    const [isAdmin] = useAdmin();
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -191,12 +191,14 @@ const DashBoard = () => {
                 }
                 <ul className="menu p-4 text-xl text-white font-bold">
                     {
-                        isAdmin ? <>
+                        isAdmin ?
+                         <>
                             <li>
                                 {adminNavLinks}
                             </li>
 
-                        </> : <>
+                        </> :
+                         <>
                             <li>
                                 {navLinks}
                             </li>
