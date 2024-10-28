@@ -13,6 +13,7 @@ import DashBoard from "../Layout/DashBoard/DashBoard";
 import DashBoardCard from "../Componenets/Carts/DashBoardCard";
 import AllUsers from "../Layout/DashBoard/AllUsers/AllUsers";
 import AdminRoutes from "./AdminRoutes";
+import AddItems from "../Layout/DashBoard/AddItems/AddItems";
 
   export const router = createBrowserRouter([
     {
@@ -59,7 +60,7 @@ import AdminRoutes from "./AdminRoutes";
        },
        {
         path:'addItems',
-        element:<AdminRoutes></AdminRoutes>
+        element:<AdminRoutes><AddItems></AddItems></AdminRoutes>
        },
        {
         path:'manageItems',
