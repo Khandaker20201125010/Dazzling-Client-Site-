@@ -13,7 +13,7 @@ import { LiaTimesSolid } from 'react-icons/lia';
 import { AiOutlineClose } from 'react-icons/ai';
 import useAdmin from "../../Hooks/useAdmin";
 const DashBoard = () => {
-    const [cart] = useCart();
+    const [ cart ] = useCart();
     const [isAdmin] = useAdmin();
     const [click, setClick] = useState(false);
 
@@ -31,7 +31,6 @@ const DashBoard = () => {
                     : 'font-bold text-gray-500 hover:text-orange-600';
             }} to='/dashBoard/adminProfile'><CgProfile size={25} />Admin Profile</NavLink>
             <NavLink className={({ isActive }) => {
-
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'
                     : 'font-bold text-gray-500 hover:text-orange-600';
