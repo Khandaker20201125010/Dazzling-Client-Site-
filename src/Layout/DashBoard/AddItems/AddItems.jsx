@@ -3,25 +3,66 @@ import SectionTitle from "../../../Componenets/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { GiClothes } from "react-icons/gi";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-
-
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
-const image_hosting_api =  `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 const AddItems = () => {
-  const { register, handleSubmit } = useForm();
-  const axiosPublic =  useAxiosPublic();
+  const { user } = useAuth();
+  const { register, handleSubmit ,reset } = useForm();
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const onSubmit = async (data) => {
     console.log(data);
     const imageFile = { image: data.image[0] }
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
+      headers: {
+        "content-type": "multipart/form-data",
+      },
     });
-
-    console.log(res.data);
+    if (res.data.success) {
+      const product = {
+        name: data.name,
+        brand: data.brand,
+        price: parseFloat(data.price),
+        rating: parseFloat(data.rating),
+        quantity: data.quantity,
+        image: res.data.data.display_url,
+        reviews: [
+          {
+            review: data.reviews,
+            reviewerName: user.displayName,
+            reviewerEmail: user.email,
+          },
+        ],
+        description: data.description,
+        category: data.category,
+      };
+      const productRes= await axiosSecure.post('/product',product)
+      if(productRes.data.insertedId){
+        reset();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${data.name} has been listed successfully`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
        
+      }else{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
+          
+      }
+    }
+    console.log(res.data);
   };
   return (
     <div>
@@ -69,7 +110,8 @@ const AddItems = () => {
                 <div className="label">
                   <span className="label-text ">Category</span>
                 </div>
-                <select defaultValue="default"
+                <select
+                  defaultValue="default"
                   {...register("category")}
                   className="select select-warning w-full"
                 >
@@ -79,6 +121,7 @@ const AddItems = () => {
                   <option value="popular">Popular</option>
                   <option value="famous">Famous</option>
                   <option value="jackets">Jackets</option>
+                  <option value="jackets">Dress</option>
                   <option value="shoes">Shoes</option>
                   <option value="bags">Bags</option>
                   <option value="hats">Hats</option>
@@ -108,7 +151,8 @@ const AddItems = () => {
                 <div className="label">
                   <span className="label-text">Chose Gender</span>
                 </div>
-                <select defaultValue="default"
+                <select
+                  defaultValue="default"
                   {...register("gender")}
                   className="select select-warning w-full"
                 >
@@ -159,13 +203,45 @@ const AddItems = () => {
               placeholder="Write description about review"
             ></textarea>
           </label>
-          <div className="mt-5">
-            <input
-              {...register("image")}
-              type="file"
-              className="file-input file-input-bordered file-input-warning w-full max-w-xs"
-            />
+          <div className="flex gap-6">
+            <div className="w-1/2">
+            <label className="form-control w-full my-6">
+                <div className="label">
+                  <span className="label-text">Quantity</span>
+                </div>
+                <input
+                  {...register("quantity")}
+                  type="number"
+                  placeholder="Please enter quantity"
+                  className="input input-warning input-bordered w-full"
+                />
+              </label>
+            </div>
+           
+            <div className="w-1/2">
+              {/* Product Name */}
+              <label className="form-control w-full my-6 ">
+                <div className="label">
+                  <span className="label-text">Likes</span>
+                </div>
+                <input
+                  type="number"
+                  defaultValue={0}
+                  placeholder="0"
+                  {...register("likes", { required: true })}
+                  className="input input-bordered input-warning w-full"
+                  readOnly
+                />
+              </label>
+            </div>
           </div>
+          <div className="mt-10">
+              <input
+                {...register("image")}
+                type="file"
+                className="file-input file-input-bordered file-input-warning w-full max-w-xs"
+              />
+            </div>
 
           <button className="btn mt-5 bg-gradient-to-r from-black to-yellow-500 font-bold text-xl">
             <GiClothes size={25} />
