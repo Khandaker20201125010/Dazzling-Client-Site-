@@ -2,11 +2,26 @@ import React from "react";
 import SectionTitle from "../../../Componenets/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { GiClothes } from "react-icons/gi";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
+
+
+const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
+const image_hosting_api =  `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
 const AddItems = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const axiosPublic =  useAxiosPublic();
+  const onSubmit = async (data) => {
     console.log(data);
+    const imageFile = { image: data.image[0] }
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    });
+
+    console.log(res.data);
+       
   };
   return (
     <div>
@@ -54,11 +69,11 @@ const AddItems = () => {
                 <div className="label">
                   <span className="label-text ">Category</span>
                 </div>
-                <select
+                <select defaultValue="default"
                   {...register("category")}
                   className="select select-warning w-full"
                 >
-                  <option disabled selected>
+                  <option disabled value="default">
                     Select a category
                   </option>
                   <option value="popular">Popular</option>
@@ -93,11 +108,11 @@ const AddItems = () => {
                 <div className="label">
                   <span className="label-text">Chose Gender</span>
                 </div>
-                <select
+                <select defaultValue="default"
                   {...register("gender")}
                   className="select select-warning w-full"
                 >
-                  <option disabled selected>
+                  <option disabled value="default">
                     Select a category
                   </option>
                   <option value="men">Men</option>

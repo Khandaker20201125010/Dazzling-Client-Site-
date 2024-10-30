@@ -74,7 +74,6 @@ const Login = () => {
 
     const handleLogin = event => {
         event.preventDefault();
-        console.log("Form submitted!"); // Check if the function is called
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -91,7 +90,7 @@ const Login = () => {
                 navigate(from, { replace: true });
 
             })
-        console.log(email, password);
+       
     };
     const handeleGoogleSignIn = () => {
         googleSignIn()  

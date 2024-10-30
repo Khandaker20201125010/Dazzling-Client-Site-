@@ -137,7 +137,7 @@ const DashBoard = () => {
                         }}
                     >
                         {/* Hide Scrollbar for WebKit Browsers */}
-                        <style jsx>{` ul::-webkit-scrollbar { display: none; } `}</style>
+                        <style>{` ul::-webkit-scrollbar { display: none; } `}</style>
 
                         {
                             isAdmin ? <>
