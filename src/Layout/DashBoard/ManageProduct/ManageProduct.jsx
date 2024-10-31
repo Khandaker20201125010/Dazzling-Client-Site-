@@ -4,6 +4,7 @@ import useProduct from "../../../Hooks/useProduct";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageProduct = () => {
   const [product, refetch] = useProduct();
@@ -21,7 +22,7 @@ const ManageProduct = () => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/product/${item._id}`);
         if (res.data.deletedCount > 0) {
-          refetch(); 
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -34,12 +35,16 @@ const ManageProduct = () => {
     });
   };
   return (
-    <div className="w-full px-6 bg-gradient-to-r from-gray-500 to-black border-2xl border-2 border-purple-800">
+    <div className="w-full px-6 bg-gradient-to-br from-gray-500 to-black border-2xl border-2 border-purple-800">
       <SectionTitle
         heading="Manage Product"
         subHeading="Hurry Up"
       ></SectionTitle>
-      <div><h3 className="text-3xl font-bold text-center mb-5">Current Product: {product.length}</h3></div>
+      <div>
+        <h3 className="text-3xl font-bold text-center mb-5">
+          Current Product: {product.length}
+        </h3>
+      </div>
       <div className="container mx-auto">
         <div className="overflow-x-auto">
           <table className="table">
@@ -54,7 +59,7 @@ const ManageProduct = () => {
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody>
               {product.map((item, index) => (
                 <tr className="hover:bg-red-700" key={item._id}>
                   <td> {index + 1}</td>
@@ -73,9 +78,11 @@ const ManageProduct = () => {
                   </td>
                   <td>{item.price}</td>
                   <th>
-                    <button className="btn btn-ghost btn-md btn-circle bg-orange-600 hover:bg-red-600">
-                      <FaEdit className="text-white text-2xl  hover:bg-red-600"></FaEdit>
-                    </button>
+                    <Link to={`/dashboard/updateProduct/${item._id}`}>
+                      <button className="btn btn-ghost btn-md btn-circle bg-orange-600 hover:bg-red-600">
+                        <FaEdit className="text-white text-2xl  hover:bg-red-600"></FaEdit>
+                      </button>
+                    </Link>
                   </th>
                   <th>
                     <button
