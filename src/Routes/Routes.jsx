@@ -14,6 +14,8 @@ import DashBoardCard from "../Componenets/Carts/DashBoardCard";
 import AllUsers from "../Layout/DashBoard/AllUsers/AllUsers";
 import AdminRoutes from "./AdminRoutes";
 import AddItems from "../Layout/DashBoard/AddItems/AddItems";
+import ManageProduct from "../Layout/DashBoard/ManageProduct/ManageProduct";
+
 
   export const router = createBrowserRouter([
     {
@@ -63,8 +65,8 @@ import AddItems from "../Layout/DashBoard/AddItems/AddItems";
         element:<AdminRoutes><AddItems></AddItems></AdminRoutes>
        },
        {
-        path:'manageItems',
-        element:<AdminRoutes></AdminRoutes>
+        path:'manageProduct',
+        element:<AdminRoutes><ManageProduct></ManageProduct></AdminRoutes>
        },
       {
         path:'manageBookings',
