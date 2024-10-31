@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageProduct = () => {
-  const [product] = useProduct();
+  const [product, refetch] = useProduct();
   const axiosSecure = useAxiosSecure();
-  const handelDelete = (item) => {
+  const handleDeleteProduct = (item) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -21,6 +21,7 @@ const ManageProduct = () => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/product/${item._id}`);
         if (res.data.deletedCount > 0) {
+          refetch(); 
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -33,16 +34,17 @@ const ManageProduct = () => {
     });
   };
   return (
-    <div>
+    <div className="w-full px-6 bg-gradient-to-r from-gray-500 to-black border-2xl border-2 border-purple-800">
       <SectionTitle
         heading="Manage Product"
         subHeading="Hurry Up"
       ></SectionTitle>
+      <div><h3 className="text-3xl font-bold text-center mb-5">Current Product: {product.length}</h3></div>
       <div className="container mx-auto">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
+            <thead className="hover:bg-red-700">
               <tr>
                 <th>No</th>
                 <th>Image</th>
@@ -52,9 +54,9 @@ const ManageProduct = () => {
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody >
               {product.map((item, index) => (
-                <tr key={item._id}>
+                <tr className="hover:bg-red-700" key={item._id}>
                   <td> {index + 1}</td>
                   <td>
                     <div className="flex items-center gap-3">
@@ -77,7 +79,7 @@ const ManageProduct = () => {
                   </th>
                   <th>
                     <button
-                      onClick={() => handelDelete(item)}
+                      onClick={() => handleDeleteProduct(item)}
                       className="btn btn-ghost  btn-circle btn-md hover:bg-gray-800"
                     >
                       <FaTrash className="text-red-500 text-2xl"></FaTrash>
