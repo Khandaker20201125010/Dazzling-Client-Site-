@@ -29,7 +29,6 @@ const UpdateProduct = () => {
     });
     const {_id,name,gender,brand,price,rating,quantity,reviews,description,category} = singleProductData;
     const onSubmit = async (data) => {
-        console.log(data);
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
           headers: {
@@ -75,7 +74,6 @@ const UpdateProduct = () => {
               
           }
         }
-        console.log(res.data);
       };
       useEffect(() => {
         reset(singleProductData);

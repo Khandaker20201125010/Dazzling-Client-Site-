@@ -1374,6 +1374,20 @@ ul {
 ul {
   -ms-overflow-style: none;
 }
+.hidden-scrollbar {
+	max-height: 500px;
+	overflow-y: scroll;
+  }
+  
+  /* Hide the scrollbar for WebKit browsers */
+  .hidden-scrollbar::-webkit-scrollbar {
+	display: none;
+  }
+  
+  /* Hide the scrollbar for Firefox */
+  .hidden-scrollbar {
+	scrollbar-width: none;
+  }
   
  
   

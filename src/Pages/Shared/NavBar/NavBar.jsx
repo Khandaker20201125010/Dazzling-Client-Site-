@@ -9,6 +9,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import MenuCarts from "../../../Componenets/Carts/MenuCarts";
 import toast, { Toaster } from "react-hot-toast";
 import Avatar from "react-avatar";
+import useAdmin from "../../../Hooks/useAdmin";
+
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart, refetch] = useCart();
@@ -16,7 +18,7 @@ const NavBar = () => {
   const [visibleItems, setVisibleItems] = useState(9); // Initially show 9 items
   const ulRef = useRef(null); // Ref to the ul element
   const [profile, setProfile] = useState(false);
-
+  const [ isAdmin] = useAdmin();
   const handleClick = () => setClick(!click);
   const closeMenu = () => {
     setClick(false);
@@ -149,12 +151,10 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <div className="">
+          <div className="text-2xl text-white px-10 text-lighting">
             <SparklesText>
               <Link to="/">
-                <a className="text-2xl text-white px-10 text-lighting ">
-                  <i>Dazzling</i>
-                </a>
+                <i>Dazzling</i>
               </Link>
             </SparklesText>
           </div>
@@ -206,15 +206,10 @@ const NavBar = () => {
               {/* Scrollable Content with Hidden Scrollbar */}
               <ul
                 ref={ulRef}
-                className="overflow-y-scroll p-4 space-y-6 text-center z-[1]"
-                style={{
-                  maxHeight: "500px",
-                  scrollbarWidth: "none" /* For Firefox */,
-                  msOverflowStyle: "none" /* For Internet Explorer and Edge */,
-                }}
+                className="hidden-scrollbar p-4 space-y-6 text-center z-[1]"
               >
                 {/* Hide Scrollbar for WebKit Browsers */}
-                <style jsx>{`
+                <style >{`
                   ul::-webkit-scrollbar {
                     display: none;
                   }
@@ -225,18 +220,17 @@ const NavBar = () => {
               </ul>
               <div className="sticky bottom-0 bg-base-200 px-4 py-3 md:py-4 border-t border-yellow-700  ">
                 <h2 className="text-2xl font-bold  flex justify-evenly gap-20">
-                  Total Price:{" "}
-                  <span className="text-red-500"> {totalPrice}$</span>{" "}
+                  Total Price:
+                  <span className="text-red-500"> {totalPrice}$</span>
                 </h2>
                 <div
                   data-tip="Pay?"
                   className="flex tooltip  tooltip-warning justify-end mt-2 "
                 >
-                  {" "}
                   {/* Add margin-top for spacing */}
                   <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
                     Pay
-                  </button>{" "}
+                  </button>
                   {/* You can customize button styling */}
                 </div>
               </div>
@@ -275,7 +269,15 @@ const NavBar = () => {
                       >
                         <li>{user?.displayName}</li>
                         <li>{user?.email}</li>
-                        <li onClick={() => setProfile(!profile)}>Profile</li>
+                        <li onClick={() => setProfile(!profile)}>
+                         {
+                           isAdmin ? 
+                           <Link to ='dashboard/adminProfile'>My Profile</Link> 
+                           : <Link to ='dashboard/userProfile'>My Profile</Link>
+                         }
+
+
+                        </li>
                         <li>
                           <button className=" text-xl" onClick={handelLogOut}>
                             Leave

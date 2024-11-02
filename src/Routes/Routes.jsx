@@ -17,6 +17,7 @@ import AddItems from "../Layout/DashBoard/AddItems/AddItems";
 import ManageProduct from "../Layout/DashBoard/ManageProduct/ManageProduct";
 import UpdateProduct from "../Layout/DashBoard/UpdateProduct/UpdateProduct";
 import AdminProfile from "../Layout/DashBoard/AdminProfile/AdminProfile";
+import UserProfile from "../Layout/DashBoard/UserProfile/UserProfile";
 
 
   export const router = createBrowserRouter([
@@ -52,11 +53,14 @@ import AdminProfile from "../Layout/DashBoard/AdminProfile/AdminProfile";
       children:[
         //user routes 
         {
+          path:'userProfile',
+          element:<PriveteRoutes><UserProfile></UserProfile></PriveteRoutes>
+        },
+        {
           path:'cart',
           element:<DashBoardCard></DashBoardCard>
         },
-
-
+       
        //admin routes
        {
         path:'adminProfile',

@@ -174,30 +174,37 @@ const Banner = () => {
 
   const raf = new Raf();
 
-  function init() {
+  const init = () => {
     const loader = document.querySelector(".loader");
-
+    if (!loader) return; // Guard clause if loader is not found
+  
     const slides = [...document.querySelectorAll(".slide")];
     const slidesInfo = [...document.querySelectorAll(".slide-info")];
-
+  
     const buttons = {
       prev: document.querySelector(".slider--btn__prev"),
       next: document.querySelector(".slider--btn__next")
     };
-
-    loader.style.opacity = 0;
-    loader.style.pointerEvents = "none";
-
-    slides.forEach((slide, i) => {
-      const slideInner = slide.querySelector(".slide__inner");
-      const slideInfoInner = slidesInfo[i].querySelector(".slide-info__inner");
-
-      tilt(slide, { target: [slideInner, slideInfoInner] });
-    });
-
-    buttons.prev.addEventListener("click", change(-1));
-    buttons.next.addEventListener("click", change(1));
-  }
+  
+    // Ensure buttons exist before adding event listeners
+    if (buttons.prev && buttons.next) {
+      buttons.prev.addEventListener("click", change(-1));
+      buttons.next.addEventListener("click", change(1));
+    }
+  
+    // Proceed only if slides are found
+    if (slides.length && slidesInfo.length) {
+      loader.style.opacity = 0;
+      loader.style.pointerEvents = "none";
+  
+      slides.forEach((slide, i) => {
+        const slideInner = slide.querySelector(".slide__inner");
+        const slideInfoInner = slidesInfo[i].querySelector(".slide-info__inner");
+  
+        tilt(slide, { target: [slideInner, slideInfoInner] });
+      });
+    }
+  };
 
   function setup(imagesLoaded) {
     const loaderText = document.querySelector(".loader__text");
