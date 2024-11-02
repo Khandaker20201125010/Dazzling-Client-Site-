@@ -16,6 +16,7 @@ import AdminRoutes from "./AdminRoutes";
 import AddItems from "../Layout/DashBoard/AddItems/AddItems";
 import ManageProduct from "../Layout/DashBoard/ManageProduct/ManageProduct";
 import UpdateProduct from "../Layout/DashBoard/UpdateProduct/UpdateProduct";
+import AdminProfile from "../Layout/DashBoard/AdminProfile/AdminProfile";
 
 
   export const router = createBrowserRouter([
@@ -59,7 +60,7 @@ import UpdateProduct from "../Layout/DashBoard/UpdateProduct/UpdateProduct";
        //admin routes
        {
         path:'adminProfile',
-        element:<AdminRoutes></AdminRoutes>
+        element:<AdminRoutes><AdminProfile></AdminProfile></AdminRoutes>
        },
        {
         path:'addItems',

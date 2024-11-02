@@ -187,7 +187,7 @@ const Login = () => {
                                 <button onClick={handeleFacebookSignIn} className='btn rounded-full btn-circle text-3xl bg-black text-blue-600 hover:bg-white hover:pl-4 flex p-2 hover:flex-1 items-center justify-center group transition-all duration-300'><FaFacebook />  <span className='ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>FaceBook</span></button>   
                             </div>
                          
-                            <p className="text-center mt-0 text-black py-5 ">
+                            <p className="text-center mt-0 text-black py-8 ">
                                 <small> Don't have an account?</small> <Link to='/signUp'><span className='text-blue-600  font-bold'>Sign Up</span></Link>
                             </p>
 

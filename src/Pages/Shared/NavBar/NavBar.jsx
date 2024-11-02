@@ -8,12 +8,14 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { AiOutlineClose } from "react-icons/ai";
 import MenuCarts from "../../../Componenets/Carts/MenuCarts";
 import toast, { Toaster } from "react-hot-toast";
+import Avatar from "react-avatar";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart, refetch] = useCart();
   const [click, setClick] = useState(false);
   const [visibleItems, setVisibleItems] = useState(9); // Initially show 9 items
   const ulRef = useRef(null); // Ref to the ul element
+  const [profile, setProfile] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMenu = () => {
@@ -114,7 +116,13 @@ const NavBar = () => {
 
   return (
     <div>
-      <Toaster position="top-right" reverseOrder={false}></Toaster>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "mt-11",
+        }}
+      ></Toaster>
       <div className="navbar bg-transparent ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -242,21 +250,49 @@ const NavBar = () => {
               ></div>
             )}
           </div>
-
-          <div className="max-sm:hidden">
-            {user ? (
-              <>
-                <button className="lButton text-xl" onClick={handelLogOut}>
-                  Leave
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/login">
-                  <button className="lButton text-xl">Join us</button>
-                </Link>
-              </>
-            )}
+          <div className="flex gap-2">
+            <div className="">
+              {user ? (
+                <>
+                  <div className="flex gap-5">
+                    <div className="relative ">
+                      <div>
+                        <Avatar
+                          name={user?.displayName?.charAt(0)}
+                          src={user?.photoURL}
+                          alt="img"
+                          className="rounded-full"
+                          size="45"
+                          onClick={() => setProfile(!profile)}
+                        ></Avatar>
+                      </div>
+                      <ul
+                        className={`max-sm:hidden absolute  space-y-5  ${
+                          profile
+                            ? "bg-base-100  shadow-lg border md:min-w-32 px-3 py-2 z-[99]  rounded-md right-1  md:-right-10"
+                            : "hidden"
+                        }`}
+                      >
+                        <li>{user?.displayName}</li>
+                        <li>{user?.email}</li>
+                        <li onClick={() => setProfile(!profile)}>Profile</li>
+                        <li>
+                          <button className=" text-xl" onClick={handelLogOut}>
+                            Leave
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <button className="lButton text-xl">Join us</button>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
