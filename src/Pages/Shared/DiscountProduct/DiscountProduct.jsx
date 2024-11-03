@@ -3,20 +3,22 @@ import discount from "../../../assets/images/discount.jpg";
 import { Link } from "react-router-dom";
 import useProduct from "../../../Hooks/useProduct";
 import SingleDiscountProduct from "./SingleDiscountProduct";
+
+
 const DiscountProduct = () => {
   const [product] = useProduct();
-  const disCount = product.filter(
-    (product) => product.category === "discounts"
-  );
- 
+  const disCount = product.filter((product) => product.category === "discounts");
+  
+  
+
   return (
     <div>
-      <div className="mt-20 relative min-h-[600px] w-full flex items-center justify-center  overflow-hidden">
+      <div className="mt-20 relative min-h-[600px] w-full flex items-center justify-center overflow-hidden">
         {/* Background Layer with Opacity */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-blue-700 to-black opacity-60"></div>
 
         {/* Content Layer */}
-        <div className="container mx-auto flex  max-sm:flex-col items-center relative z-10 text-center px-4 md:px-8">
+        <div className="container mx-auto flex max-sm:flex-col items-center relative z-10 text-center px-4 md:px-8">
           {/* Image */}
           <div className="w-full md:w-1/2 flex justify-center md:order-2 mt-8 md:mt-0">
             <img
@@ -27,7 +29,7 @@ const DiscountProduct = () => {
           </div>
 
           {/* Text Content */}
-          <div className="w-full md:w-1/2 space-y-4 md:order-1 bg-black bg-opacity-30 p-4 ">
+          <div className="w-full md:w-1/2 space-y-4 md:order-1 bg-black bg-opacity-30 p-4">
             <h1 className="bg-yellow-500 text-xl text-white rounded-md w-40 mx-auto md:mx-0 p-2 font-semibold -rotate-3">
               Special Offer
             </h1>
@@ -50,13 +52,13 @@ const DiscountProduct = () => {
           </div>
         </div>
       </div>
-      <div className="mt-40 grid md:grid-cols-3 m-auto container mx-auto ">
+      <div className="mt-40 grid md:grid-cols-3 m-auto container mx-auto">
         {disCount.map((product) => (
           <SingleDiscountProduct
             key={product._id}
-            product={product}
-           
-          ></SingleDiscountProduct>
+            product={product} 
+          
+          />
         ))}
       </div>
     </div>
