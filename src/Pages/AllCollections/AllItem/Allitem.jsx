@@ -7,7 +7,7 @@ const Allitem = ({ product }) => {
         : "url('https://i.ibb.co.com/y8Y8VZ1/1000-F-373923425-l-PNd-O9i4s366-Egk-PDAw-Xt-Lx-SRSVLSDd4.jpg')"; // Women's background (replace with actual image URL)
 
     return (
-        <div className=''> 
+        <div data-aos="zoom-in-up" className=''> 
             <div
                 className="relative w-[18rem] rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
                 style={{ backgroundImage: backgroundImage }} // Apply dynamic background

@@ -5,7 +5,7 @@ const ProductItem = ({ product }) => {
     const { name, image, price, description } = product;
 
     return (
-        <div className='flex items-center justify-between p-2'>
+        <div data-aos="zoom-in" className='flex items-center justify-between p-2'>
             <div className='flex gap-5'>
                 <div className='image-container'>
                     <img className='product-image' src={image} alt={name} />

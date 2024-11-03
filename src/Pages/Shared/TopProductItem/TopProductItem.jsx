@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TopProductItem = ({ product }) => {
     const { name, image, price, description } = product;
     return (
-        <div>
+        <div data-aos="zoom-in-up">
 
             <div className="cardo m-auto ">
                 <div className="content ">

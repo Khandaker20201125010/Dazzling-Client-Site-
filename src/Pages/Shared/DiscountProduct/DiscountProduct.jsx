@@ -57,8 +57,8 @@ const DiscountProduct = () => {
         </div>
       </div>
       <div>
-        <SectionTitle subHeading={"Discount Product Collections"} heading={"Check Offer Product"}></SectionTitle>
-        <div className="container mx-auto px-4 py-8 mt-10 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <SectionTitle subHeading={"Discount Product Collections"} heading={"Check Offer P"}></SectionTitle>
+        <div  className="container mx-auto px-4 py-8 mt-10 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {disCount.map((product) => (
             <SingleDiscountProduct key={product._id} product={product} />
           ))}

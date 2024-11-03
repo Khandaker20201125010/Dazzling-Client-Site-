@@ -3,7 +3,6 @@ import Banner from '../Shared/Banner/Banner';
 import Types from '../Shared/Types/Types';
 import PopularProduct from '../Shared/PopularItem/PopularProduct';
 import Featured from '../Shared/Featured/Featured';
-
 import TopProduct from '../Shared/TopProduct/TopProduct';
 import Testimonials from '../Shared/Testimonials/Testimonials';
 import Intro from '../Shared/Intro/Intro';
