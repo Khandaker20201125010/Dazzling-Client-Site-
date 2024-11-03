@@ -8,6 +8,7 @@ import TopProduct from '../Shared/TopProduct/TopProduct';
 import Testimonials from '../Shared/Testimonials/Testimonials';
 import Intro from '../Shared/Intro/Intro';
 import { Helmet } from 'react-helmet-async';
+import DiscountProduct from '../Shared/DiscountProduct/DiscountProduct';
 
 
 const Home = () => {
@@ -18,8 +19,8 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <Types></Types>
-           
             <PopularProduct></PopularProduct>
+            <DiscountProduct></DiscountProduct>
             <Intro></Intro>
             <TopProduct></TopProduct>
             <Featured></Featured>

@@ -4,16 +4,17 @@ import Allitem from "./AllItem/Allitem";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const AllCollections = () => {
     const [product] = useProduct();
     const men = product.filter(product => product.gender === 'Men');
     const Women = product.filter(product => product.gender === 'Women');
-
+    const axiosPublic = useAxiosPublic();
     const [activeTab, setActiveTab] = useState(0);
     const [indicatorStyle, setIndicatorStyle] = useState({});
     const tabsRef = useRef([]);
-    const [itemPerPages, setItemPerPages] = useState(12);
+    const [itemPerPages, setItemPerPages] = useState(10);
     const dataLength = product?.length;
 
     // Pagination
@@ -26,14 +27,18 @@ const AllCollections = () => {
     useEffect(() => {
         setLoading(true);
         if (activeTab === 0) {
-            fetch(`http://localhost:5500/product?page=${currentPages}&size=${itemPerPages}`)
-                .then(res => res.json())
-                .then(data => {
-                    setPaginatedProduct(data);  
+            axiosPublic
+                .get(`/product?page=${currentPages}&size=${itemPerPages}`)
+                .then(res => {
+                    setPaginatedProduct(res.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error("Error fetching paginated products:", error);
                     setLoading(false);
                 });
         } 
-    }, [currentPages, activeTab, itemPerPages]);
+    }, [currentPages, activeTab, itemPerPages, axiosPublic]);
 
     // Define the tab content separately for clarity
     const allProductsContent = (

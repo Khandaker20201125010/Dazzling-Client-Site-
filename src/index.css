@@ -233,7 +233,8 @@
 	/* Changed from relative to absolute to ensure it covers the full element */
 	inset: 0;
 	/* or inset: 1%; for slight padding */
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(20, 19, 19, 0.8);
+	
 }
 
 .slide__bg:not([data-current]) {
@@ -1388,6 +1389,25 @@ ul {
   .hidden-scrollbar {
 	scrollbar-width: none;
   }
+  @layer base {
+    /* Allow vertical scrolling */
+    html, body {
+        overflow-y: scroll;
+    }
+  
+    /* Hide scrollbar for all elements on the site */
+    *::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    * {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;      /* Firefox */
+    }
+}
+
+
   
  
   
