@@ -3,16 +3,20 @@ import discount from "../../../assets/images/discount.jpg";
 import { Link } from "react-router-dom";
 import useProduct from "../../../Hooks/useProduct";
 import SingleDiscountProduct from "./SingleDiscountProduct";
-
+import SectionTitle from "../../../Componenets/SectionTitle/SectionTitle";
 
 const DiscountProduct = () => {
   const [product] = useProduct();
-  const disCount = product.filter((product) => product.category === "discounts");
-  
-  
+  const disCount = product.filter(
+    (product) => product.category === "discounts"
+  );
 
   return (
-    <div>
+    <div className="mt-10">
+      <SectionTitle
+        subHeading={"Discount Product"}
+        heading={"Special Offer"}
+      ></SectionTitle>
       <div className="mt-20 relative min-h-[600px] w-full flex items-center justify-center overflow-hidden">
         {/* Background Layer with Opacity */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-blue-700 to-black opacity-60"></div>
@@ -52,14 +56,13 @@ const DiscountProduct = () => {
           </div>
         </div>
       </div>
-      <div className="mt-40 grid md:grid-cols-3 m-auto container mx-auto">
-        {disCount.map((product) => (
-          <SingleDiscountProduct
-            key={product._id}
-            product={product} 
-          
-          />
-        ))}
+      <div>
+        <SectionTitle subHeading={"Discount Product Collections"} heading={"Check Offer Product"}></SectionTitle>
+        <div className="container mx-auto px-4 py-8 mt-10 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {disCount.map((product) => (
+            <SingleDiscountProduct key={product._id} product={product} />
+          ))}
+        </div>
       </div>
     </div>
   );
