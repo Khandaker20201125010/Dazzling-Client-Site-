@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import useCart from "../../Hooks/useCart";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useProduct from "../../Hooks/useProduct";
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -404,13 +403,10 @@ const Details = () => {
             spaceBetween={10}
             loop={true}
             navigation
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
             breakpoints={{
               640: {
                 slidesPerView: 2,
-              },
-           
+              },          
               1024: {
                 slidesPerView: 4,
               },
