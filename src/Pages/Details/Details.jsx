@@ -393,7 +393,7 @@ const Details = () => {
       </div>
       {/* Suggestion section */}
       <div className="mt-10 bg-gradient-to-br from-gray-700  via-slate-900 to-gray-700 p-6  ">
-        <div className="flex justify-between">
+        <div className="flex justify-between max-sm:flex-col max-sm:gap-6">
         <h2 className="text-xl font-bold">You May Also Like</h2>
        <Link to='/allCollections'> <button className="uppercase font-bold flex gap-4"><FaArrowRight className="text-2xl" />Check Our Other Products</button></Link>
         </div>

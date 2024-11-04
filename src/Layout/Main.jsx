@@ -12,9 +12,7 @@ const Main = () => {
             {noHeaderFooter || <NavBar></NavBar>}
             <div className='min-h-screen'>
             <Outlet></Outlet>
-
             </div>
-           
            {noHeaderFooter || <Footer></Footer>}
         </div>
     );
