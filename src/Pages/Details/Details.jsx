@@ -1,16 +1,24 @@
 import { useEffect } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa6";
+import { Link, useParams } from "react-router-dom";
+import { FaArrowRight, FaStar } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useCart from "../../Hooks/useCart";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useProduct from "../../Hooks/useProduct";
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Pagination, Navigation } from "swiper/modules";
 const Details = () => {
   const { id } = useParams(); // Unconditional use of hooks
   const axiosPublic = useAxiosPublic(); // Make sure this is always called
   const { user, loading } = useAuth(); // Ensure no conditional usage of this hook
   const [, refetch] = useCart();
+  const [product] = useProduct();
   // Fetch product data
   const { data: singleProductData = {}, isLoading } = useQuery({
     queryKey: ["product", id],
@@ -23,6 +31,10 @@ const Details = () => {
   // Destructure product data
   const { _id, brand, gender, description, rating, image, price, name } =
     singleProductData;
+  const suggestProduct = product.filter(
+    (product) =>
+      product.category === singleProductData.category && product._id !== id
+  );
 
   useEffect(() => {
     const imagezoom = document.getElementById("imagezoom");
@@ -111,8 +123,8 @@ const Details = () => {
           className="imagezoom border-2 "
           style={{
             "--url": `url(${image})`,
-            "--zoom-x": "0%",
-            "--zoom-y": "0%",
+            "--zoom-x": "50%",
+            "--zoom-y": "25%",
 
             position: "relative", // Position relative for absolute positioning of pseudo-element
           }}
@@ -133,7 +145,7 @@ const Details = () => {
               height: "100%",
               backgroundColor: "black",
               backgroundImage: "var(--url)",
-              backgroundSize: "200%", // Change to fit your zoom needs
+              backgroundSize: "150%", // Change to fit your zoom needs
               backgroundPosition: "var(--zoom-x) var(--zoom-y)",
               pointerEvents: "none", // Prevent mouse events on the overlay
             }}
@@ -380,6 +392,56 @@ const Details = () => {
           </div>
         </div>
       </div>
+      {/* Suggestion section */}
+      <div className="mt-10 bg-gradient-to-br from-gray-700  via-slate-900 to-gray-700 p-6  ">
+        <div className="flex justify-between">
+        <h2 className="text-xl font-bold">You May Also Like</h2>
+       <Link to='/allCollections'> <button className="uppercase font-bold flex gap-4"><FaArrowRight className="text-2xl" />Check Our Other Products</button></Link>
+        </div>
+        <div className="mt-10 text-white ">
+          <Swiper 
+            modules={[Pagination, Navigation]}
+            spaceBetween={10}
+            loop={true}
+            navigation
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+           
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            {suggestProduct.map((prod) => (
+              <SwiperSlide className="" key={prod._id}>
+                <div className="card bg-gradient-to-br from-gray-700  via-black to-gray-700 h-full rounded-md ">
+                  <img
+                    src={prod.image}
+                    alt={prod.name}
+                    className="w-full h-48 p-4 rounded-xl object-cover"
+                  />
+                  <div className="p-4 h-40 flex flex-col ">
+                    <h3 className="font-bold">{prod.name}</h3>
+                    <p>{prod.description}</p>
+                    <h4 className="text-red-600">{prod.price}$</h4>
+                  
+                  </div>
+                 <Link to={`/details/${prod._id}`}>
+                 <div className="p-2">
+                    <button className="btn btn-warning ml-2 btn-sm rounded-xl text-center ">Check</button>
+                  </div></Link>
+                  
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+      
     </div>
   );
 };
