@@ -25,6 +25,7 @@ const AddItems = () => {
       const product = {
         name: data.name,
         brand: data.brand,
+        gender: data.gender,
         price: parseFloat(data.price),
         rating: parseFloat(data.rating),
         quantity: data.quantity,
@@ -156,8 +157,8 @@ const AddItems = () => {
                   <option disabled value="default">
                     Select a category
                   </option>
-                  <option value="men">Men</option>
-                  <option value="women">Women</option>
+                  <option value="Men">Men</option>
+                  <option value="Women">Women</option>
                 </select>
               </label>
             </div>
