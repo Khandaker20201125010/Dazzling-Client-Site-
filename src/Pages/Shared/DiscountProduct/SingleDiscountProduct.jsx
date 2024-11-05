@@ -15,7 +15,7 @@ const SingleDiscountProduct = ({ product }) => {
   // Calculate discounted price
   const discountedNumber = price * 0.5; // 50% off
 
-  const handleProductAction = async () => {
+  const handleAddProduct = async () => {
     if (!user || !user.email) {
       Swal.fire("Please log in to add items to your cart.");
       return;
@@ -94,14 +94,14 @@ const SingleDiscountProduct = ({ product }) => {
              {description}
         </p>
         <p className="text-yellow-400 text-2xl font-bold mt-2">
-          $ <span className="line-through text-xl ">{price}</span> {discountedNumber}
+          <span className="text-sm">TK</span> <span className="line-through text-xl text-red-600">{price}</span> {discountedNumber}
         </p>
       </div>
       <div className="item-center text-center mt-5">
         {user ? (
           <button
             className="btn btn-outline mb-2 btn-md border-0 border-b-2 border-l-2 font-bold rounded-md border-yellow-600 bg-black border-2xl hover:bg-yellow-600 w-40"
-            onClick={handleProductAction} 
+            onClick={handleAddProduct} 
           >
             Get Now
           </button>

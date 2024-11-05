@@ -221,16 +221,18 @@ const NavBar = () => {
               <div className="sticky bottom-0 bg-base-200 px-4 py-3 md:py-4 border-t border-yellow-700  ">
                 <h2 className="text-2xl font-bold  flex justify-evenly gap-20">
                   Total Price:
-                  <span className="text-red-500"> {totalPrice}$</span>
+                  <span className="text-red-500"> {totalPrice}TK</span>
                 </h2>
                 <div
                   data-tip="Pay?"
                   className="flex tooltip  tooltip-warning justify-end mt-2 "
                 >
                   {/* Add margin-top for spacing */}
-                  <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
+                   <Link to={'/orderInfo'}>
+                   <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
                     Pay
                   </button>
+                  </Link>
                   {/* You can customize button styling */}
                 </div>
               </div>

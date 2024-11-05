@@ -18,6 +18,8 @@ import ManageProduct from "../Layout/DashBoard/ManageProduct/ManageProduct";
 import UpdateProduct from "../Layout/DashBoard/UpdateProduct/UpdateProduct";
 import AdminProfile from "../Layout/DashBoard/AdminProfile/AdminProfile";
 import UserProfile from "../Layout/DashBoard/UserProfile/UserProfile";
+import AddShippingMethod from "../Layout/DashBoard/AddShippingMethod/AddShippingMethod";
+import OrderInfo from "../Pages/OrderInfo/OrderInfo";
 
 
   export const router = createBrowserRouter([
@@ -45,6 +47,10 @@ import UserProfile from "../Layout/DashBoard/UserProfile/UserProfile";
             path:'/details/:id',
             element:<PriveteRoutes><Details></Details></PriveteRoutes>
         },
+        {
+            path:'/orderInfo',
+            element:<PriveteRoutes><OrderInfo></OrderInfo></PriveteRoutes>
+        },
       ]
     },
     {
@@ -65,6 +71,10 @@ import UserProfile from "../Layout/DashBoard/UserProfile/UserProfile";
        {
         path:'adminProfile',
         element:<AdminRoutes><AdminProfile></AdminProfile></AdminRoutes>
+       },
+       {
+        path:'addShippings',
+        element:<AdminRoutes><AddShippingMethod></AddShippingMethod></AdminRoutes>
        },
        {
         path:'addItems',

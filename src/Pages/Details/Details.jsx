@@ -158,7 +158,7 @@ const Details = () => {
           <p className="border-t-2 border-b-2 p-2  rounded-md">{description}</p>
           <div className="flex justify-between mb-5">
             <h3 className="text-xl font-bold gap-2">
-              Price: <span className="text-red-600"> {price}$</span>{" "}
+              Price: <span className="text-red-600"> {price}TK</span>{" "}
             </h3>
             <h3 className="flex gap-2 text-xl">
               Rating: {rating}
@@ -392,13 +392,18 @@ const Details = () => {
         </div>
       </div>
       {/* Suggestion section */}
-      <div className="mt-10 bg-gradient-to-br from-gray-700  via-slate-900 to-gray-700 p-6  ">
+      <div className="mt-10 bg-gradient-to-br from-gray-700 via-slate-900 to-gray-700 p-6">
         <div className="flex justify-between max-sm:flex-col max-sm:gap-6">
-        <h2 className="text-xl font-bold">You May Also Like</h2>
-       <Link to='/allCollections'> <button className="uppercase font-bold flex gap-4"><FaArrowRight className="text-2xl" />Check Our Other Products</button></Link>
+          <h2 className="text-xl font-bold">You May Also Like</h2>
+          <Link to="/allCollections">
+            <button className="uppercase font-bold flex gap-4">
+              <FaArrowRight className="text-2xl" />
+              Check Our Other Products
+            </button>
+          </Link>
         </div>
-        <div className="mt-10 text-white ">
-          <Swiper 
+        <div className="mt-10 text-white relative">
+          <Swiper
             modules={[Pagination, Navigation]}
             spaceBetween={10}
             loop={true}
@@ -406,7 +411,7 @@ const Details = () => {
             breakpoints={{
               640: {
                 slidesPerView: 2,
-              },          
+              },
               1024: {
                 slidesPerView: 4,
               },
@@ -414,30 +419,43 @@ const Details = () => {
           >
             {suggestProduct.map((prod) => (
               <SwiperSlide className="" key={prod._id}>
-                <div className="card bg-gradient-to-br from-gray-700  via-black to-gray-700 h-full rounded-md ">
+                <div className="card bg-gradient-to-br from-gray-700 via-black to-gray-700 h-full rounded-md">
                   <img
                     src={prod.image}
                     alt={prod.name}
                     className="w-full h-48 p-4 rounded-xl object-cover"
                   />
-                  <div className="p-4 h-40 flex flex-col ">
+                  <div className="p-4 h-40 flex flex-col">
                     <h3 className="font-bold">{prod.name}</h3>
                     <p>{prod.description}</p>
                     <h4 className="text-red-600">{prod.price}$</h4>
-                  
                   </div>
-                 <Link to={`/details/${prod._id}`}>
-                 <div className="p-2">
-                    <button className="btn btn-warning ml-2 btn-sm rounded-xl text-center ">Check</button>
-                  </div></Link>
-                  
+                  <Link to={`/details/${prod._id}`}>
+                    <div className="p-2">
+                      <button className="btn btn-warning ml-2 btn-sm rounded-xl text-center">
+                        Check
+                      </button>
+                    </div>
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+          {/* Custom styles for Swiper navigation buttons */}
+          <style >{`
+            .swiper-button-next,
+            .swiper-button-prev {
+              color: orange; /* Change the button color to orange */
+              width: 20px; /* Adjust width to make it smaller */
+              height: 20px; /* Adjust height to make it smaller */
+            }
+            .swiper-button-next::after,
+            .swiper-button-prev::after {
+              font-size: 18px; /* Adjust icon size to make it smaller */
+            }
+          `}</style>
         </div>
       </div>
-      
     </div>
   );
 };

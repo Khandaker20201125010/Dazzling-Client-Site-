@@ -310,6 +310,7 @@ const SignUp = () => {
                     />
                   </div>
                 </form>
+                <h3 className="text-center text-xl mt-0 text-gray-500 py-5 font-bold">Or</h3>
                 <div className="flex animate-pulse m-auto gap-2 justify-center">
                   <button
                     onClick={handeleGoogleSignIn}

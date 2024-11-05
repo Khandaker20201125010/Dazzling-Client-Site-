@@ -16,7 +16,7 @@ const ProductItem = ({ product }) => {
                 </div>
             </div>
             <div className='flex flex-col gap-5'>
-                <p className='text-lg text-lighting  text-white'>{price}$</p>
+                <p className='text-lg text-lighting  text-white'>{price}TK</p>
                
              <Link to={`/details/${product?._id}`}>   <button className='buton'>
                     <span className='text-white font-bold'>Get </span>

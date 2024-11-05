@@ -40,7 +40,7 @@ const MenuCarts = ({ cart ,refetch}) => {
                 <figure><img className="w-16 h-16 rounded-full" src={image} alt={name} /></figure>
                 <h3 className="text-sm m-auto">{name}</h3>
                 <div className="flex gap-5">
-                    <h2 className="text-xl text-red-500">{price}$</h2>
+                    <h2 className="text-xl text-red-500">{price}TK  </h2>
                     <button onClick={() => handelDelete(_id)} className="text-2xl text-red-500 tooltip tooltip-warning" data-tip="Cancel">
                         <TiDelete />
                     </button>

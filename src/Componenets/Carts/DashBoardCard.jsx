@@ -52,9 +52,11 @@ const DashBoardCard = () => {
                 <h3>Total Selected Items: {cart.length}</h3>
                 <div>
                     <h3>Total Price: {total}</h3>
-                    <button className='btn btn-xs w-24 hover:w-32 transition-all duration-300 ease-in-out rounded-e-2xl hover:bg-gradient-to-t from-yellow-600 to-red-700 bg-red-600 hover:shadow-red-700 hover:shadow-2xl'>
+                  <Link to='/orderInfo'>
+                  <button className='btn btn-xs w-24 hover:w-32 transition-all duration-300 ease-in-out rounded-e-2xl hover:bg-gradient-to-t from-yellow-600 to-red-700 bg-red-600 hover:shadow-red-700 hover:shadow-2xl'>
                         Pay
                     </button>
+                  </Link>
                 </div>
             </div>
             <div className="overflow-x-auto">

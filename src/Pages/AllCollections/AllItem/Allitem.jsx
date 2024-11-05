@@ -21,7 +21,7 @@ const Allitem = ({ product }) => {
             alt={product.name}
           />
           <span className="absolute right-3 bottom-2 border-b-2 border-s-2 border-yellow-300 bg-black hover:shadow-sm hover:shadow-yellow-300 text-yellow-400 font-bold text-sm p-2 rounded-tl-[1rem] rounded-tr-[1rem] rounded-bl-[2rem] rounded-br-[2rem] shadow-lg">
-            ${product.price}
+            TK{product.price}
           </span>
         </div>  
 

@@ -34,6 +34,11 @@ const DashBoard = () => {
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'
                     : 'font-bold text-gray-500 hover:text-orange-600';
+            }} to='/dashBoard/addShippings'><CgProfile size={25} />Add Shippings</NavLink>
+            <NavLink className={({ isActive }) => {
+                return isActive
+                    ? 'font-bold text-white hover:text-orange-600'
+                    : 'font-bold text-gray-500 hover:text-orange-600';
             }} to='/dashBoard/addItems'> <GiClothes size={25} />Add items</NavLink>
             <NavLink className={({ isActive }) => {
                 return isActive
