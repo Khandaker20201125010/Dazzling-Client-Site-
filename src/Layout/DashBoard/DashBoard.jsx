@@ -75,7 +75,7 @@ const DashBoard = () => {
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'
                     : 'font-bold text-gray-500 hover:text-orange-600';
-            }} to='/dashBoard/reservation'><FaCalendar />Reservation</NavLink>
+            }} to='/dashBoard/paymentHistory'><FaCalendar />Payment History</NavLink>
             <NavLink className={({ isActive }) => {
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'

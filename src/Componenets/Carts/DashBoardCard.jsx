@@ -3,6 +3,7 @@ import useCart from '../../Hooks/useCart';
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure'; // Correct hook import
+import { Link } from 'react-router-dom';
 
 const DashBoardCard = () => {
     const [cart, refetch] = useCart();

@@ -1,9 +1,10 @@
 import { useInstantTransition } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { RiLoader2Fill } from "react-icons/ri";
 
 const PaymentLoading = () => {
-    const [isLoading, setIsLoading] = useInstantTransition(true)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
       const timer = setTimeout(() => {
@@ -19,7 +20,7 @@ const PaymentLoading = () => {
         <div className="p-8 bg-white rounded-lg shadow-xl max-w-md w-full">
           {isLoading ? (
             <div className="flex flex-col items-center">
-              <Loader2 className="h-16 w-16 text-blue-500 animate-spin" />
+              <RiLoader2Fill className="h-16 w-16 text-blue-500 animate-spin" />
               <h2 className="mt-4 text-xl font-semibold text-gray-700">
                 Processing Payment
               </h2>

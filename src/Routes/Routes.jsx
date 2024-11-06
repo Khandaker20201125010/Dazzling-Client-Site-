@@ -20,6 +20,9 @@ import AdminProfile from "../Layout/DashBoard/AdminProfile/AdminProfile";
 import UserProfile from "../Layout/DashBoard/UserProfile/UserProfile";
 import AddShippingMethod from "../Layout/DashBoard/AddShippingMethod/AddShippingMethod";
 import OrderInfo from "../Pages/OrderInfo/OrderInfo";
+import PaymentSuccess from "../Pages/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Pages/Shared/PaymentFailed/PaymentFailed";
+import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 
 
   export const router = createBrowserRouter([
@@ -53,7 +56,11 @@ import OrderInfo from "../Pages/OrderInfo/OrderInfo";
         },
         {
             path:'payment/success/:tranId', 
-            element:<PriveteRoutes><OrderInfo></OrderInfo></PriveteRoutes>
+            element:<PaymentSuccess></PaymentSuccess>
+        },
+        {
+            path:'payment/fail/:tranId', 
+            element:<PriveteRoutes><PaymentFailed></PaymentFailed></PriveteRoutes>
         },
       ]
     },
@@ -70,6 +77,11 @@ import OrderInfo from "../Pages/OrderInfo/OrderInfo";
           path:'cart',
           element:<DashBoardCard></DashBoardCard>
         },
+        {
+          path:'paymentHistory',
+          element:<PaymentHistory></PaymentHistory>
+        },
+
        
        //admin routes
        {
