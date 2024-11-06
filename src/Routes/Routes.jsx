@@ -51,6 +51,10 @@ import OrderInfo from "../Pages/OrderInfo/OrderInfo";
             path:'/orderInfo',
             element:<PriveteRoutes><OrderInfo></OrderInfo></PriveteRoutes>
         },
+        {
+            path:'payment/success/:tranId', 
+            element:<PriveteRoutes><OrderInfo></OrderInfo></PriveteRoutes>
+        },
       ]
     },
     {

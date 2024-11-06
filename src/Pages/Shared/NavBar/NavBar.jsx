@@ -18,7 +18,7 @@ const NavBar = () => {
   const [visibleItems, setVisibleItems] = useState(9); // Initially show 9 items
   const ulRef = useRef(null); // Ref to the ul element
   const [profile, setProfile] = useState(false);
-  const [ isAdmin] = useAdmin();
+  const [isAdmin] = useAdmin();
   const handleClick = () => setClick(!click);
   const closeMenu = () => {
     setClick(false);
@@ -97,17 +97,17 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <div className="hover:text-yellow-600 md:hidden lg:hidden">
+        <div className="hover:text-yellow-600 md:hidden lg:hidden flex justify-center">
           {user ? (
             <>
-              <button className="text-xl " onClick={handelLogOut}>
+              <button className="text-xl text-center" onClick={handelLogOut}>
                 Leave
               </button>
             </>
           ) : (
             <>
               <Link to="/login">
-                <button className=" text-xl">Join us</button>
+                <button className=" text-xl text-center">Join us</button>
               </Link>
             </>
           )}
@@ -148,6 +148,24 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow nav-link"
             >
+              <div className="">
+                <h3 className="text-center font-bold"> {user?.displayName}</h3>
+                <h3 className="text-center font-bold"> {user?.email}</h3>
+                <div className="text-center flex justify-center hover:text-yellow-500">
+                  <li onClick={() => setProfile(!profile)}>
+                    {isAdmin ? (
+                      <Link to="dashboard/adminProfile">
+                        <h3 className="text-center">My Profile</h3>
+                      </Link>
+                    ) : (
+                      <Link to="dashboard/userProfile">
+                        <h3 className="text-center">My Profile</h3>
+                      </Link>
+                    )}
+                  </li>
+                </div>
+              </div>
+
               {links}
             </ul>
           </div>
@@ -171,7 +189,7 @@ const NavBar = () => {
               <div onClick={handleClick}>
                 <div
                   data-tip="Cart"
-                  className="indicator p-1 md:mr-20 max-sm:mr-5 tooltip tooltip-warning tooltip-bottom"
+                  className="indicator md:mr-20 max-sm:mr-5 tooltip tooltip-warning tooltip-bottom"
                 >
                   <BsCart4 size={25} className="text-yellow-600" />
                   <span className="badge badge-xs rounded-full bg-red-600 h-6 w-6 p-2 indicator-item text-white">
@@ -209,7 +227,7 @@ const NavBar = () => {
                 className="hidden-scrollbar p-4 space-y-6 text-center z-[1]"
               >
                 {/* Hide Scrollbar for WebKit Browsers */}
-                <style >{`
+                <style>{`
                   ul::-webkit-scrollbar {
                     display: none;
                   }
@@ -228,10 +246,10 @@ const NavBar = () => {
                   className="flex tooltip  tooltip-warning justify-end mt-2 "
                 >
                   {/* Add margin-top for spacing */}
-                   <Link to={'/orderInfo'}>
-                   <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
-                    Pay
-                  </button>
+                  <Link to={"/orderInfo"}>
+                    <button className=" h-7 w-28 rounded-xl hover:bg-orange-500 mr-10 text-black bg-orange-400 text-xl font-bold ">
+                      Pay
+                    </button>
                   </Link>
                   {/* You can customize button styling */}
                 </div>
@@ -272,13 +290,11 @@ const NavBar = () => {
                         <li>{user?.displayName}</li>
                         <li>{user?.email}</li>
                         <li onClick={() => setProfile(!profile)}>
-                         {
-                           isAdmin ? 
-                           <Link to ='dashboard/adminProfile'>My Profile</Link> 
-                           : <Link to ='dashboard/userProfile'>My Profile</Link>
-                         }
-
-
+                          {isAdmin ? (
+                            <Link to="dashboard/adminProfile">My Profile</Link>
+                          ) : (
+                            <Link to="dashboard/userProfile">My Profile</Link>
+                          )}
                         </li>
                         <li>
                           <button className=" text-xl" onClick={handelLogOut}>

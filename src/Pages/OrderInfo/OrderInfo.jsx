@@ -3,7 +3,9 @@ import useCart from "../../Hooks/useCart";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useShippings from "../../Hooks/useShippings";
 import { IoIosArrowDown } from "react-icons/io";    
+import useAuth from "../../Hooks/useAuth";
 const OrderInfo = () => {
+    const { user } = useAuth();
   const [cart, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
   const [open, setOpen] = useState(false);
@@ -64,15 +66,15 @@ const handleOrder = async (e) => {
     }
     setServiceError('')
 
-    const res = await axiosSecure.post('/orders', data)
+    const res = await axiosSecure.post('/order', data)
     if (res.data) {
         window.location.replace(res.data.url)
     }
 }
   return (
-    <div>
+    <div className="border-2 border-base-300">
       <div>
-        <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-base-300 shadow-[0_0_25px_rgba(0,0,0,0.1)] max-sm:mx-4">
+        <div className="lg:w-2/4 md:w-2/3 mx-auto my-5 md:p-5 p-3 rounded-lg border border-orange-300 shadow-[0_0_25px_rgba(0,0,0,0.1)] max-sm:mx-4">
           <h3 className="text-3xl font-bold text-center text-orange-500 my-2">
             Order Information
           </h3>
@@ -146,7 +148,7 @@ const handleOrder = async (e) => {
                               className="font-medium mb-1 text-center text-xs border px-2 w-full"
                             >
                               {" "}
-                              {shipping?.shippingLocation} (USD :{" "}
+                              {shipping?.shippingLocation} (TK :{" "}
                               {shipping?.serviceCharge})
                             </button>
                           </li>
