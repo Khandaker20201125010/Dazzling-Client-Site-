@@ -4,9 +4,8 @@ import { CgProfile } from "react-icons/cg";
 import { IoHome } from "react-icons/io5";
 import useCart from "../../Hooks/useCart";
 import { MdConnectWithoutContact } from "react-icons/md";
-import { FaCalendar } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
-import { FaBook, FaList, FaUsersGear } from "react-icons/fa6";
+import { FaBook, FaList, FaMoneyCheckDollar, FaUsersGear } from "react-icons/fa6";
 import { useState } from "react";
 import { SlMenu } from 'react-icons/sl';
 import { LiaTimesSolid } from 'react-icons/lia';
@@ -75,12 +74,8 @@ const DashBoard = () => {
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'
                     : 'font-bold text-gray-500 hover:text-orange-600';
-            }} to='/dashBoard/paymentHistory'><FaCalendar />Payment History</NavLink>
-            <NavLink className={({ isActive }) => {
-                return isActive
-                    ? 'font-bold text-white hover:text-orange-600'
-                    : 'font-bold text-gray-500 hover:text-orange-600';
-            }} to='/dashBoard/myBooking'><CgProfile />My Booking</NavLink>
+            }} to='/dashBoard/paymentHistory'><FaMoneyCheckDollar />Payment History</NavLink>
+          
         </>
     )
 

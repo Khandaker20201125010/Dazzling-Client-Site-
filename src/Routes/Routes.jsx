@@ -23,6 +23,7 @@ import OrderInfo from "../Pages/OrderInfo/OrderInfo";
 import PaymentSuccess from "../Pages/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "../Pages/Shared/PaymentFailed/PaymentFailed";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
+import ManageBookings from "../Layout/DashBoard/ManageBookings/ManageBookings";
 
 
   export const router = createBrowserRouter([
@@ -81,8 +82,6 @@ import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
           path:'paymentHistory',
           element:<PaymentHistory></PaymentHistory>
         },
-
-       
        //admin routes
        {
         path:'adminProfile',
@@ -107,7 +106,7 @@ import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
        },
       {
         path:'manageBookings',
-        element:<AdminRoutes></AdminRoutes>
+        element:<AdminRoutes><ManageBookings></ManageBookings></AdminRoutes>
       },
       {
         path:'allUsers',
