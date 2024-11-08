@@ -16,7 +16,7 @@ const AllCollections = () => {
     const tabsRef = useRef([]);
     const [itemPerPages, setItemPerPages] = useState(10);
     const dataLength = product?.length;
-    
+
     // Pagination
     const numberOfPages = Math.ceil(dataLength / itemPerPages);
     const [currentPages, setCurrentPages] = useState(0);
@@ -26,6 +26,9 @@ const AllCollections = () => {
 
     // Search state
     const [searchQuery, setSearchQuery] = useState("");
+
+    // Sorting state
+    const [sortOrder, setSortOrder] = useState("lowToHigh"); // Default sort: low to high
 
     // Load products for pagination
     useEffect(() => {
@@ -51,10 +54,19 @@ const AllCollections = () => {
         productItem.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // Sort the filtered products by price
+    const sortedProducts = sortOrder === "default" ? filteredProducts : [...filteredProducts].sort((a, b) => {
+        if (sortOrder === "lowToHigh") {
+            return a.price - b.price; // Ascending price order
+        } else {
+            return b.price - a.price; // Descending price order
+        }
+    });
+
     // Tab content
     const allProductsContent = (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {filteredProducts.map((productItem) => (
+            {sortedProducts.map((productItem) => (
                 <Allitem key={productItem._id || productItem.id} product={productItem} />
             ))}
         </div>
@@ -128,7 +140,7 @@ const AllCollections = () => {
             <div className="bg-black">
                 <div className="w-full mx-auto m-auto bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl lg:p-10">
                     {/* Search Input */}
-                    <div className="flex justify-center mb-8 ">
+                    <div className="flex justify-center mb-8">
                         <input
                             type="text"
                             placeholder="Search by gender, brand, or name"
@@ -136,6 +148,19 @@ const AllCollections = () => {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
+                    </div>
+
+                    {/* Sorting Dropdown */}
+                    <div className="flex justify-end mb-8 max-sm:justify-center">
+                        <select
+                            className="w-48 p-2 border border-yellow-600 rounded-md text-white"
+                            value={sortOrder}
+                            onChange={(e) => setSortOrder(e.target.value)}
+                        >
+                            <option value="default">Default</option> 
+                            <option value="lowToHigh">Price: Low to High</option>
+                            <option value="highToLow">Price: High to Low</option>
+                        </select>
                     </div>
 
                     <div className="relative mb-8">
