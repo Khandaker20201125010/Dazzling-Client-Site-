@@ -6,8 +6,8 @@ const Footer = () => {
             <footer className="bg-gray-900 text-white py-8">
                 <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-52">
                     <div className="text-center md:text-left">
-                        <h3 className="text-xl font-bold mb-2 mx-16">Contact Us</h3>
-                        <p > 123 ABS Street, Uni 21, Bangladesh</p>
+                        <h3 className="text-xl font-bold mb-2 mx-16 ">Contact Us</h3>
+                        <p className='mx-10' > Feel free to contact us</p>
                         <p className='mx-12'>+88 123456789</p>
                         <p className='mx-8'>Mon - Fri: 08:00 - 22:00</p>
                         <p className='mx-8'>Sat - Sun: 10:00 - 23:00</p>

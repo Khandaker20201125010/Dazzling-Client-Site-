@@ -1406,7 +1406,13 @@ ul {
         scrollbar-width: none;      /* Firefox */
     }
 }
-
+.contactBG{
+  background-image: url('./assets/images/contactbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px	;
+ 
+}
 
   
  
