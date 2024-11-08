@@ -9,14 +9,14 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const AllCollections = () => {
     const [product] = useProduct();
     const men = product.filter(product => product.gender === 'Men');
-    const Women = product.filter(product => product.gender === 'Women');
+    const women = product.filter(product => product.gender === 'Women');
     const axiosPublic = useAxiosPublic();
     const [activeTab, setActiveTab] = useState(0);
     const [indicatorStyle, setIndicatorStyle] = useState({});
     const tabsRef = useRef([]);
     const [itemPerPages, setItemPerPages] = useState(10);
     const dataLength = product?.length;
-
+    
     // Pagination
     const numberOfPages = Math.ceil(dataLength / itemPerPages);
     const [currentPages, setCurrentPages] = useState(0);
@@ -24,6 +24,10 @@ const AllCollections = () => {
     const [paginatedProduct, setPaginatedProduct] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // Search state
+    const [searchQuery, setSearchQuery] = useState("");
+
+    // Load products for pagination
     useEffect(() => {
         setLoading(true);
         if (activeTab === 0) {
@@ -40,17 +44,24 @@ const AllCollections = () => {
         } 
     }, [currentPages, activeTab, itemPerPages, axiosPublic]);
 
-    // Define the tab content separately for clarity
+    // Filtered products based on search query
+    const filteredProducts = paginatedProduct.filter((productItem) =>
+        productItem.gender.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        productItem.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        productItem.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // Tab content
     const allProductsContent = (
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {paginatedProduct.map((productItem) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredProducts.map((productItem) => (
                 <Allitem key={productItem._id || productItem.id} product={productItem} />
             ))}
         </div>
     );
 
     const mensCollections = (
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {men.map(product => (
                 <Allitem key={product._id} product={product} />
             ))}
@@ -58,8 +69,8 @@ const AllCollections = () => {
     );
 
     const woMensCollections = (
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Women.map(product => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {women.map(product => (
                 <Allitem key={product._id} product={product} />
             ))}
         </div>
@@ -96,13 +107,13 @@ const AllCollections = () => {
         );
     };
 
-    const handelPreviewPage = () => {
+    const handlePreviewPage = () => {
         if (currentPages > 0) {
             setCurrentPages(currentPages - 1);
         }
     };
 
-    const handelNextPage = () => {
+    const handleNextPage = () => {
         if (currentPages < pages.length - 1) {
             setCurrentPages(currentPages + 1);
         }
@@ -116,8 +127,19 @@ const AllCollections = () => {
 
             <div className="bg-black">
                 <div className="w-full mx-auto m-auto bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl lg:p-10">
+                    {/* Search Input */}
+                    <div className="flex justify-center mb-8 ">
+                        <input
+                            type="text"
+                            placeholder="Search by gender, brand, or name"
+                            className="w-80 md:w-1/2 lg:w-1/3 p-2  border border-yellow-600 rounded-md text-white"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+
                     <div className="relative mb-8">
-                        <div className="flex space-x-1 justify-center ">
+                        <div className="container flex space-x-1 justify-center ">
                             {tabs.map((tab, index) => (
                                 <button
                                     key={index}
@@ -136,7 +158,7 @@ const AllCollections = () => {
                     </div>
 
                     {/* Tab Panels */}
-                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner  ">
+                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner lg:w-full">
                         {tabs.map((tab, index) => (
                             <TabPanel key={index} index={index}>
                                 {tab.content}
@@ -147,19 +169,19 @@ const AllCollections = () => {
                             <p className="p-2 text-white">Current Page : {currentPages + 1}</p>
                         </div>
                         <div className="flex justify-center gap-2">
-                            <button onClick={handelPreviewPage} className="p-2">
+                            <button onClick={handlePreviewPage} className="p-2">
                                 <GrPrevious size={25} color="orange" />
                             </button>
                             {pages.map((page) => (
                                 <button
                                     onClick={() => setCurrentPages(page)}
                                     className="hover:bg-yellow-500 font-bold bg-black rounded-md py-1 px-3 border-s-2 border-b-2 border-yellow-600"
-                                    key={page} // Corrected key usage here
+                                    key={page}
                                 >
                                     {page + 1}
                                 </button>
                             ))}
-                            <button onClick={handelNextPage} className="p-2">
+                            <button onClick={handleNextPage} className="p-2">
                                 <GrNext size={25} color="orange" />
                             </button>
                         </div>

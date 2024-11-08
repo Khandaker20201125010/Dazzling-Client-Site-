@@ -27,9 +27,6 @@ const Login = () => {
             console.error("Card element not found");
             return;
         }
-
-
-
         const rotDeg = { current: vec2(), target: vec2() };
         const bgPos = { current: vec2(), target: vec2() };
         let lerpAmount = 0.06;

@@ -5,7 +5,6 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 import { BsCart4 } from "react-icons/bs";
 import useCart from "../../../Hooks/useCart";
 import { LiaTimesSolid } from "react-icons/lia";
-import { AiOutlineClose } from "react-icons/ai";
 import MenuCarts from "../../../Componenets/Carts/MenuCarts";
 import toast, { Toaster } from "react-hot-toast";
 import Avatar from "react-avatar";
@@ -270,6 +269,7 @@ const NavBar = () => {
                 <>
                   <div className="flex gap-5">
                     <div className="relative ">
+                      <img src={user.photo}alt="" />
                       <div>
                         <Avatar
                           name={user?.displayName?.charAt(0)}

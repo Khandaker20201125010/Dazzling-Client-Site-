@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Allitem = ({ product }) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
   // Set different background images based on gender
   const backgroundImage =
     product.gender === "Men"
@@ -8,7 +12,7 @@ const Allitem = ({ product }) => {
       : "url('https://i.ibb.co.com/y8Y8VZ1/1000-F-373923425-l-PNd-O9i4s366-Egk-PDAw-Xt-Lx-SRSVLSDd4.jpg')"; // Women's background (replace with actual image URL)
 
   return (
-    <div data-aos="zoom-in-up" className="">
+    <div data-aos="zoom-in-up" className=" ">
       <div
         className="relative w-[18rem] h-full  rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
         style={{ backgroundImage: backgroundImage }} // Apply dynamic background
@@ -27,6 +31,7 @@ const Allitem = ({ product }) => {
 
         {/* Product Info */}
         <div className="px-3 mb-4 flex flex-col h-24 grow">
+          <h3 className="text-xl text-yellow-400">{product.gender}</h3>
           <h3 className="text-white font-bold">{product.brand}</h3>
           <p className="text-white font-semibold text-xs mb-2">
             {product.name}
@@ -37,7 +42,7 @@ const Allitem = ({ product }) => {
         <div className="flex gap-2">
           <Link to={`/details/${product?._id}`}>
             {" "}
-            <button className="border-0 border-b-4 border-s-2 border-yellow-300 w-44 bg-black text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
+            <button onClick={() => window.scrollTo(0, 0)} className="border-0 border-b-4 border-s-2 border-yellow-300 w-44 bg-black text-white font-bold rounded-tl-3xl rounded-br-xl rounded-tr-3xl rounded-bl-xl p-2 transition-colors duration-200 hover:bg-orange-400">
               Check Out
             </button>
           </Link>
