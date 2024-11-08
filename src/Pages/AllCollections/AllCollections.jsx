@@ -92,7 +92,7 @@ const AllCollections = () => {
         { label: "All Products", content: allProductsContent },
         { label: "Mens Collections", content: mensCollections },
         { label: "Women Collections", content: woMensCollections },
-        { label: "Luxurious Product", content: <h2>Need help? Check our FAQs or contact support.</h2> },
+      
     ];
 
     useEffect(() => {
@@ -138,7 +138,7 @@ const AllCollections = () => {
             </Helmet>
 
             <div className="bg-black">
-                <div className="w-full mx-auto m-auto bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl lg:p-10">
+                <div className="w-full mx-auto m-auto bg-gradient-to-br from-sky-950 via-black to-indigo-950  shadow-2xl lg:p-10">
                     {/* Search Input */}
                     <div className="flex justify-center mb-8">
                         <input
@@ -164,7 +164,7 @@ const AllCollections = () => {
                     </div>
 
                     <div className="relative mb-8">
-                        <div className="container flex space-x-1 justify-center ">
+                        <div className="container flex space-x-1 justify-center max-sm:flex-col ">
                             {tabs.map((tab, index) => (
                                 <button
                                     key={index}
@@ -183,7 +183,7 @@ const AllCollections = () => {
                     </div>
 
                     {/* Tab Panels */}
-                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner lg:w-full">
+                    <div className="bg-gradient-to-br from-black via-sky-950 to-black  p-6 rounded-lg shadow-inner lg:w-full">
                         {tabs.map((tab, index) => (
                             <TabPanel key={index} index={index}>
                                 {tab.content}

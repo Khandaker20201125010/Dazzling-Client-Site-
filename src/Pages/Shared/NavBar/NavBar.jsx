@@ -90,9 +90,9 @@ const NavBar = () => {
               ? "font-bold text-yellow-600 hover:text-yellow-700 tooltip tooltip-warning tooltip-bottom "
               : "font-bold text-white hover:text-yellow-600 tooltip tooltip-warning tooltip-bottom "
           }
-          to="/Contact"
+          to="/Contacts"
         >
-          Contact
+          Contacts
         </NavLink>
       </li>
       <li>

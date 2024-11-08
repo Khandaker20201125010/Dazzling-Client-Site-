@@ -24,6 +24,7 @@ import PaymentSuccess from "../Pages/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "../Pages/Shared/PaymentFailed/PaymentFailed";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 import ManageBookings from "../Layout/DashBoard/ManageBookings/ManageBookings";
+import Contact from "../Pages/Contact.jsx/Contact";
 
 
   export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ import ManageBookings from "../Layout/DashBoard/ManageBookings/ManageBookings";
         {
             path:'/allCollections',
             element:<PriveteRoutes><AllCollections></AllCollections></PriveteRoutes>
+        },
+        {
+            path:'/Contacts',
+            element:<PriveteRoutes><Contact></Contact></PriveteRoutes>
         },
         {
             path:'/login',
