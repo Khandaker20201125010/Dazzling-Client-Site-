@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { IoMdCheckmarkCircle } from "react-icons/io";
+import { IoIosArrowDropright, IoMdCheckmarkCircle } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
 
 const ManageBookings = () => {
@@ -56,15 +56,18 @@ const ManageBookings = () => {
 
       <h2 className="text-3xl mb-5">Total Payments: {filteredOrders.length}</h2>
 
-      <div className="flex justify-between container m-auto px-16">
+      <div className="lg:flex justify-between container m-auto px-10">
         {/* Search Input */}
-        <input
+      <div className="flex gap-2">
+        <h3 className="text-center text-2xl flex justify-center">Search <IoIosArrowDropright className="text-2xl"></IoIosArrowDropright> </h3>
+      <input
           type="text"
           placeholder="Search by email..."
           className="mb-4 p-2 rounded-md"
           value={searchEmail}
           onChange={(e) => setSearchEmail(e.target.value)} // Update searchEmail on change
         />
+      </div>
         {/* Status Filter Dropdown */}
         <select
           value={statusFilter}

@@ -115,9 +115,9 @@ const AllCollections = () => {
             </Helmet>
 
             <div className="bg-black">
-                <div className="w-full mx-auto m-auto bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl p-10">
+                <div className="w-full mx-auto m-auto bg-gradient-to-br from-black to-indigo-950 rounded-xl shadow-2xl lg:p-10">
                     <div className="relative mb-8">
-                        <div className="flex space-x-1 justify-center">
+                        <div className="flex space-x-1 justify-center ">
                             {tabs.map((tab, index) => (
                                 <button
                                     key={index}
@@ -136,7 +136,7 @@ const AllCollections = () => {
                     </div>
 
                     {/* Tab Panels */}
-                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner">
+                    <div className="bg-sky-950 p-6 rounded-lg shadow-inner  ">
                         {tabs.map((tab, index) => (
                             <TabPanel key={index} index={index}>
                                 {tab.content}

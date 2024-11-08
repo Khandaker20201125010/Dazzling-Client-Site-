@@ -61,10 +61,12 @@ const AdminProfile = () => {
             {userRole}
           </span>
         </div>
-        <div className="text-center p-2 mb-2 text-black font-bold text-2xl">
+
+        {/* Stats Section */}
+        <div className="text-center p-2 mb-2 text-black font-bold text-2xl ">
           <h3>Website Stats</h3>
         </div>
-        <div className="flex justify-center items-center  ">
+        <div className="flex justify-center items-center ">
           <div className="mx-auto stats shadow  bg-gradient-to-br from-black via-sky-500 to-black ">
             <div className="stat">
               <div className="stat-figure text-secondary">

@@ -201,7 +201,7 @@ const NavBar = () => {
 
             {/* Menu Items */}
             <div
-              className={`fixed top-10 right-0 w-[500px] h-full bg-base-200 transition-transform duration-500 ease-in-out z-50 ${
+              className={`fixed top-10 right-0 w-[500px] max-sm:w-[310px] h-full bg-base-200 transition-transform duration-500 ease-in-out z-50 ${
                 click ? "translate-x-0" : "translate-x-full"
               }`} // Change left to right
             >

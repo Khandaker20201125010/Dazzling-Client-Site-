@@ -15,12 +15,12 @@ const OrderInfo = () => {
   const [serviceCharge, setServiceCharge] = useState(0);
   const totalPrice = cart.reduce((total, product) => total + product.price, 0);
   const inTotal = parseInt(totalPrice) + parseInt(serviceCharge);
-  const cartsData = cart?.map((carts) => {
+  const cartsData = cart?.map((cart) => {
     return {
-      name: carts?.name,
-      image: carts?.image,
-      price: carts?.price,
-      // quantity: cart?.quantity,
+      name: cart?.name,
+      image: cart?.image,
+      price: cart?.price,
+      quantity: cart?.quantity,  // Make sure to include quantity if you need it.
     };
   });
   const handleServiceCharge = shipping => {
