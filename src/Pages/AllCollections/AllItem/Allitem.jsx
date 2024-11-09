@@ -14,13 +14,13 @@ const Allitem = ({ product }) => {
   return (
     <div data-aos="zoom-in-up" className=" ">
       <div
-        className="relative w-[18rem] h-full  rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
+        className="relative w-[18rem]  h-full  rounded-2xl p-3 hover:shadow-yellow-600 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
         style={{ backgroundImage: backgroundImage }} // Apply dynamic background
       >
         {/* Image Container */}
         <div className="w-full rounded-[0.7rem] rounded-tr-[6rem] mb-4 overflow-hidden relative">
           <img
-            className="w-full h-[18rem] rounded-[0.7rem] rounded-tr-[6rem] mb-4 border-red-900"
+            className="w-full h-[18rem] rounded-[0.7rem] rounded-tr-[6rem] mb-4 border-red-900 skeleton"
             src={product.image}
             alt={product.name}
           />

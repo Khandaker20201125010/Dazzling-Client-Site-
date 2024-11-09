@@ -29,10 +29,11 @@ const Testimonials = () => {
         <h3 className="loadero mx-auto"></h3>
         
       </div>
-      <div className="mt-20 mx-20 ">
+    <div className="container mx-auto mt-20 rounded-md bg-slate-600 p-10">
+    <div className=" ">
         <Swiper
           modules={[Pagination  , Navigation]}
-          spaceBetween={10}
+          spaceBetween={20}
           loop={true}
           navigation
           breakpoints={{
@@ -46,15 +47,18 @@ const Testimonials = () => {
         >
           {reviews.map((reviews) => (
             <SwiperSlide key={reviews._id}>
-              <div className="flex  justify-center card bg-gradient-to-br from-blue-700 via-black to-gray-700 h-full rounded-md p-5">
-              <h3 className="text-2xl text-orange-400">{reviews.name}</h3>
+              <div className="flex text-cen  justify-center card bg-gradient-to-br from-blue-700 via-black to-gray-700 h-full rounded-md p-5">
+              <div className="flex justify-center">
                 <Rating
                   style={{ maxWidth: 180 }}
                   value={reviews.rating}
                   readOnly
                 />
+                </div>
+              <h3 className="text-2xl text-orange-400 text-center">{reviews.name}</h3>
+               
                 <span className=" mt-5"></span>
-                <p className="py-8">{reviews.details}</p>
+                <p className="py-8">Review: {reviews.details}</p>
                
               </div>
             </SwiperSlide>
@@ -62,6 +66,7 @@ const Testimonials = () => {
         </Swiper>
        
       </div>
+    </div>
     </div>
   );
 };

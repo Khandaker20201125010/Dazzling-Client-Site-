@@ -6,6 +6,7 @@ import { FaMoneyBill,  FaUsers } from "react-icons/fa6";
 import { MdBorderColor } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
 
+
 const AdminProfile = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();

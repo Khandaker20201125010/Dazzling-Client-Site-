@@ -39,7 +39,7 @@ const Contact = () => {
     <div className="min-h-screen  bg-gray-100 p-2">
       <div>
         <div className="contactBG bg-fixed container m-auto rounded-xl ">
-          <div className="bg-blue-900 w-full h-full opacity-40 flex flex-col items-center rounded-xl justify-center">
+          <div className="bg-blue-800 w-full h-full bg-opacity-40 flex flex-col items-center rounded-xl justify-center">
             <h1 className="text-5xl font-extrabold uppercase text-yellow-500 ">
               Contact <span className="text-yellow-400">us</span>
             </h1>

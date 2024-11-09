@@ -59,7 +59,7 @@ const SignUp = () => {
         axiosPublic.post("/users", {
           name: data.name,
           email: data.email,
-          photoURL: res.data.data.display_url,
+          photo: res.data.data.display_url,
           role: "Guest",
         });
         reset();

@@ -566,7 +566,7 @@ const Details = () => {
                 className="upload-icon-button"
                 title="Upload Image"
               >
-                <FaImage size={24} />
+                <FaImage className="text-yellow-600 text-3xl ml-2"  />
               </button>
             </div>
             {preview && (
@@ -591,24 +591,25 @@ const Details = () => {
           <div>No reviews yet for this product.</div> // Show message when no reviews exist
         ) : (
           productReviews.map((review) => (
-            <div className=" bg-base-200 p-2" key={review._id}>
-              <div className="flex-col lg:flex-row">
+            <div className=" bg-gray-700 p-6  rounded-xl mb-5 " key={review._id}>
+              <div className="flex lg:flex-row bg-base-300 p-5 gap-2 ">
                 {review.image && (
                   <img
                     src={review.image}
                     alt={review.name}
-                    className="w-60 h-60 rounded-lg shadow-2xl"
+                    className="w-28 h-32 rounded-lg shadow-2xl"
                   />
                 )}
                 <div className="p-4 h-40 flex flex-col">
-                  <h3 className="font-bold">{review.name}</h3>
-                  <div className="flex items-center">
+                <div className="flex items-center">
                     <Rating
                       value={review.rating}
                       style={{ maxWidth: 180 }}
                       readOnly
                     />
                   </div>
+                  <h3 className="font-bold">{review.name}</h3>
+                 
                   <p className="text-gray-300 w-full">{review.details}</p>
                 </div>
               </div>

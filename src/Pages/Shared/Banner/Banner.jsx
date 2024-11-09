@@ -308,7 +308,7 @@ const Banner = () => {
                   </div>
                 </div>
               </div>
-              <div className="slide__bg" style={{ "--bg": "url(https://i.ibb.co/dQzChy8/eb0ed7037fbca6158b3e8818d69e2198.jpg)", "--dir": 0 }} data-current></div>
+              <div className="slide__bg bg-fixed" style={{ "--bg": "url(https://i.ibb.co/dQzChy8/eb0ed7037fbca6158b3e8818d69e2198.jpg)", "--dir": 0 }} data-current></div>
 
               <div className="slide" data-next>
                 <div className="slide__inner ">
@@ -317,7 +317,7 @@ const Banner = () => {
                   </div>
                 </div>
               </div>
-              <div className="slide__bg" style={{ "--bg": "url(https://i.ibb.co/cCq3XL0/cf2a7bddd0e3-mens-watches-t.jpg)", "--dir": 1 }} data-next></div>
+              <div className="slide__bg bg-fixed" style={{ "--bg": "url(https://i.ibb.co/cCq3XL0/cf2a7bddd0e3-mens-watches-t.jpg)", "--dir": 1 }} data-next></div>
 
               <div className="slide" data-previous>
                 <div className="slide__inner">
@@ -326,7 +326,7 @@ const Banner = () => {
                   </div>
                 </div>
               </div>
-              <div className="slide__bg" style={{ "--bg": "url(https://i.ibb.co/x5fpZrV/70509a9876117db4ff5d04dc88aff473.jpg)", "--dir": -1 }} data-previous></div>
+              <div className="slide__bg bg-fixed" style={{ "--bg": "url(https://i.ibb.co/x5fpZrV/70509a9876117db4ff5d04dc88aff473.jpg)", "--dir": -1 }} data-previous></div>
             </div>
             <div className="slides--infos">
               <div className="slide-info" data-current>
