@@ -1,8 +1,18 @@
-# React + Vite
+# Dazzling 
+- User-Friendly Dashboards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- User Dashboard
+-  View products with detailed information, including images, descriptions, and pricing.
+-  Add products to a personal wishlist or cart for easy access.
+- Rate and review purchased products, helping others with authentic feedback.
+- Seamlessly search for specific products or browse by category.
+- Complete secure payments and view order history for easy tracking.
+- Admin Dashboard
+- Manage users efficiently with tools for adding, editing, or removing accounts.
+- Oversee all bookings and orders with options to confirm, modify, or cancel them.
+- Access user feedback and ratings to maintain quality and user satisfaction.
+- Comprehensive Contact Information
 
-Currently, two official plugins are available:
+- Users can access contact information, including a map view of the location and the official email address, for easy communication and assistance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
