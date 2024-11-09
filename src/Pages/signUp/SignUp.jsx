@@ -14,7 +14,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { BsGoogle } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa6";
+import { FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
@@ -36,6 +36,7 @@ function vec2(x = 0, y = 0) {
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const cardRef = useRef(null);
+  const [showPassword, setShowPassword] = useState(false);
   const { createUser, updateUserProfile, googleSignIn, facebookSignIn } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -173,6 +174,9 @@ const SignUp = () => {
       setDisabled(true);
     }
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
   return (
     <div
       className="bg-no-repeat bg-cover bg-center min-h-screen"
@@ -250,12 +254,12 @@ const SignUp = () => {
                       </span>
                     )}
                   </div>
-                  <div className="form-control">
+                  <div className="form-control relative">
                     <label className="label">
                       <span className="label-text">Password</span>
                     </label>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       {...register("password", {
                         required: true,
                         maxLength: 20,
@@ -265,23 +269,31 @@ const SignUp = () => {
                       })}
                       name="password"
                       placeholder="password"
-                      className="input input-bordered bg-transparent"
+                      className="input input-bordered bg-transparent pr-10"
                       required
                     />
+                    <div
+                      className="absolute inset-y-16 right-0 pr-3 flex items-center cursor-pointer text-blue-900"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <FaRegEyeSlash className="text-xl text-white" /> : <FaRegEye className="text-xl text-white" />}
+                    </div>
+
+                    {/* Error messages */}
                     {errors.password?.type === "minLength" && (
                       <p className="text-red-700">
-                        Password must need minimum 6 character
+                        Password must be at least 6 characters
                       </p>
                     )}
                     {errors.password?.type === "maxLength" && (
                       <p className="text-red-700">
-                        Password can't have more than 20 character
+                        Password can't exceed 20 characters
                       </p>
                     )}
                     {errors.password?.type === "pattern" && (
                       <p className="text-red-700">
-                        Password must have one Capital latter, one small latter
-                        and one special character
+                        Password must include uppercase, lowercase, number, and
+                        special character
                       </p>
                     )}
                   </div>
@@ -310,7 +322,9 @@ const SignUp = () => {
                     />
                   </div>
                 </form>
-                <h3 className="text-center text-xl mt-0 text-gray-500 py-5 font-bold">Or</h3>
+                <h3 className="text-center text-xl mt-0 text-gray-500 py-5 font-bold">
+                  Or
+                </h3>
                 <div className="flex animate-pulse m-auto gap-2 justify-center">
                   <button
                     onClick={handeleGoogleSignIn}
@@ -331,7 +345,7 @@ const SignUp = () => {
                     </span>
                   </button>
                 </div>
-                <p className="text-center mt-0 text-gray-500 py-5 font-bold">
+                <p className="text-center mt-10 text-gray-500 py-5 font-bold">
                   <small> Already have an account?</small>{" "}
                   <Link to="/login">
                     <span className="text-blue-600  font-bold">Login</span>

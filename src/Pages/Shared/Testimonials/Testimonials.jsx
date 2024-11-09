@@ -14,7 +14,7 @@ import { Navigation, Pagination } from "swiper/modules";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5500/reviews")
+    fetch("https://dazzling-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
