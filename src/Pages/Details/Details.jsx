@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
-import { FaArrowRight, FaStar } from "react-icons/fa6";
+import { FaArrowRight, FaImage, FaStar, FaUpload } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useCart from "../../Hooks/useCart";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
@@ -12,17 +12,35 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination, Navigation } from "swiper/modules";
+import { Rating } from "@smastrom/react-rating";
+import toast from "react-hot-toast";
+import axios from "axios";
+const image_hosting_token = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
+
 const Details = () => {
   const { id } = useParams(); // Unconditional use of hooks
   const axiosPublic = useAxiosPublic(); // Make sure this is always called
   const { user, loading } = useAuth(); // Ensure no conditional usage of this hook
   const [, refetch] = useCart();
   const [product] = useProduct();
+  const [ratingValue, setRatingValue] = useState(0);
+  const [review, setReview] = useState("");
+  const [images, setImages] = useState(null);
+  const [preview, setPreview] = useState(null);
+
   // Fetch product data
   const { data: singleProductData = {}, isLoading } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/product/${id}`);
+      return res.data;
+    },
+  });
+  const { data: productReviews = [], refetch: refetchReviews } = useQuery({
+    queryKey: ["productReviews", id],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/reviews/${id}`); // Make sure this endpoint returns reviews filtered by product ID
       return res.data;
     },
   });
@@ -113,6 +131,51 @@ const Details = () => {
         });
     }
   };
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    if (image) {
+      try {
+        const imageRes = await axios.post(image_hosting_api, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+
+        const imageUrl = imageRes?.data?.data?.url;
+
+        const reviewData = {
+          prodId: id,
+          name: user?.displayName || "Anonymous",
+          details: review,
+          rating: ratingValue,
+          image: imageUrl || user?.photoURL || "",
+        };
+
+        await axiosPublic.post("/reviews", reviewData).then((res) => {
+          if (res.data.insertedId) {
+            toast.success("Thank you for your review!", {
+              duration: 1000,
+              position: "top-center",
+            });
+            setReview("");
+            setRatingValue(0);
+            setImages(null);
+            setPreview(null);
+            refetchReviews(); // Refetch reviews after submitting a new one
+          }
+        });
+      } catch (error) {
+        console.error("Error uploading image or submitting review:", error);
+      }
+    }
+  };
+
+  // Loading state
+  if (isLoading || loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container m-auto">
@@ -442,7 +505,7 @@ const Details = () => {
             ))}
           </Swiper>
           {/* Custom styles for Swiper navigation buttons */}
-          <style >{`
+          <style>{`
             .swiper-button-next,
             .swiper-button-prev {
               color: orange; /* Change the button color to orange */
@@ -455,6 +518,103 @@ const Details = () => {
             }
           `}</style>
         </div>
+      </div>
+      <div className="mt-10 bg-gradient-to-br from-gray-700 via-slate-900 to-gray-700 p-6">
+        <h3 className="text-2xl font-bold">Rate and Review this Product</h3>
+        <form onSubmit={handleReviewSubmit}>
+          <div>
+            {/* Rating Component */}
+            <Rating
+              name="product-rating"
+              style={{ maxWidth: 180 }}
+              value={ratingValue} // Set the rating value from state
+              onChange={setRatingValue} // Set rating value on change (no need to destructure e)
+              isRequired
+            />
+          </div>
+
+          <textarea
+            className="textarea textarea-warning w-3/4"
+            placeholder="Write your review here"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            rows="4"
+            required
+          ></textarea>
+
+          <div>
+            <div className="file-uploader">
+              {/* Hidden file input */}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setImages(file);
+                    setPreview(URL.createObjectURL(file));
+                  }
+                }}
+                id="file-input"
+                style={{ display: "none" }} // Hide the input element
+              />
+
+              {/* Icon as button to open file dialog */}
+              <button
+                type="button"
+                onClick={() => document.getElementById("file-input").click()}
+                className="upload-icon-button"
+                title="Upload Image"
+              >
+                <FaImage size={24} />
+              </button>
+            </div>
+            {preview && (
+              <div>
+                <img src={preview} alt="Preview" width="100" />
+              </div>
+            )}
+          </div>
+
+          <button className="btn btn-sm  btn-warning mt-5 mb-5" type="submit">
+            Submit Review
+          </button>
+        </form>
+      </div>
+
+      {/* Product Reviews */}
+      <div className="mt-10 bg-gradient-to-br from-gray-700 via-slate-900 to-gray-700 p-6">
+        <h3 className="text-2xl font-bold mt-5 mb-5">Customer Reviews </h3>
+        {isLoading ? (
+          <div>Loading reviews...</div> // Show loading state
+        ) : productReviews.length === 0 ? (
+          <div>No reviews yet for this product.</div> // Show message when no reviews exist
+        ) : (
+          productReviews.map((review) => (
+            <div className=" bg-base-200 p-2" key={review._id}>
+              <div className="flex-col lg:flex-row">
+                {review.image && (
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="w-60 h-60 rounded-lg shadow-2xl"
+                  />
+                )}
+                <div className="p-4 h-40 flex flex-col">
+                  <h3 className="font-bold">{review.name}</h3>
+                  <div className="flex items-center">
+                    <Rating
+                      value={review.rating}
+                      style={{ maxWidth: 180 }}
+                      readOnly
+                    />
+                  </div>
+                  <p className="text-gray-300 w-full">{review.details}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

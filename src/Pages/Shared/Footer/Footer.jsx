@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -6,7 +7,7 @@ const Footer = () => {
             <footer className="bg-gray-900 text-white py-8">
                 <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-52">
                     <div className="text-center md:text-left">
-                        <h3 className="text-xl font-bold mb-2 mx-16 ">Contact Us</h3>
+                       <Link to='/Contacts'> <button className="text-xl font-bold mb-2 mx-16 ">Contact Us</button></Link>
                         <p className='mx-10' > Feel free to contact us</p>
                         <p className='mx-12'>+88 123456789</p>
                         <p className='mx-8'>Mon - Fri: 08:00 - 22:00</p>

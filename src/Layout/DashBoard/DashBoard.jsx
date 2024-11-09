@@ -97,7 +97,7 @@ const DashBoard = () => {
                 return isActive
                     ? 'font-bold text-white hover:text-orange-600'
                     : 'font-bold text-gray-500 hover:text-orange-600';
-            }} to='/contact'> <MdConnectWithoutContact />Contact</NavLink>
+            }} to='/Contacts'> <MdConnectWithoutContact />Contact</NavLink>
         </>
     )
     return (
