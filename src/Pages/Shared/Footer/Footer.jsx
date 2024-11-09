@@ -6,10 +6,12 @@ const Footer = () => {
     <div className="mt-10">
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-52">
-          <div className="bg-transparent">
-            <img className="w-20 h-20  rounded-full" src={icon} alt="" />
-            <h3>About Us</h3>
-          </div>
+          <Link to='/aboutUs'>
+            <div className="bg-transparent">
+              <img className="w-20 h-20  rounded-full" src={icon} alt="" />
+              <h3>About Us</h3>
+            </div>
+          </Link>
           <div className="text-center md:text-left">
             <Link to="/Contacts">
               {" "}

@@ -22,6 +22,7 @@ import PaymentFailed from "../Pages/Shared/PaymentFailed/PaymentFailed";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 import ManageBookings from "../Layout/DashBoard/ManageBookings/ManageBookings";
 import Contact from "../Pages/Contact.jsx/Contact";
+import AboutUs from "../Pages/Shared/AbousUs/AboutUs";
 
 export const router = createBrowserRouter(
   [
@@ -63,6 +64,12 @@ export const router = createBrowserRouter(
           <PriveteRoutes>
             <Details></Details>
           </PriveteRoutes>
+        ),
+      },
+      {
+        path: "aboutUS",
+        element: (
+        <AboutUs></AboutUs>
         ),
       },
       {

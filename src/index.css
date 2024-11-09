@@ -1413,6 +1413,13 @@ ul {
   height: 400px	;
  
 }
+.aboutBG{
+  background-image: url('./assets/images/aboutus.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px	;
+ 
+}
 
   
  
