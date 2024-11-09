@@ -1420,6 +1420,20 @@ ul {
   height: 400px	;
  
 }
+.aboutBG2{
+  background-image: url('./assets/images/aboutimg2.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px	;
+ 
+}
+.aboutBG3{
+  background-image: url('./assets/images/aboutimg3.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px	;
+ 
+}
 
   
  
