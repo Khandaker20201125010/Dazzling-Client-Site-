@@ -145,11 +145,10 @@ const handleOrder = async (e) => {
                           <li key={shipping._id}>
                             <button
                               onClick={() => handleServiceCharge(shipping)}
-                              className="font-medium mb-1 text-center text-xs border px-2 w-full"
+                              className="font-medium mb-1 text-center text-xs border px-2 w-full hover:bg-orange-500 hover:text-white rounded-md"
                             >
                               {" "}
-                              {shipping?.shippingLocation} (TK :{" "}
-                              {shipping?.serviceCharge})
+                              {shipping?.shippingLocation} (TK :{shipping?.serviceCharge})
                             </button>
                           </li>
                         ))

@@ -48,6 +48,10 @@ const Details = () => {
   // Destructure product data
   const { _id, brand, gender, description, rating, image, price, name } =
     singleProductData;
+  const isDiscounted = singleProductData.category === "discounts"; // Check singleProductData.category
+  const discountedPrice = isDiscounted
+    ? (singleProductData.price * 0.5).toFixed(2)
+    : singleProductData.price;
   const suggestProduct = product.filter(
     (product) =>
       product.category === singleProductData.category && product._id !== id
@@ -221,7 +225,19 @@ const Details = () => {
           <p className="border-t-2 border-b-2 p-2  rounded-md">{description}</p>
           <div className="flex justify-between mb-5">
             <h3 className="text-xl font-bold gap-2">
-              Price: <span className="text-red-600"> {price}TK</span>{" "}
+              Price:{" "}
+              <span className="text-red-600">
+                {isDiscounted ? (
+                  <>
+                    <span className="line-through text-red-500 mr-2">
+                      {singleProductData.price}TK
+                    </span>
+                    {discountedPrice}TK
+                  </>
+                ) : (
+                  `${singleProductData.price}TK`
+                )}
+              </span>
             </h3>
             <h3 className="flex gap-2 text-xl">
               Rating: {rating}
@@ -491,7 +507,19 @@ const Details = () => {
                   <div className="p-4 h-40 flex flex-col">
                     <h3 className="font-bold">{prod.name}</h3>
                     <p>{prod.description}</p>
-                    <h4 className="text-red-600">{prod.price}$</h4>
+                    <h4 className="text-red-600">
+                      {" "}
+                      {isDiscounted ? (
+                        <>
+                          <span className="line-through text-red-500 mr-2">
+                            {singleProductData.price}TK
+                          </span>
+                          {discountedPrice}TK
+                        </>
+                      ) : (
+                        `${singleProductData.price}TK`
+                      )}
+                    </h4>
                   </div>
                   <Link to={`/details/${prod._id}`}>
                     <div className="p-2">
@@ -566,7 +594,7 @@ const Details = () => {
                 className="upload-icon-button"
                 title="Upload Image"
               >
-                <FaImage className="text-yellow-600 text-3xl ml-2"  />
+                <FaImage className="text-yellow-600 text-3xl ml-2" />
               </button>
             </div>
             {preview && (
@@ -591,7 +619,10 @@ const Details = () => {
           <div>No reviews yet for this product.</div> // Show message when no reviews exist
         ) : (
           productReviews.map((review) => (
-            <div className=" bg-gray-700 p-6  rounded-xl mb-5 " key={review._id}>
+            <div
+              className=" bg-gray-700 p-6  rounded-xl mb-5 "
+              key={review._id}
+            >
               <div className="flex lg:flex-row bg-base-300 p-5 gap-2 ">
                 {review.image && (
                   <img
@@ -601,7 +632,7 @@ const Details = () => {
                   />
                 )}
                 <div className="p-4 h-40 flex flex-col">
-                <div className="flex items-center">
+                  <div className="flex items-center">
                     <Rating
                       value={review.rating}
                       style={{ maxWidth: 180 }}
@@ -609,7 +640,7 @@ const Details = () => {
                     />
                   </div>
                   <h3 className="font-bold">{review.name}</h3>
-                 
+
                   <p className="text-gray-300 w-full">{review.details}</p>
                 </div>
               </div>
