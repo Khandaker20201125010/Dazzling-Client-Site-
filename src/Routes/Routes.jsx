@@ -23,12 +23,14 @@ import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 import ManageBookings from "../Layout/DashBoard/ManageBookings/ManageBookings";
 import Contact from "../Pages/Contact.jsx/Contact";
 import AboutUs from "../Pages/Shared/AbousUs/AboutUs";
+import Error from "../Pages/Error/Error";
 
 export const router = createBrowserRouter(
   [
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",

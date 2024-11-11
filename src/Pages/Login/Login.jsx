@@ -113,7 +113,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(from, { replace: true });
       });
     });
   };
@@ -138,7 +138,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500,
             });
-            navigate("/"); // Redirect to home page or wherever you want
+            navigate(from, { replace: true }); // Redirect to home page or wherever you want
         }
     } catch (error) {
         console.error("Facebook login error:", error.message);
