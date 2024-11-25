@@ -168,7 +168,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <div className="text-2xl text-white px-10 text-lighting">
+          <div className="text-2xl text-white max-sm:text-xl md:px-10 text-lighting">
             <SparklesText>
               <Link to="/">
                 <i>Dazzling</i>
@@ -206,7 +206,7 @@ const NavBar = () => {
             >
               {/* Fixed Header in Burger Menu */}
 
-              <div className="sticky top-0 bg-base-200 px-4 py-3 md:py-4 border-b border-yellow-700">
+              <div className="sticky top-0 bg-base-200  px-4 py-3 md:py-4 border-b border-yellow-700">
                 <div className="text-2xl font-bold flex justify-between items-center">
                   <a
                     onClick={closeMenu}
@@ -297,7 +297,7 @@ const NavBar = () => {
                           )}
                         </li>
                         <li>
-                          <button className=" text-xl" onClick={handelLogOut}>
+                          <button className="lButton text-xl md:min-w-32 max-sm:w-24 max-sm:text-sm" onClick={handelLogOut}>
                             Leave
                           </button>
                         </li>
@@ -308,7 +308,7 @@ const NavBar = () => {
               ) : (
                 <>
                   <Link to="/login">
-                    <button className="lButton text-xl">Join us</button>
+                    <button className="lButton text-xl md:min-w-32 max-sm:w-24 max-sm:text-sm">Join us</button>
                   </Link>
                 </>
               )}

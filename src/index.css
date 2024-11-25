@@ -385,7 +385,7 @@
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 	transition: transform 0.5s ease-in-out;
 }
-
+	
 .mySwiper .swiper-slide .overlay-text {
 	position: absolute;
 	bottom: 10px;
@@ -418,9 +418,9 @@
 
 /* Add this CSS file for custom styling */
 .image-container {
-	width: 80px;
+	width: 100%;
 	/* Initial width of the container */
-	height: 80px;
+	height: 100%;
 	/* Initial height of the container (making it a square) */
 	overflow: hidden;
 	/* Hide the overflow to keep the image within bounds */
@@ -871,7 +871,7 @@
 
 /* From Uiverse.io by zanina-yassine */
 .lButton {
-	min-width: 120px;
+	
 
 	position: relative;
 	cursor: pointer;

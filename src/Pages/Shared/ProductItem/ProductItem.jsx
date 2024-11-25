@@ -9,7 +9,7 @@ const ProductItem = ({ product }) => {
   });
 
   return (
-    <div data-aos="zoom-in" className="flex items-center justify-between p-2">
+    <div data-aos="zoom-in" className="md:flex items-center justify-between p-4 bg-slate-800 rounded-md ">
       <div className="flex gap-5">
         <div className="image-container">
           <img className="product-image" src={image} alt={name} />
@@ -19,7 +19,7 @@ const ProductItem = ({ product }) => {
           <p className="w-3/4">{description}</p>
         </div>
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 max-sm:mt-12">
         <p className="text-lg text-lighting  text-white">{price}TK</p>
 
         <Link to={`/details/${product?._id}`}>
