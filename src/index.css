@@ -418,9 +418,9 @@
 
 /* Add this CSS file for custom styling */
 .image-container {
-	width: 100%;
+	width: 100px;
 	/* Initial width of the container */
-	height: 100%;
+	height: 100px;
 	/* Initial height of the container (making it a square) */
 	overflow: hidden;
 	/* Hide the overflow to keep the image within bounds */
